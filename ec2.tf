@@ -21,7 +21,7 @@ resource aws_instance this {
 }
 
 resource aws_volume_attachment this {
-  device_name = "/dev/sdf1"
+  device_name = "/dev/sdf"
   instance_id = aws_instance.this.id
   volume_id   = aws_ebs_volume.this.id
 }

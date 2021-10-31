@@ -6,19 +6,20 @@
 
 # bash config
 set -e
-
-echo "INFO: Starting..."
+sleep 5 # couple seconds for the EBS vol. to be attached
 cd "/home/ubuntu" || exit
 
-# only do this if running in non-interactive mode
+
+echo "INFO: Starting..."
 exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
 
 echo "INFO: Mount EBS volumne"
 mkdir -p ./Satisfactory
+sudo umount /home/ubuntu/Satisfactory || true
 sudo mount /dev/nvme1n1 ./Satisfactory
 sudo chown ubuntu:ubuntu -R ./Satisfactory/
 
-if [[ ! -f "/home/ubuntu/Satisfactory/FactoryServer.sh" ]]
+if [[ ! $(which steamcmd) ]]
 then
     echo "INFO: Configure agreement to steamcmd lics..."
     echo steam steam/question select "I AGREE" | sudo debconf-set-selections
@@ -33,11 +34,11 @@ then
         libsdl2-2.0-0 \
         steamcmd
 
-    echo "INFO: Install server package from Steam"
-    steamcmd +login anonymous +force_install_dir "/home/ubuntu/Satisfactory" +app_update 1690800 -validate +quit
+    echo "INFO: Reload session to add new tools"
 fi
 
-# -----
+echo "INFO: Update server package from Steam"
+sudo /usr/games/steamcmd +login anonymous +force_install_dir "/home/ubuntu/Satisfactory" +app_update 1690800 -validate +quit
 
 if [[ ! -f "/etc/systemd/system/satisfactory.service" ]]
 then
@@ -57,7 +58,7 @@ then
     KillSignal=SIGINT
     Restart=on-failure
     StandardOutput=journal
-    TimeoutSec=30
+    TimeoutSec=60
     User=ubuntu
     WorkingDirectory=/home/ubuntu/Satisfactory
 
@@ -65,25 +66,16 @@ then
     WantedBy=multi-user.target" | sudo tee "/etc/systemd/system/satisfactory.service"
 
     sudo systemctl enable satisfactory.service --now
-    sudo systemctl restart satisfactory.service
 
     echo "INFO: To re/start the service manually run: sudo systemctl restart satisfactory.service"
 fi
 
-if [[ ! -f /etc/logrotate.d/satisfactory.conf ]]
-then
-    echo "INFO: Configuring logrotate..."
+echo "INFO: Configure journal log limiting"
+sudo sed -i 's/#RuntimeMaxUse=/#RuntimeMaxUse=4G/g' /etc/systemd/journald.conf
+sudo sed -i 's/#SystemMaxUse=/#SystemMaxUse=4G/g' /etc/systemd/journald.conf
 
-    echo "/home/ubuntu/Satisfactory/server.log* {
-    weekly
-    rotate 7
-    size 10M
-    compress
-    delaycompress
-}" | sudo tee /etc/logrotate.d/satisfactory.conf
-    sudo logrotate -d /etc/logrotate.d/satisfactory.conf
-
-    echo "INFO: logrotate configuration completed..."
-fi
+echo "INFO: Restart service"
+sudo systemctl restart satisfactory.service
+sudo systemctl status satisfactory.service
 
 echo "INFO: ...Done."
