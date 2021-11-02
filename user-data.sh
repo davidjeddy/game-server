@@ -13,6 +13,11 @@ cd "/home/ubuntu" || exit
 echo "INFO: Starting..."
 exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
 
+
+# -----
+# Satisfactory
+# -----
+
 echo "INFO: Mount EBS volumne"
 mkdir -p ./Satisfactory
 sudo umount /home/ubuntu/Satisfactory || true
@@ -79,3 +84,19 @@ sudo systemctl restart satisfactory.service
 sudo systemctl status satisfactory.service
 
 echo "INFO: ...Done."
+
+# -----
+# PA
+# -----
+
+# -----
+# Factorio
+# -----
+
+# -----
+# KSP
+# -----
+
+# -----
+# KSP2
+# -----
