@@ -8,7 +8,7 @@ output satisfactory_davidjeddy_com {
     value = aws_route53_record.satisfactory_davidjeddy_com.fqdn
 }
 
-output satisfactory_games_blissfullystupid_com {
+output satisfactory_games_lanordie_com {
     description = "FQDN of server"
-    value = aws_route53_record.satisfactory_games_blissfullystupid_com.fqdn
+    value = aws_route53_record.satisfactory_games_lanordie_com.fqdn
 }
