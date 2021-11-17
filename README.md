@@ -1,26 +1,16 @@
-# Satisfactory Dedicated Server
+# Game Server
 
-TODO:
+## Infrastructure
 
-must
+- AWS
+  - EC2, EBS, EIN, Route53
+- Terraform
+  - Terraform Cloud for state storage
+  - Terragrunt for IC code DRY
 
-- ec2 instance - DONE
-  - req. packages
-  - EBS = 64Gb
-  - MEM = 12G
-  - CPU = ?
-  - static IP
+## Services
 
-Goal: just get it to work
-
-should
-
-- startup script to keep OS and service updated - DONE
-- log rotation - DONE
-- systemd service - DONE
-- save game data to a EBS vol that is mounted @ startup - DONE
-
-nice
-
-- DNS to satisfactory.davidjeddy.com - DONE
-- separate IAM user and roles for Satisfactory resources
+|   |   |   |   |   |
+|---|---|---|---|---|
+|Name|Version|Device|Mount Point| System Service|
+|Satisfactory|Update 5|nvme1n1|/home/ubuntu/.config/Epic|yes|

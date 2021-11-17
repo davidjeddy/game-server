@@ -19,10 +19,11 @@ exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&
 # -----
 
 echo "INFO: Mount EBS volumne"
-mkdir -p ./Satisfactory
-sudo umount /home/ubuntu/Satisfactory || true
-sudo mount /dev/nvme1n1 ./Satisfactory
-sudo chown ubuntu:ubuntu -R ./Satisfactory/
+lsblk -f
+sudo mkdir -p ./.config/Epic || true
+sudo umount /home/ubuntu/.config/Epic || true
+sudo mount /dev/nvme1n1 ./.config/Epic
+sudo chown ubuntu:ubuntu -R ./.config/Epic
 
 if [[ ! $(which steamcmd) ]]
 then
@@ -42,48 +43,41 @@ then
     echo "INFO: Reload session to add new tools"
 fi
 
-echo "INFO: Update server package from Steam"
-sudo /usr/games/steamcmd +login anonymous +force_install_dir "/home/ubuntu/Satisfactory" +app_update 1690800 -validate +quit
-
 if [[ ! -f "/etc/systemd/system/satisfactory.service" ]]
 then
     echo "INFO: Create system service for service"
 
-    echo -e "\
-[Unit]
+    echo -e "[Unit]
     Description=Satisfactory dedicated server
     Wants=network-online.target
     After=syslog.target network.target nss-lookup.target network-online.target
 
 [Service]
-    Environment=\"LD_LIBRARY_PATH=./linux64\"
-    ExecStart=\"/home/ubuntu/Satisfactory/FactoryServer.sh\"
-    ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir \"/home/ubuntu/Satisfactory\" +app_update 1690800 validate +quit
-    Group=ubuntu
-    KillSignal=SIGINT
-    Restart=on-failure
-    StandardOutput=journal
-    TimeoutSec=60
+    Environment="LD_LIBRARY_PATH=./linux64"
+    ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir "/home/ubuntu/satisfactory" +app_update 1690800 validate +quit
+    ExecStart=/home/ubuntu/satisfactory/FactoryServer.sh
     User=ubuntu
-    WorkingDirectory=/home/ubuntu/Satisfactory
+    Group=ubuntu
+    StandardOutput=journal
+    Restart=on-failure
+    KillSignal=SIGINT
+    WorkingDirectory=/home/ubuntu/satisfactory
 
 [Install]
     WantedBy=multi-user.target" | sudo tee "/etc/systemd/system/satisfactory.service"
 
     sudo systemctl enable satisfactory.service --now
-
-    echo "INFO: To re/start the service manually run: sudo systemctl restart satisfactory.service"
 fi
 
 echo "INFO: Configure journal log limiting"
-sudo sed -i 's/#RuntimeMaxUse=/#RuntimeMaxUse=4G/g' /etc/systemd/journald.conf
-sudo sed -i 's/#SystemMaxUse=/#SystemMaxUse=4G/g' /etc/systemd/journald.conf
+sudo sed -i 's/#RuntimeMaxUse=*/RuntimeMaxUse=/g' /etc/systemd/journald.conf
+sudo sed -i 's/#SystemMaxUse=*/SystemMaxUse=I/g' /etc/systemd/journald.conf
 
-echo "INFO: Restart service"
+echo "INFO: Restart Satisfactory service"
 sudo systemctl restart satisfactory.service
 sudo systemctl status satisfactory.service
 
-echo "INFO: ...Done."
+
 
 # -----
 # PA
@@ -100,3 +94,5 @@ echo "INFO: ...Done."
 # -----
 # KSP2
 # -----
+
+echo "INFO: ...Done."

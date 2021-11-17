@@ -1,5 +1,11 @@
 terraform {
-  backend "local" {}
+  backend "remote" {
+    organization = "davidjeddy"
+
+    workspaces {
+      name = "game-server"
+    }
+  }
 
   required_providers {
     aws = {
