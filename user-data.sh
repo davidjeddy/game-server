@@ -1,5 +1,5 @@
 #!/bin/bash
-# tested on Ubuntu 20.10
+# tested on Ubuntu 20.04
 # version 0.0.6 @ 2022-01-30
 # source https://satisfactory.fandom.com/wiki/Dedicated_servers
 # source https://github.com/ValveSoftware/steam-for-linux/issues/7036
@@ -8,6 +8,15 @@
 set -e
 echo "INFO: Starting..."
 exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
+
+# -----
+# Server wide configurations
+# -----
+
+echo "INFO: Configure journal log limiting"
+echo "[Journal]
+/RuntimeMaxUse=4G
+SystemMaxUse=4G" > /etc/systemd/journald.conf
 
 # -----
 # Steam
@@ -43,11 +52,11 @@ chown ubuntu:ubuntu -R /home/ubuntu/.config/Epic
 mount /dev/nvme1n1 /home/ubuntu/.config/Epic
 
 echo "INFO: Initial install of Satisfactory Dedicated Server"
-/usr/games/steamcmd/steamcmd.sh \
-    +app_update 1690800 validate \
+sudo -u ubuntu /usr/games/steamcmd \
     +force_install_dir /home/ubuntu/satisfactory \
     +login anonymous \
-    -beta public \
+    +app_update 1690800 \
+    -beta public validate \
     +quit
 
 echo "INFO: Resetting user dir ownership"
@@ -66,7 +75,7 @@ then
     [Service]
         Environment=\"LD_LIBRARY_PATH=./linux64\"
         ExecStart=/home/ubuntu/satisfactory/FactoryServer.sh
-        ExecStartPre=/usr/games/steamcmd/steamcmd.sh +login anonymous +force_install_dir \"/home/ubuntu/satisfactory\" +app_update 1690800 -beta public validate +quit
+        ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir \"/home/ubuntu/satisfactory\" +app_update 1690800 -beta public validate +quit
         Group=ubuntu
         KillSignal=SIGINT
         Restart=on-failure
@@ -81,10 +90,6 @@ then
 
     systemctl enable satisfactory.service --now
 fi
-
-echo "INFO: Configure journal log limiting"
-sed -i 's/#RuntimeMaxUse=*/RuntimeMaxUse=4G/g' /etc/systemd/journald.conf
-sed -i 's/#SystemMaxUse=*/SystemMaxUse=4G/g' /etc/systemd/journald.conf
 
 echo "INFO: Restart Satisfactory service"
 systemctl restart satisfactory.service
@@ -105,5 +110,8 @@ systemctl status satisfactory.service
 # -----
 # KSP2
 # -----
+
+echo "INFO: Reload Systemd-Journald service configurations"
+systemctl reload systemd-journald
 
 echo "INFO: ...Done."
