@@ -1,5 +1,11 @@
 ## EC2
 
+variable base_ami {
+  default       = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20220118"
+  description = "Base machine image to use for the server"
+  type        = string
+}
+
 variable key_name {
   type        = string
   description = "SSH PEM keypair name"

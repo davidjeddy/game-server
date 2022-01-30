@@ -3,12 +3,13 @@ data http local_ip {
 }
 
 data aws_ami ubuntu {
-  most_recent = true
+  most_recent = false
 
   filter {
     name = "name"
+
     values = [
-      "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
+      var.base_ami
     ]
   }
 
