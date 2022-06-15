@@ -17,8 +17,3 @@ resource aws_ebs_volume this {
     { Name = join(var.delimiter, [var.name, var.stage, random_string.this.id]) }
   )
 }
-
-resource aws_eip this {
-  instance = aws_instance.this.id
-  vpc      = true
-}

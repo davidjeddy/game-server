@@ -10,10 +10,10 @@
 
 ## Services
 
-|   |   |   |   |   |
-|---|---|---|---|---|
-|Name|Version|Device|Mount Point| System Service|
-|Satisfactory|Update 5|nvme1n1|/home/ubuntu/.config/Epic|yes|
+|              |          |         |                           |                |       |
+| ------------ | -------- | ------- | ------------------------- | -------------- | ----- |
+| Name         | Version  | Device  | Mount Point               | System Service | Port  |
+| Satisfactory | Update 6 | nvme1n1 | /home/ubuntu/.config/Epic | yes            | 15777 |
 
 ## Version
 
