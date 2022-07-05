@@ -1,6 +1,7 @@
 #!/bin/bash
 # tested on Ubuntu 20.04
 # version 0.0.6 @ 2022-01-30
+# version 0.0.7 @ 2022-07-05
 # source https://satisfactory.fandom.com/wiki/Dedicated_servers
 # source https://github.com/ValveSoftware/steam-for-linux/issues/7036
 

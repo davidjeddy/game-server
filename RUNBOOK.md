@@ -2,6 +2,16 @@
 
 ## Provisioning
 
+### Deploy Resources
+
+Edit `terraform.tfvars` as needed. Then ...
+
+```sh
+terragrunt init
+terragrunt plan
+terragrunt apply
+```
+
 ### Format and Mount Data Drive
 
 ```sh
