@@ -12,8 +12,14 @@ terraform {
     
   }
 
-  extra_arguments "custom_vars" {
+  # https://github.com/infracost/infracost
+  after_hook "infracost" {
+    commands     = ["plan"]
+    execute      = ["infracost", "diff", "--path", ".", "--compare-to", "infracost-base.json"]
+    
+  }
 
+  extra_arguments "custom_vars" {
 
     commands = [
       "apply",

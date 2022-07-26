@@ -1,3 +1,4 @@
+.infracost
 .terraform
 .terraform.*
 terraform.tfstate
