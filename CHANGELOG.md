@@ -1,9 +1,13 @@
 # Changelog
 
+## 0.0.8
+
+- Added `infracost` costing tool
+
 ## 0.0.7
 
-- Added terragrunt to project
-- Added tfsec and terrascan compliance tools
+- Added `terragrunt` to project
+- Added `tfsec` and `terrascan` compliance tools
   - Rule skip/ignore added where needed
 - Added metadata_options to ec2_instance
 
