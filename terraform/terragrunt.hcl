@@ -13,13 +13,13 @@ terraform {
 
   # https://github.com/aquasecurity/tfsec
   after_hook "tfsec" {
-    commands     = ["plan", "apply"]
+    commands     = ["apply", "plan"]
     execute      = ["tfsec", ".", "--tfvars-file", "terraform.tfvars", "--exclude-downloaded-modules", "--concise-output"]
   }
 
   # https://github.com/infracost/infracost
   after_hook "infracost" {
-    commands     = ["plan", "apply"]
+    commands     = ["apply", "plan"]
     execute      = ["infracost", "diff", "--path", ".", "--compare-to", "infracost-base.json"]
   }
 

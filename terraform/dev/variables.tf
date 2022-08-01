@@ -1,3 +1,11 @@
+## Generics
+
+variable "delete_timeout" {
+  default     = 7
+  description = "Default timeout in days when deleting protected resources"
+  type        = number
+}
+
 ## EC2
 
 variable "base_ami" {
@@ -52,3 +60,5 @@ variable "route53_zone" {
   description = "DNS zone"
   type        = string
 }
+
+### Delete

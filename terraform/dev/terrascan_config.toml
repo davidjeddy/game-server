@@ -4,7 +4,6 @@
     ]
 
     skip-rules = [
-        "AC_AWS_0153", # Do not use default VPC
         "AC_AWS_0459", # EBS is encrypted
         "AC_AWS_0276", # Allow egress to the public internet
     ]
