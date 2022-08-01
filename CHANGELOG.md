@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.9
+
+- Added custom VPC, migrate workload to new VPC
+- Remove default VPC and related resources
+- Reorganize project structure to support multiple envs (dev,int,sit,tst,stg,prd,etc)
+
 ## 0.0.8
 
 - Added `infracost` costing tool

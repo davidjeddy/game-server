@@ -1,15 +1,15 @@
 # -----
 # Satisfactory
 #-----
-resource aws_volume_attachment this {
+resource "aws_volume_attachment" "this" {
   device_name = "/dev/sdf"
   instance_id = aws_instance.this.id
   volume_id   = aws_ebs_volume.this.id
 }
 
 #tfsec:ignore:aws-ebs-encryption-customer-key
-resource aws_ebs_volume this {
-  availability_zone = join("", [var.region, var.availability_zone])
+resource "aws_ebs_volume" "this" {
+  availability_zone = module.vpc.azs[0]
   encrypted         = true
   size              = 32
 
@@ -19,9 +19,9 @@ resource aws_ebs_volume this {
   )
 }
 
-resource aws_ebs_snapshot this {
+resource "aws_ebs_snapshot" "this" {
   description = aws_ebs_volume.this.id
-  volume_id = aws_ebs_volume.this.id
+  volume_id   = aws_ebs_volume.this.id
 
   tags = merge(
     var.tags,

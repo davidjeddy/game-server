@@ -1,8 +1,6 @@
-data http local_ip {
-  url = "http://ipv4.icanhazip.com"
-}
+data "aws_region" "current" {}
 
-data aws_ami ubuntu {
+data "aws_ami" "ubuntu" {
   most_recent = false
 
   filter {
@@ -19,6 +17,10 @@ data aws_ami ubuntu {
   ]
 }
 
-data template_file user_data {
+data "http" "local_ip" {
+  url = "http://ipv4.icanhazip.com"
+}
+
+data "template_file" "user_data" {
   template = file("${path.module}/user-data.sh")
 }

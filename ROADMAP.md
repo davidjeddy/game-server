@@ -1,12 +1,5 @@
 # RoadMap
 
-Improvement ideas no specific order.
-
-- ADD Terragrunt
-- ADD compliance scanning
-  - terrascan
-  - tfsec
-
 - ADD Logging
   - CloudWatch logging for storage
     - retention: 1yr
@@ -32,5 +25,3 @@ SupremeCommander-7.5.4-CDJS-0-ux4b
   - Also, stop instance if no-one is connected for X minutes
 
 - Address ignored tfsec and terrascan security best practices ignore/skips
-
-- Create dev/prd ENVs via Terragrunt functionality

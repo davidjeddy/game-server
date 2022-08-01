@@ -10,7 +10,6 @@
 
 ## Services
 
-|              |          |         |                           |                |       |
-| ------------ | -------- | ------- | ------------------------- | -------------- | ----- |
 | Name         | Version  | Device  | Mount Point               | System Service | Port  |
+| ------------ | -------- | ------- | ------------------------- | -------------- | ----- |
 | Satisfactory | Update 6 | nvme1n1 | /home/ubuntu/.config/Epic | yes            | 15777 |

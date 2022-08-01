@@ -17,7 +17,7 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  profile = "game_server"
-  region = var.region
+  profile                 = "game_server"
+  region                  = "us-east-1"
   shared_credentials_file = "$HOME/.aws/credentials"
 }
