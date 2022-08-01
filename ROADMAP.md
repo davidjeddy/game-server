@@ -1,11 +1,9 @@
 # RoadMap
 
-Improvement ideas no specific order.
+Topics in a very loose order of priority.
 
-- ADD Terragrunt
-- ADD compliance scanning
-  - terrascan
-  - tfsec
+- Address ignored security notices concerning EBS encryption
+  - use CMK KMS to encrypt EBS
 
 - ADD Logging
   - CloudWatch logging for storage
@@ -30,7 +28,3 @@ SupremeCommander-7.5.4-CDJS-0-ux4b
 
 - API Gateway + Lambda to start instance if stopped
   - Also, stop instance if no-one is connected for X minutes
-
-- Address ignored tfsec and terrascan security best practices ignore/skips
-
-- Create dev/prd ENVs via Terragrunt functionality

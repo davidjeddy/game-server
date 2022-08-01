@@ -5,7 +5,7 @@ locals {
 }
 
 #tfsec:ignore:aws-vpc-no-public-egress-sgr
-resource aws_security_group_rule egress {
+resource "aws_security_group_rule" "egress" {
   cidr_blocks       = local.source_cidrs
   description       = "Satisfactory egress"
   from_port         = 0
@@ -16,7 +16,7 @@ resource aws_security_group_rule egress {
 }
 
 #tfsec:ignore:aws-vpc-no-public-ingress-sgr
-resource aws_security_group_rule satisfactory_0 {
+resource "aws_security_group_rule" "satisfactory_0" {
   cidr_blocks       = local.source_cidrs
   description       = "Satisfactory ingress"
   from_port         = 7777
@@ -27,7 +27,7 @@ resource aws_security_group_rule satisfactory_0 {
 }
 
 #tfsec:ignore:aws-vpc-no-public-ingress-sgr
-resource aws_security_group_rule satisfactory_1 {
+resource "aws_security_group_rule" "satisfactory_1" {
   cidr_blocks       = local.source_cidrs
   description       = "Satisfactory ingress"
   from_port         = 15000
@@ -38,7 +38,7 @@ resource aws_security_group_rule satisfactory_1 {
 }
 
 #tfsec:ignore:aws-vpc-no-public-ingress-sgr
-resource aws_security_group_rule satisfactory_2 {
+resource "aws_security_group_rule" "satisfactory_2" {
   cidr_blocks       = local.source_cidrs
   description       = "Satisfactory ingress"
   from_port         = 15777
@@ -49,7 +49,7 @@ resource aws_security_group_rule satisfactory_2 {
 }
 
 #ts:skip=MEDIUM.AC_AWS_0276 Allow inbound from /32 CIDR
-resource aws_security_group_rule ssh_inbound {
+resource "aws_security_group_rule" "ssh_inbound" {
   type              = "ingress"
   description       = "SSH ingress"
   from_port         = 22
