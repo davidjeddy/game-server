@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.11
+
+- Update logic in EBS tag NAME value, base from pattern the following patter:
+
+```text
+Pattern: [game_name]-[version_from_vendor]-[4_character_random_string]-[counter]-[tf_deployment_random_string]
+Exp 1: Satisfactory-update5-StDj-0-ux4b
+Exp 2: KSP-2.3.7-DjSp-2-ux4b
+Exp 3: SupremeCommander-7.5.4-CDJS-0-ux4b
+```
+
 ## 0.0.10
 
 - Added KMS customer managed key for EBS encryption

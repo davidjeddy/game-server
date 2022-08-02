@@ -15,7 +15,7 @@ resource "aws_ebs_volume" "satisfactory" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, [var.name, var.stage, random_string.this.id]) }
+    { Name = join(var.delimiter, ["satisfactory", "update5", "coffeestainstudios", random_string.satisfactory.id, 0, random_string.this.id]) }
   )
 }
 
@@ -25,6 +25,6 @@ resource "aws_ebs_snapshot" "satisfactory" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, [var.name, var.stage, random_string.this.id]) }
+    { Name = join(var.delimiter, ["satisfactory", "update5", "coffeestainstudios", random_string.satisfactory.id, 0, random_string.this.id]) }
   )
 }
