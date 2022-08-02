@@ -24,6 +24,25 @@ sudo mkfs.ext4 /dev/nvme1n1
 sudo mount -t auto /dev/nvme1n1 /home/ubuntu/.config/Epic
 ```
 
+## IAC support tooling
+
+### infracost update base resource
+
+```sh
+infracost breakdown \
+--path . \
+--format json \
+--out-file infracost-base.json
+```
+
+Then Git commit and push
+
+```sh
+git add */infracost-base.json
+git commit -m "Updated infracost-base.json"
+git push origin
+```
+
 ## Satisfactory
 
 ### Update Satisfactory
