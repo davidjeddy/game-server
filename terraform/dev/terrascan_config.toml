@@ -4,5 +4,7 @@
     ]
 
     skip-rules = [
-        "AC_AWS_0276", # Allow egress to the public internet
+        "AC_AWS_0369", # VPC Flow Logging - broken, the VPC does have flow logs enabled
+        "AC_AWS_0459", # EBS is encrypted - broken as the EBS snapshot IS encrypted using KMS CMK
+        "AC_AWS_0276", # unknown port egress - needed as applications use unknown ports
     ]

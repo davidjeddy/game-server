@@ -2,6 +2,7 @@ resource "aws_instance" "this" {
   ami               = data.aws_ami.ubuntu.id
   availability_zone = module.vpc.azs[0]
   instance_type     = var.instance_type
+  monitoring        = true
   key_name          = var.key_name
   subnet_id         = module.vpc.public_subnets[0]
   user_data         = base64encode(data.template_file.user_data.rendered)

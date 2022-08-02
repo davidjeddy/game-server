@@ -1,15 +1,15 @@
 terraform {
   # https://runterrascan.io/
   before_hook "terraform" {
-    commands     = ["init", "plan", ]
+    commands     = ["apply", "init", "plan"]
     execute      = ["terraform", "fmt", "-recursive", "." ]
   }
 
-  /* # https://runterrascan.io/
+  # https://runterrascan.io/
   after_hook "terrascan" {
     commands     = ["apply", "plan"]
     execute      = ["terrascan", "scan", "--iac-type", "terraform", "--non-recursive", "--config-path", "terrascan_config.toml" ]
-  } */
+  }
 
   # https://github.com/aquasecurity/tfsec
   after_hook "tfsec" {
@@ -24,10 +24,10 @@ terraform {
   }
 
   extra_arguments "custom_vars" {
-
     commands = [
       "apply",
       "import",
+      "init",
       "plan",
       "push",
       "refresh",
