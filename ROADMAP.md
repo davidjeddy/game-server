@@ -2,9 +2,6 @@
 
 Topics in a very loose order of priority.
 
-- Address ignored security notices concerning EBS encryption
-  - use CMK KMS to encrypt EBS
-
 - ADD Logging
   - CloudWatch logging for storage
     - retention: 1yr

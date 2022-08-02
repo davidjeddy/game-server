@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.10
+
+- Added KMS customer managed key for EBS encryption
+- Added KMS CMK for encryption of EBS volumes
+
 ## 0.0.9
 
 - Added custom VPC, migrate workload to new VPC
