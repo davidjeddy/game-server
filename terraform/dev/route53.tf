@@ -14,7 +14,7 @@ resource "aws_route53_zone" "games_lanordie_com" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, [var.name, var.stage, random_string.this.id]) }
+    { Name = join(var.delimiter, [var.name, var.stage, random_string.root.id]) }
   )
 }
 

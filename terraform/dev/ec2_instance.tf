@@ -1,6 +1,7 @@
 resource "aws_instance" "this" {
   ami               = data.aws_ami.ubuntu.id
   availability_zone = module.vpc.azs[0]
+  ebs_optimized     = true
   instance_type     = var.instance_type
   monitoring        = true
   key_name          = var.key_name
@@ -21,7 +22,7 @@ resource "aws_instance" "this" {
 
     tags = merge(
       var.tags,
-      { Name = join(var.delimiter, [var.name, var.stage, random_string.this.id]) }
+      { Name = join(var.delimiter, [var.name, var.stage, random_string.root.id]) }
     )
   }
 
@@ -31,6 +32,6 @@ resource "aws_instance" "this" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, [var.name, var.stage, random_string.this.id]) }
+    { Name = join(var.delimiter, [var.name, var.stage, random_string.root.id]) }
   )
 }
