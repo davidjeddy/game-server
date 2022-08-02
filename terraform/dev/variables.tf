@@ -16,10 +16,11 @@ variable "base_ami" {
 
 variable "key_name" {
   type        = string
-  description = "SSH PEM keypair name"
+  description = "SSH PEM key pair name"
 }
 
 variable "instance_type" {
+  default     = "m5.large"
   description = "Type and size of EC2 instance"
   type        = string
 }
@@ -32,8 +33,8 @@ variable "aws_acct_id" {
 }
 
 variable "name" {
-  default     = "satisfactory"
-  description = "Application name"
+  default     = "game-server"
+  description = "Project name"
   type        = string
 }
 
