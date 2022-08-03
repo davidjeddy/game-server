@@ -2,23 +2,24 @@
 
 ## Infrastructure
 
-- AWS
+- [AWS](https://aws.amazon.com)
   - EC2 - computation
   - EBS - persistent storage
   - EIN - networking
   - Route53 - networking
 
-- Terraform
-  - Terraform Cloud for state storage
-  - Terragrunt for IC code DRY
-  - tfsec and terrascan for security best practice static analysis
-  - infracost for cost controlling resources
+- [Terraform](https://www.terraform.io/)
+  - [infracost](https://www.infracost.io/) for cost controlling resources
+  - [Terraform Cloud](https://cloud.hashicorp.com/products/terraform) for state storage
+  - [Terragrunt](https://terragrunt.gruntwork.io/) for IC code DRY
+  - [tfsec](https://github.com/aquasecurity/tfsec) and [terrascan](https://github.com/tenable/terrascan) for security best practice static analysis
 
 ## Services
 
 | Name                 | Version  | Device  | Mount Point                 | System Service | Port               | Notes  |
 | -------------------- | -------- | ------- | --------------------------- | -------------- | ------------------ | -----: |
 | Kerbal Space Program | 1.12.2   | nvme2n1 | /home/ubuntu/ksp            | yes            | 6702               | Includes `Making History` and `Breaking Ground` expansions. Includes mods, see notice at login. |
+| PA : Titans          | 115958   | nvme3n1 | /home/ubuntu/pa_titans      | yes            | 20545              | |
 | Satisfactory         | Update 5 | nvme1n1 | /home/ubuntu/.config/Epic   | yes            | 7777, 15000, 15777 | |
 
 ## Additional Documentation

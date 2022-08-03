@@ -1,12 +1,13 @@
 resource "aws_instance" "this" {
-  ami               = data.aws_ami.ubuntu.id
-  availability_zone = module.vpc.azs[0]
-  ebs_optimized     = true
-  instance_type     = var.instance_type
-  monitoring        = true
-  key_name          = var.key_name
-  subnet_id         = module.vpc.public_subnets[0]
-  user_data         = base64encode(data.template_file.user_data.rendered)
+  ami                  = data.aws_ami.ubuntu.id
+  availability_zone    = module.vpc.azs[0]
+  ebs_optimized        = true
+  iam_instance_profile = aws_iam_instance_profile.game_server.name
+  instance_type        = var.instance_type
+  key_name             = var.key_name
+  monitoring           = true
+  subnet_id            = module.vpc.public_subnets[0]
+  user_data            = base64encode(data.template_file.user_data.rendered)
 
   metadata_options {
     http_endpoint               = "enabled"
