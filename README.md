@@ -18,7 +18,7 @@
 
 | Name                 | Version  | Device  | Mount Point                 | System Service | Port               | Notes  |
 | -------------------- | -------- | ------- | --------------------------- | -------------- | ------------------ | -----: |
-| Kerbal Space Program | 1.12.2   | nvme2n1 | /home/ubuntu/ksp            | yes            | 6702               | Includes `Making History` and `Breaking Ground` expansions |
+| Kerbal Space Program | 1.12.2   | nvme2n1 | /home/ubuntu/ksp            | yes            | 6702               | Includes `Making History` and `Breaking Ground` expansions. Includes mods, see notice at login. |
 | Satisfactory         | Update 5 | nvme1n1 | /home/ubuntu/.config/Epic   | yes            | 7777, 15000, 15777 | |
 
 ## Additional Documentation

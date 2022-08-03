@@ -28,7 +28,7 @@ resource "aws_instance" "this" {
 
   vpc_security_group_ids = [
     aws_security_group.management.id,
-    aws_security_group.services.id
+    aws_security_group.services.id,
   ]
 
   tags = merge(
