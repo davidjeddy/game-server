@@ -15,7 +15,7 @@ echo "INFO: Starting..."
 # -----
 
 ENABLE_KSP=true
-ENABLE_SATISFACTORY=false
+ENABLE_SATISFACTORY=true
 
 # -----
 # System configuration

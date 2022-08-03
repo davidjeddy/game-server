@@ -4,7 +4,7 @@ resource "aws_security_group_rule" "ksp_0" {
   description       = "KSP game ingress"
   from_port         = 6702
   protocol          = "udp"
-  security_group_id = aws_security_group.this.id
+  security_group_id = aws_security_group.services.id
   to_port           = 6702
   type              = "ingress"
 }

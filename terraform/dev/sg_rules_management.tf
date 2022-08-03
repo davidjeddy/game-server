@@ -5,7 +5,7 @@ resource "aws_security_group_rule" "egress" {
   description       = "Satisfactory egress"
   from_port         = 0
   protocol          = -1
-  security_group_id = aws_security_group.this.id
+  security_group_id = aws_security_group.management.id
   to_port           = 0
   type              = "egress"
 }
@@ -17,7 +17,7 @@ resource "aws_security_group_rule" "ssh_inbound" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  security_group_id = aws_security_group.this.id
+  security_group_id = aws_security_group.management.id
 
   cidr_blocks = [
     "${chomp(data.http.local_ip.body)}/32"
