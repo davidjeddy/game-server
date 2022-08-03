@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# tested on Ubuntu 20.04
-# source https://satisfactory.fandom.com/wiki/Dedicated_servers
-# source https://github.com/ValveSoftware/steam-for-linux/issues/7036
-# source https://github.com/godarklight/DarkMultiPlayer
-# source https://www.mono-project.com/
-# source https://linuxize.com/post/how-to-install-mono-on-ubuntu-20-04/
-# source https://gist.github.com/hashashin/490ba1963eb3318a7ea4
-
 echo "INFO: Starting..."
 
 # -----
@@ -15,6 +7,7 @@ echo "INFO: Starting..."
 # -----
 
 ENABLE_KSP=true
+ENABLE_PA_TITANS=true
 ENABLE_SATISFACTORY=true
 
 # -----
@@ -38,6 +31,34 @@ SystemMaxUse=4G" > /etc/systemd/journald.conf
 # Server wide packages install and configuration
 # -----
 
+echo "INFO: Install system packages"
+apt update -y
+apt install -y \
+    awscli \
+    jq \
+    libsm6 \
+    libxext6
+
+echo "INFO: System package location and versions"
+which aws
+aws --version
+which jq
+jq --version
+
+# -----
+# Golang
+# -----
+
+if [[ ! $(which go) && $ENABLE_PA_TITANS ]]
+then
+    echo "INFO: Install Golang language and runtime"
+    apt update -y
+    apt install -y golang
+
+    which go
+    go version
+fi
+
 # -----
 # Mono (.NET runtime library for Linux)
 # -----
@@ -56,8 +77,11 @@ then
     apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
     apt install -y \
         mono-complete
+
+
+    which mono
+    mono --version
 fi
-mono --version
 
 # -----
 # Steam
@@ -77,6 +101,8 @@ then
         lib32gcc1 \
         libsdl2-2.0-0 \
         steamcmd
+
+    which steamcmd
 fi
 
 # -----
@@ -89,7 +115,7 @@ fi
 
 # -----
 # KSP
-# nvme2n1
+# nvme1n1
 # -----
 
 if [[ $ENABLE_KSP ]]
@@ -99,7 +125,7 @@ then
     umount /home/ubuntu/ksp || true
     rm -rf /home/ubuntu/ksp || true
     mkdir -p /home/ubuntu/ksp || true
-    mount -t auto /dev/nvme2n1 /home/ubuntu/ksp
+    mount -t auto /dev/nvme1n1 /home/ubuntu/ksp
 
     echo "INFO: Creating symlinks for ksp"
     ln -sfn /home/ubuntu/ksp/etc/dmpserver /etc/dmpserver
@@ -148,11 +174,86 @@ fi
 
 # -----
 # Planetary Annihilation : Titans
+# nvme3n1
 # -----
+
+if [[ $ENABLE_PA_TITANS ]]
+then
+    echo "INFO: Mount Planetary Annihilation : Titans EBS volume"
+    lsblk -f
+    umount /home/ubuntu/pa_titans || true
+    rm -rf /home/ubuntu/pa_titans || true
+    mkdir -p /home/ubuntu/pa_titans/output || true
+    mount -t auto /dev/nvme3n1 /home/ubuntu/pa_titans
+
+    if [[ ! -f /home/ubuntu/pa_titans/PA/server ]]
+    then
+        echo "INFO: Unpack Planetary Annihilation : Titans archive"
+        tar -xf /home/ubuntu/pa_titans/resources/PA_Linux_115872.tar.bz2 -C /home/ubuntu/pa_titans --verbose
+    fi
+
+    echo "INFO: Resetting user dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
+
+    echo "INFO: Patching Planetary Annihilation : Titans from stable branch"
+    go run /home/ubuntu/pa_titans/resources/papatcher.go \
+        --dir /home/ubuntu/pa_titans/PA/ \
+        --stream stable \
+        --update-only \
+        --username "$(aws secretsmanager get-secret-value --region us-east-1 --secret-id arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB --query SecretString --output text | jq -r .username)" \
+        --password "$(aws secretsmanager get-secret-value --region us-east-1 --secret-id arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB --query SecretString --output text | jq -r .password)"
+
+    echo "INFO: Version of Planetary Annihilationvers : Titans is $(cat /home/ubuntu/pa_titans/PA/version.txt)"
+
+    if [[ ! -f "/etc/systemd/system/pa_titans.service" ]]
+    then
+        echo "INFO: Create system service for Planetary Annihilation : Titans"
+
+        echo -e "\
+        [Unit]
+            After=syslog.target network.target nss-lookup.target network-online.target
+            Description=Planetary Annihilation : Titans dedicated server
+            Wants=network-online.target
+
+        [Service]
+            ExecStart=/home/ubuntu/pa_titans/PA/server \
+                --port 20545 \
+                --headless \
+                --mt-enabled \
+                --max-players 8 \
+                --max-spectators 2 \
+                --spectators 2 \
+                --empty-timeout 5 \
+                --enable-crash-reporting \
+                --replay-filename \"UTCTIMESTAMP\" \
+                --replay-timeout 180 \
+                --gameover-timeout 360 \
+                --server-name \"LanOrDie_PA_Titans\" \
+                --game-mode \"PAExpansion1:config\" \
+                --output-dir /home/ubuntu/pa_titans/output
+            Group=ubuntu
+            KillSignal=SIGINT
+            Restart=on-failure
+            StandardOutput=journal
+            User=ubuntu
+            WorkingDirectory=/home/ubuntu/pa_titans/PA/
+
+        [Install]
+            WantedBy=multi-user.target" | tee "/etc/systemd/system/pa_titans.service"
+
+        sed -i 's/^ *//g' "/etc/systemd/system/pa_titans.service"
+
+        systemctl enable pa_titans.service --now
+    fi
+
+    echo "INFO: Restart pa_titans service"
+    systemctl restart pa_titans.service
+    systemctl status pa_titans.service
+fi
 
 # -----
 # Satisfactory (Epic)
-# nvme1n1
+# nvme2n1
 # -----
 
 if [[ $ENABLE_SATISFACTORY ]]
@@ -162,8 +263,7 @@ then
     umount /home/ubuntu/.config/Epic || true
     rm -rf /home/ubuntu/.config/Epic || true
     mkdir -p /home/ubuntu/.config/Epic || true
-    chown ubuntu:ubuntu -R /home/ubuntu/.config/Epic
-    mount -t auto /dev/nvme1n1 /home/ubuntu/.config/Epic
+    mount -t auto /dev/nvme2n1 /home/ubuntu/.config/Epic
 
     echo "INFO: Resetting user dir ownership"
     chown ubuntu:ubuntu -R /home/ubuntu/.config

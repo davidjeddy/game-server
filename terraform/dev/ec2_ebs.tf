@@ -33,11 +33,43 @@ resource "aws_ebs_snapshot" "ksp" {
 }
 
 # -----
+# Planetary Annihilation : Titans
+#-----
+
+resource "aws_volume_attachment" "pa_titans" {
+  device_name = "/dev/sdg"
+  instance_id = aws_instance.this.id
+  volume_id   = aws_ebs_volume.pa_titans.id
+}
+
+resource "aws_ebs_volume" "pa_titans" {
+  availability_zone = module.vpc.azs[0]
+  encrypted         = true
+  kms_key_id        = aws_kms_key.pa_titans.arn
+  size              = 32
+
+  tags = merge(
+    var.tags,
+    { Name = join(var.delimiter, ["pa_titans", "115958", "squad", random_string.pa_titans.id, 0, random_string.root.id]) }
+  )
+}
+
+resource "aws_ebs_snapshot" "pa_titans" {
+  description = aws_ebs_volume.pa_titans.id
+  volume_id   = aws_ebs_volume.pa_titans.id
+
+  tags = merge(
+    var.tags,
+    { Name = join(var.delimiter, ["pa_titans", "115958", "squad", random_string.pa_titans.id, 0, random_string.root.id]) }
+  )
+}
+
+# -----
 # Satisfactory
 #-----
 
 resource "aws_volume_attachment" "satisfactory" {
-  device_name = "/dev/sdg"
+  device_name = "/dev/sdh"
   instance_id = aws_instance.this.id
   volume_id   = aws_ebs_volume.satisfactory.id
 }

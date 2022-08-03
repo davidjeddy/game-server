@@ -15,13 +15,23 @@ terragrunt apply
 ### Format and Mount Data Drive
 
 ```sh
-sudo mkfs.ext4 /dev/nvme1n1
+lsblk -f
+sudo mkfs.ext4 /dev/nvme3n1
 ```
 
-### Mount Data Disk
+### Attach and Mount Disk
+
+On a development host
 
 ```sh
-sudo mount -t auto /dev/nvme1n1 /home/ubuntu/.config/Epic
+aws ec2 attach-volume --device /dev/sd[a-z] --instance-id [instance_id] --volume-id [volume_id] --profile [aws_profile] --region [target_region]
+#aws ec2 detach-volume --device /dev/sd[a-z] --instance-id [instance_id] --volume-id [volume_id] --profile [aws_profile] --region [target_region]
+```
+
+```sh
+mkdir -p /home/ubuntu/pa_titans
+sudo mount -t auto /dev/nvme3n1 /home/ubuntu/pa_titans
+sudo chown ubuntu:ubuntu -R ~/
 ```
 
 ## IAC support tooling
@@ -85,3 +95,15 @@ run the following command
 ```sh
 systemctl start satisfactory.service
 ```
+
+## Add new service
+
+- Create random string resource
+- Create KMS CMK resource
+- Create Security Group rule
+- Create EBS block store
+- Update user-data.sh
+  - mount drive
+  - install application
+  - create/start system service
+- Update README.md `Services` list
