@@ -16,3 +16,7 @@ Topics in a very loose order of priority.
 
 - API Gateway + Lambda to start instance if stopped
   - Also, stop instance if no-one is connected for X minutes
+
+- Bastion host for non application ingress
+
+- Load balancer in front of EC2 instances for better traffic and routing management

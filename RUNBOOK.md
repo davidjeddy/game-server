@@ -30,9 +30,9 @@ sudo mount -t auto /dev/nvme1n1 /home/ubuntu/.config/Epic
 
 ```sh
 infracost breakdown \
---path . \
---format json \
---out-file infracost-base.json
+    --path . \
+    --format json \
+    --out-file infracost-base.json
 ```
 
 Then Git commit and push
@@ -53,7 +53,7 @@ sudo systemctl stop satisfactory.service
 
 ### Switch to Experimental
 
-source: https://satisfactory.fandom.com/wiki/Dedicated_servers
+[Satisfactory Dedicated Server](https://satisfactory.fandom.com/wiki/Dedicated_servers)
 
 - Stop any running process
 
