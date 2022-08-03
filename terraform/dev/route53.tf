@@ -18,6 +18,25 @@ resource "aws_route53_zone" "games_lanordie_com" {
   )
 }
 
+# -----
+# KSP
+# -----
+
+resource "aws_route53_record" "ksp_games_lanordie_com" {
+  name    = "ksp.games.lanordie.com"
+  ttl     = "300"
+  type    = "A"
+  zone_id = aws_route53_zone.games_lanordie_com.zone_id
+
+  records = [
+    aws_eip.this.public_ip
+  ]
+}
+
+# -----
+# Satisfactory
+# -----
+
 resource "aws_route53_record" "satisfactory_games_lanordie_com" {
   name    = "satisfactory.games.lanordie.com"
   ttl     = "300"

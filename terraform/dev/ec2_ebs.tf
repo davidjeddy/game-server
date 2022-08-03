@@ -5,7 +5,7 @@
 #-----
 
 resource "aws_volume_attachment" "ksp" {
-  device_name = "/dev/sdf" # will be /dev/nvme0n1 on the instance
+  device_name = "/dev/sdf"
   instance_id = aws_instance.this.id
   volume_id   = aws_ebs_volume.ksp.id
 }
@@ -37,7 +37,7 @@ resource "aws_ebs_snapshot" "ksp" {
 #-----
 
 resource "aws_volume_attachment" "satisfactory" {
-  device_name = "/dev/sdg" # will be /dev/nvme1n1 on the instance
+  device_name = "/dev/sdg"
   instance_id = aws_instance.this.id
   volume_id   = aws_ebs_volume.satisfactory.id
 }
