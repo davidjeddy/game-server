@@ -1,8 +1,13 @@
 # Changelog
 
+## 0.0.13
+
+- Added `Planetary Annihilation : Titans` service
+  - Added Secrets Manager and AWS CLI to game-server ec2 instance IAM role
+
 ## 0.0.12
 
-- Added Kerbal Space Program DarkMultiPlayer (KSP DMP) server
+- Added `Kerbal Space Program` DarkMultiPlayer (KSP DMP) server
   - KSM, EBS, user-data.sh, system service added
 
 ## 0.0.11
@@ -41,3 +46,7 @@ Exp 3: planetaryannihilation-titans-planetaryannihilationinc-7.5.4-CDJS-0-ux4b
 ## 0.0.6
 
 - Set Satisfactory to `beta` (Stable) branch in place of `experimental`
+
+## 0.0.5
+
+- Added `Satisfactory` service
