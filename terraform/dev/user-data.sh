@@ -3,20 +3,27 @@
 echo "INFO: Starting..."
 
 # -----
-# Application activision toggle
-# -----
-
-ENABLE_KSP=true
-ENABLE_PA_TITANS=true
-ENABLE_SATISFACTORY=true
-
-# -----
 # System configuration
 # -----
 
 # bash config
-set -e
+set -xe
 exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
+
+# -----
+# Application activision toggle
+# -----
+
+ENABLE_KSP=true
+export ENABLE_KSP
+ENABLE_PA_TITANS=true
+export ENABLE_PA_TITANS
+ENABLE_SATISFACTORY=true
+export ENABLE_SATISFACTORY
+SYSTEM_TOOLS=true
+export SYSTEM_TOOLS
+
+printenv | sort
 
 # -----
 # Server wide configurations
@@ -31,17 +38,22 @@ SystemMaxUse=4G" > /etc/systemd/journald.conf
 # Server wide packages install and configuration
 # -----
 
-echo "INFO: Install system packages"
-apt update -y
-apt install -y \
-    awscli \
-    jq
+if [[ $SYSTEM_TOOLS ]]
+then
+    echo "INFO: Install system packages"
+    apt-get update -y
+    apt-get install -y \
+        awscli \
+        iotop \
+        jq
+    apt-get autoremove
 
-echo "INFO: System package location and versions"
-which aws
-aws --version
-which jq
-jq --version
+    echo "INFO: System package location and versions"
+    which aws
+    aws --version
+    which jq
+    jq --version
+fi
 
 # -----
 # Golang
@@ -50,8 +62,9 @@ jq --version
 if [[ ! $(which go) && $ENABLE_PA_TITANS ]]
 then
     echo "INFO: Install Golang language and runtime"
-    apt update -y
-    apt install -y golang
+    apt-get update -y
+    apt-get install -y golang
+    apt-get autoremove
 
     which go
     go version
@@ -64,8 +77,8 @@ fi
 if [[ ! $(which mono) && $ENABLE_KSP ]]
 then
     echo "INFO: Install Mono runtime"
-    apt update -y
-    apt install -y \
+    apt-get update -y
+    apt-get install -y \
         dirmngr \
         gnupg \
         apt-transport-https \
@@ -73,7 +86,8 @@ then
         software-properties-common
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
     apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
-    apt install -y mono-complete
+    apt-get install -y mono-complete
+    apt-get autoremove
 
     which mono
     mono --version
@@ -88,22 +102,15 @@ then
     echo "INFO: Configure agreement to steamcmd lics"
     echo steam steam/question select "I AGREE" | sudo -u root debconf-set-selections
     echo steam steam/license note '' | sudo -u root debconf-set-selections
-
-    echo "INFO: Install system packages" 
     dpkg --add-architecture i386
-    apt update -y
-    apt install -y \
-        lib32gcc1 \
-        libsdl2-2.0-0
-    apt install -y \
-        steamcmd
+
+    echo "INFO: Install the steamcmd system packages" 
+    apt-get update -y
+    apt-get install -y steamcmd
+    apt-get autoremove
 
     which steamcmd
 fi
-
-# -----
-# Mount service data drives
-# -----
 
 # -----
 # Application install, update, and execution
@@ -115,6 +122,13 @@ fi
 
 if [[ $ENABLE_SATISFACTORY ]]
 then
+    echo "INFO: Install Satisfactory system packages" 
+    apt-get update -y
+    apt-get install -y \
+        lib32gcc1 \
+        libsdl2-2.0-0
+    apt-get autoremove
+
     echo "INFO: Mount Epic EBS volume"
     mkdir -p /home/ubuntu/.config/Epic
     echo "UUID=dc31b9cd-fc42-4ff6-80ee-fb42ea6ce012 /home/ubuntu/.config/Epic ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
@@ -228,10 +242,14 @@ fi
 
 if [[ $ENABLE_PA_TITANS ]]
 then
-    apt install -y \
+
+    echo "INFO: Planetary Annihilation : Titans system packages"
+    apt-get update -y
+    apt-get install -y \
         libgl1-mesa-glx \
         libsm6 \
         libxext6
+    apt-get autoremove
 
     echo "INFO: Mount Planetary Annihilation : Titans EBS volume"
     mkdir -p /home/ubuntu/pa_titans
@@ -242,7 +260,7 @@ then
     echo "INFO: Resetting user dir ownership"
     chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
 
-    if [[ ! -f /home/ubuntu/pa_titans/PA/server ]]
+    if [[ ! -f /home/ubuntu/pa_titans/PA/stable/server ]]
     then
         echo "INFO: Unpack Planetary Annihilation : Titans archive"
         tar -xf /home/ubuntu/pa_titans/resources/PA_Linux_115872.tar.bz2 -C /home/ubuntu/pa_titans --verbose
