@@ -1,7 +1,7 @@
 # Pattern: [game_name]-[version_from_vendor]-[4_character_random_string]-[counter]-[tf_deployment_random_string]
 
 # -----
-# Kerbal Space Program (KSP)
+# Kerbal Space Program (KSP) (/home/ubuntu/ksp)
 #-----
 
 resource "aws_volume_attachment" "ksp" {
@@ -33,7 +33,7 @@ resource "aws_ebs_snapshot" "ksp" {
 }
 
 # -----
-# Planetary Annihilation : Titans
+# Planetary Annihilation : Titans (/home/ubuntu/pa_titans)
 #-----
 
 resource "aws_volume_attachment" "pa_titans" {
@@ -65,7 +65,7 @@ resource "aws_ebs_snapshot" "pa_titans" {
 }
 
 # -----
-# Satisfactory
+# Satisfactory (/home/ubuntu/.config/Epic)
 #-----
 
 resource "aws_volume_attachment" "satisfactory" {
