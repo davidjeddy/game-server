@@ -9,14 +9,16 @@ Topics in a very loose order of priority.
     - 1 day on the machine
     - no compressed archives
 
+- Satisfactory game files (~/satisfactory) stored on an EBS
+
 - Build base image using Packer
   - AMI configuration
   - Installed services
   - ready-to-go
 
-- API Gateway + Lambda to start instance if stopped
-  - Also, stop instance if no-one is connected for X minutes
-
 - Bastion host for non application ingress
 
 - Load balancer in front of EC2 instances for better traffic and routing management
+
+- API Gateway + Lambda to start instance if stopped
+  - Also, stop instance if no-one is connected for X minutes

@@ -16,10 +16,9 @@ resource "aws_instance" "this" {
   }
 
   root_block_device {
-    delete_on_termination = false
-    encrypted             = true
-    kms_key_id            = aws_kms_key.root.arn
-    volume_size           = 16
+    encrypted   = true
+    kms_key_id  = aws_kms_key.root.arn
+    volume_size = 16
 
     tags = merge(
       var.tags,

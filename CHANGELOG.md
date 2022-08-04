@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.14
+
+- Fixed EBS volume mounting. Now uses fstab to ensure mounts are at the same location every time
+
 ## 0.0.13
 
 - Added `Planetary Annihilation : Titans` service
