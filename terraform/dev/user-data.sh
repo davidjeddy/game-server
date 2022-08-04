@@ -35,9 +35,7 @@ echo "INFO: Install system packages"
 apt update -y
 apt install -y \
     awscli \
-    jq \
-    libsm6 \
-    libxext6
+    jq
 
 echo "INFO: System package location and versions"
 which aws
@@ -75,9 +73,7 @@ then
         software-properties-common
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
     apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
-    apt install -y \
-        mono-complete
-
+    apt install -y mono-complete
 
     which mono
     mono --version
@@ -90,51 +86,109 @@ fi
 if [[ ! $(which steamcmd) && $ENABLE_SATISFACTORY ]]
 then
     echo "INFO: Configure agreement to steamcmd lics"
-    echo steam steam/question select "I AGREE" | debconf-set-selections
-    echo steam steam/license note "" | debconf-set-selections
+    echo steam steam/question select "I AGREE" | sudo -u root debconf-set-selections
+    echo steam steam/license note '' | sudo -u root debconf-set-selections
 
     echo "INFO: Install system packages" 
-    add-apt-repository multiverse
     dpkg --add-architecture i386
     apt update -y
     apt install -y \
         lib32gcc1 \
-        libsdl2-2.0-0 \
+        libsdl2-2.0-0
+    apt install -y \
         steamcmd
 
     which steamcmd
 fi
 
 # -----
+# Mount service data drives
+# -----
+
+# -----
 # Application install, update, and execution
 # -----
 
 # -----
-# Factorio
+# Satisfactory (.config/Epic)
 # -----
+
+if [[ $ENABLE_SATISFACTORY ]]
+then
+    echo "INFO: Mount Epic EBS volume"
+    mkdir -p /home/ubuntu/.config/Epic
+    echo "UUID=dc31b9cd-fc42-4ff6-80ee-fb42ea6ce012 /home/ubuntu/.config/Epic ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    tail -10 /etc/fstab
+    mount -a
+
+    echo "INFO: Resetting user dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/.config
+
+    if [[ -d /home/ubuntu/satisfactory ]]
+    then
+        echo "INFO: Initial install of Satisfactory Dedicated Server"
+        sudo -u ubuntu /usr/games/steamcmd \
+            +force_install_dir /home/ubuntu/satisfactory \
+            +login anonymous \
+            +app_update 1690800 \
+            -beta public validate \
+            +quit
+    fi
+
+    if [[ ! -f "/etc/systemd/system/satisfactory.service" ]]
+    then
+        echo "INFO: Create system service for Satisfactory"
+
+        echo -e "\
+        [Unit]
+            After=syslog.target network.target nss-lookup.target network-online.target
+            Description=Satisfactory dedicated server
+            Wants=network-online.target
+
+        [Service]
+            Environment=\"LD_LIBRARY_PATH=./linux64\"
+            ExecStart=/home/ubuntu/satisfactory/FactoryServer.sh
+            ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir \"/home/ubuntu/satisfactory\" +app_update 1690800 -beta public validate +quit
+            Group=ubuntu
+            KillSignal=SIGINT
+            Restart=on-failure
+            StandardOutput=journal
+            User=ubuntu
+            WorkingDirectory=/home/ubuntu/satisfactory
+
+        [Install]
+            WantedBy=multi-user.target" | tee "/etc/systemd/system/satisfactory.service"
+
+        sed -i 's/^ *//g' "/etc/systemd/system/satisfactory.service"
+
+        systemctl enable satisfactory.service --now
+    fi
+
+    echo "INFO: Restart Satisfactory service"
+    systemctl restart satisfactory.service
+    systemctl status satisfactory.service
+fi
 
 # -----
 # KSP
-# nvme1n1
 # -----
 
 if [[ $ENABLE_KSP ]]
 then
     echo "INFO: Mount KSP EBS volume"
-    lsblk -f
-    umount /home/ubuntu/ksp || true
-    rm -rf /home/ubuntu/ksp || true
-    mkdir -p /home/ubuntu/ksp || true
-    mount -t auto /dev/nvme1n1 /home/ubuntu/ksp
+    mkdir -p /home/ubuntu/ksp
+    echo "UUID=ede148d6-c668-404f-9836-8ab16cc5b663 /home/ubuntu/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    tail /etc/fstab
+    mount -a
+
+    echo "INFO: Resetting user dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/ksp
 
     echo "INFO: Creating symlinks for ksp"
     ln -sfn /home/ubuntu/ksp/etc/dmpserver /etc/dmpserver
     ln -sfn /home/ubuntu/ksp/srv/dmpserver /srv/dmpserver
     ln -sfn /home/ubuntu/ksp/usr/share/dmpserver /usr/share/dmpserver
     ln -sfn /home/ubuntu/ksp/var/lib/dmpserver /var/lib/dmpserver
-
-    echo "INFO: Resetting user dir ownership"
-    chown ubuntu:ubuntu -R /home/ubuntu/ksp
 
     if [[ ! -f "/etc/systemd/system/ksp.service" ]]
     then
@@ -169,31 +223,30 @@ then
 fi
 
 # -----
-# KSP2
-# -----
-
-# -----
 # Planetary Annihilation : Titans
-# nvme3n1
 # -----
 
 if [[ $ENABLE_PA_TITANS ]]
 then
+    apt install -y \
+        libgl1-mesa-glx \
+        libsm6 \
+        libxext6
+
     echo "INFO: Mount Planetary Annihilation : Titans EBS volume"
-    lsblk -f
-    umount /home/ubuntu/pa_titans || true
-    rm -rf /home/ubuntu/pa_titans || true
-    mkdir -p /home/ubuntu/pa_titans/output || true
-    mount -t auto /dev/nvme3n1 /home/ubuntu/pa_titans
+    mkdir -p /home/ubuntu/pa_titans
+    echo "UUID=94006143-dbf5-47e7-b508-470e19728b4c /home/ubuntu/pa_titans ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    tail /etc/fstab
+    mount -a
+
+    echo "INFO: Resetting user dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
 
     if [[ ! -f /home/ubuntu/pa_titans/PA/server ]]
     then
         echo "INFO: Unpack Planetary Annihilation : Titans archive"
         tar -xf /home/ubuntu/pa_titans/resources/PA_Linux_115872.tar.bz2 -C /home/ubuntu/pa_titans --verbose
     fi
-
-    echo "INFO: Resetting user dir ownership"
-    chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
 
     echo "INFO: Patching Planetary Annihilation : Titans from stable branch"
     go run /home/ubuntu/pa_titans/resources/papatcher.go \
@@ -216,7 +269,7 @@ then
             Wants=network-online.target
 
         [Service]
-            ExecStart=/home/ubuntu/pa_titans/PA/server \
+            ExecStart=/home/ubuntu/pa_titans/PA/stable/server \
                 --port 20545 \
                 --headless \
                 --mt-enabled \
@@ -236,7 +289,7 @@ then
             Restart=on-failure
             StandardOutput=journal
             User=ubuntu
-            WorkingDirectory=/home/ubuntu/pa_titans/PA/
+            WorkingDirectory=/home/ubuntu/pa_titans/PA/stable/
 
         [Install]
             WantedBy=multi-user.target" | tee "/etc/systemd/system/pa_titans.service"
@@ -249,68 +302,6 @@ then
     echo "INFO: Restart pa_titans service"
     systemctl restart pa_titans.service
     systemctl status pa_titans.service
-fi
-
-# -----
-# Satisfactory (Epic)
-# nvme2n1
-# -----
-
-if [[ $ENABLE_SATISFACTORY ]]
-then
-    echo "INFO: Mount Epic EBS volume"
-    lsblk -f
-    umount /home/ubuntu/.config/Epic || true
-    rm -rf /home/ubuntu/.config/Epic || true
-    mkdir -p /home/ubuntu/.config/Epic || true
-    mount -t auto /dev/nvme2n1 /home/ubuntu/.config/Epic
-
-    echo "INFO: Resetting user dir ownership"
-    chown ubuntu:ubuntu -R /home/ubuntu/.config
-
-    echo "INFO: Initial install of Satisfactory Dedicated Server"
-    sudo -u ubuntu /usr/games/steamcmd \
-        +force_install_dir /home/ubuntu/satisfactory \
-        +login anonymous \
-        +app_update 1690800 \
-        -beta public validate \
-        +quit
-
-    echo "INFO: Resetting user dir ownership"
-    chown ubuntu:ubuntu -R /home/ubuntu
-
-    if [[ ! -f "/etc/systemd/system/satisfactory.service" ]]
-    then
-        echo "INFO: Create system service for Satisfactory"
-
-        echo -e "\
-        [Unit]
-            After=syslog.target network.target nss-lookup.target network-online.target
-            Description=Satisfactory dedicated server
-            Wants=network-online.target
-
-        [Service]
-            Environment=\"LD_LIBRARY_PATH=./linux64\"
-            ExecStart=/home/ubuntu/satisfactory/FactoryServer.sh
-            ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir \"/home/ubuntu/satisfactory\" +app_update 1690800 -beta public validate +quit
-            Group=ubuntu
-            KillSignal=SIGINT
-            Restart=on-failure
-            StandardOutput=journal
-            User=ubuntu
-            WorkingDirectory=/home/ubuntu/satisfactory
-
-        [Install]
-            WantedBy=multi-user.target" | tee "/etc/systemd/system/satisfactory.service"
-
-        sed -i 's/^ *//g' "/etc/systemd/system/satisfactory.service"
-
-        systemctl enable satisfactory.service --now
-    fi
-
-    echo "INFO: Restart Satisfactory service"
-    systemctl restart satisfactory.service
-    systemctl status satisfactory.service
 fi
 
 echo "INFO: ...done."

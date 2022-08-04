@@ -3,6 +3,11 @@
 ## AWS
 
 - [https://devopslearning.medium.com/aws-iam-ec2-instance-role-using-terraform-fa2b21488536](https://devopslearning.medium.com/aws-iam-ec2-instance-role-using-terraform-fa2b21488536)
+- [https://aws.amazon.com/blogs/compute/how-to-mount-linux-volume-and-keep-mount-point-consistency/](https://aws.amazon.com/blogs/compute/how-to-mount-linux-volume-and-keep-mount-point-consistency/)
+
+## General
+
+- [https://www.cyberciti.biz/faq/linux-finding-using-uuids-to-update-fstab/](https://www.cyberciti.biz/faq/linux-finding-using-uuids-to-update-fstab/)
 
 ## Kerbal Space Program
 
