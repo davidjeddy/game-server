@@ -18,7 +18,8 @@ resource "aws_ebs_volume" "ksp" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["ksp", "1.x", "squad", random_string.ksp.id, 0, random_string.root.id]) }
+    { Name = join(var.delimiter, ["ksp", "1.x", "squad", random_string.ksp.id, 0, random_string.root.id]) },
+    { Snapshot = true }, # for Data Lifecycle Management policy
   )
 }
 
@@ -50,7 +51,8 @@ resource "aws_ebs_volume" "pa_titans" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["pa_titans", "115958", "squad", random_string.pa_titans.id, 0, random_string.root.id]) }
+    { Name = join(var.delimiter, ["pa_titans", "115958", "squad", random_string.pa_titans.id, 0, random_string.root.id]) },
+    { Snapshot = true }, # for Data Lifecycle Management policy
   )
 }
 
@@ -82,7 +84,8 @@ resource "aws_ebs_volume" "satisfactory" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["satisfactory", "update5", "coffeestainstudios", random_string.satisfactory.id, 0, random_string.root.id]) }
+    { Name = join(var.delimiter, ["satisfactory", "update5", "coffeestainstudios", random_string.satisfactory.id, 0, random_string.root.id]) },
+    { Snapshot = true }, # for Data Lifecycle Management policy
   )
 }
 
