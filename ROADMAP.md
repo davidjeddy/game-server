@@ -9,8 +9,6 @@ Topics in a very loose order of priority.
     - 1 day on the machine
     - no compressed archives
 
-- Satisfactory game files (~/satisfactory) stored on an EBS
-
 - Build base image using Packer
   - AMI configuration
   - Installed services

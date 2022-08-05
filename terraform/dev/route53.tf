@@ -34,7 +34,7 @@ resource "aws_route53_record" "ksp_games_lanordie_com" {
 }
 
 # -----
-# KSP
+# Planetary Annihilation : Titans
 # -----
 
 resource "aws_route53_record" "pa_titans_games_lanordie_com" {
