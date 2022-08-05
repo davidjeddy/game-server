@@ -18,14 +18,14 @@ GS_ROOT=/home/ubuntu
 # System configuration
 # -----
 
-echo "INFO: Starting..."
-
 set -e
 exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
 
 # -----
 # Server wide configurations
 # -----
+
+echo "INFO: Starting..."
 
 echo "INFO: Configure journal log limiting"
 echo "[Journal]
@@ -166,13 +166,13 @@ then
         tar -xf $GS_ROOT/pa_titans/resources/PA_Linux_115872.tar.bz2 -C $GS_ROOT/pa_titans --verbose
     fi
 
-    echo "INFO: Patching Planetary Annihilation : Titans from stable branch"
-    mkdir -p $GS_ROOT/.cache
-    XDG_CACHE_HOME=$GS_ROOT/.cache
-    export XDG_CACHE_HOME
-
     if [[ $ENABLE_PA_UPGRADE == true ]]
     then
+        echo "INFO: Patching Planetary Annihilation : Titans from stable branch"
+        mkdir -p $GS_ROOT/.cache
+        XDG_CACHE_HOME=$GS_ROOT/.cache
+        export XDG_CACHE_HOME
+
         go run $GS_ROOT/pa_titans/resources/papatcher.go \
             --dir $GS_ROOT/pa_titans/PA/ \
             --stream stable \
