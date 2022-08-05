@@ -34,6 +34,21 @@ resource "aws_route53_record" "ksp_games_lanordie_com" {
 }
 
 # -----
+# Planetary Annihilation : Titans
+# -----
+
+resource "aws_route53_record" "pa_titans_games_lanordie_com" {
+  name    = "pa_titans.games.lanordie.com"
+  ttl     = "300"
+  type    = "A"
+  zone_id = aws_route53_zone.games_lanordie_com.zone_id
+
+  records = [
+    aws_eip.this.public_ip
+  ]
+}
+
+# -----
 # Satisfactory
 # -----
 

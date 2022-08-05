@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.16
+
+- Move Satisfactory runtime resources to ./config/ EBS volume
+
 ## 0.0.15
 
 - Added Data Lifecycle Management resources for EBS volumes

@@ -1,9 +1,9 @@
-resource "aws_iam_role" "dlm_lifecycle_role" {
-  name = join(var.delimiter, [var.name, "dlm_lifecycle_role", var.stage, random_string.root.id])
+resource "aws_iam_role" "game_server_dlm" {
+  name = join(var.delimiter, [var.name, "dlm", var.stage, random_string.root.id])
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, [var.name, var.stage, random_string.root.id]) }
+    { Name = join(var.delimiter, [var.name, "dlm", var.stage, random_string.root.id]) }
   )
 
   assume_role_policy = <<EOF
@@ -23,9 +23,9 @@ EOF
 }
 
 #tfsec:ignore:aws-iam-no-policy-wildcards
-resource "aws_iam_role_policy" "dlm_lifecycle" {
-  name = join(var.delimiter, [var.name, "dlm_lifecycle", var.stage, random_string.root.id])
-  role = aws_iam_role.dlm_lifecycle_role.id
+resource "aws_iam_role_policy" "game_server_dlm" {
+  name = join(var.delimiter, [var.name, "dlm", var.stage, random_string.root.id])
+  role = aws_iam_role.game_server_dlm.id
 
   policy = <<EOF
 {
@@ -55,14 +55,14 @@ resource "aws_iam_role_policy" "dlm_lifecycle" {
 EOF
 }
 
-resource "aws_dlm_lifecycle_policy" "game_server" {
-  description        = join(var.delimiter, [var.name, var.stage, random_string.root.id])
-  execution_role_arn = aws_iam_role.dlm_lifecycle_role.arn
+resource "aws_dlm_lifecycle_policy" "game_server_dlm" {
+  description        = join(var.delimiter, [var.name, "dlm", var.stage, random_string.root.id])
+  execution_role_arn = aws_iam_role.game_server_dlm.arn
   state              = "ENABLED"
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, [var.name, var.stage, random_string.root.id]) }
+    { Name = join(var.delimiter, [var.name, "dlm", var.stage, random_string.root.id]) }
   )
 
   policy_details {
