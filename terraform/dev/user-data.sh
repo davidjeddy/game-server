@@ -6,6 +6,7 @@
 
 ENABLE_KSP=true
 ENABLE_PA_TITANS=true
+ENABLE_PA_UPGRADE=true
 ENABLE_SATISFACTORY=true
 GS_ROOT=/home/ubuntu
 
@@ -89,13 +90,13 @@ which mono
 
 if [[ $ENABLE_KSP == true ]]
 then
-    echo "INFO: Mount KSP EBS volume"
+    echo "INFO: Mount Kerbal Space Program EBS volume"
     mkdir -p $GS_ROOT/ksp
     echo "UUID=ede148d6-c668-404f-9836-8ab16cc5b663 $GS_ROOT/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
     tail /etc/fstab
     mount -a
 
-    echo "INFO: Resetting user dir ownership"
+    echo "INFO: Resetting Kerbal Space Program dir ownership"
     chown ubuntu:ubuntu -R $GS_ROOT/ksp
 
     if [[ ! -f "/etc/systemd/system/ksp.service" ]]
@@ -131,7 +132,7 @@ then
         systemctl restart ksp.service
     fi
 
-    echo "INFO: Restart ksp service"
+    echo "INFO: Kerbal Space Program service status"
     systemctl status ksp.service
 fi
 
@@ -147,13 +148,14 @@ then
     tail /etc/fstab
     mount -a
 
-    echo "INFO: Resetting user dir ownership"
+    echo "INFO: Resetting Planetary Annihilation : Titans dir ownership"
     chown ubuntu:ubuntu -R $GS_ROOT/pa_titans
 
     echo "INFO: Planetary Annihilation : Titans system packages"
     apt update -y
     apt install -y \
         libgl1-mesa-glx \
+        libsdl2-dev \
         libsm6 \
         libxext6
     apt autoremove
@@ -169,12 +171,15 @@ then
     XDG_CACHE_HOME=$GS_ROOT/.cache
     export XDG_CACHE_HOME
 
-    go run $GS_ROOT/pa_titans/resources/papatcher.go \
-        --dir $GS_ROOT/pa_titans/PA/ \
-        --stream stable \
-        --update-only \
-        --username "$(aws secretsmanager get-secret-value --region us-east-1 --secret-id arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB --query SecretString --output text | jq -r .username)" \
-        --password "$(aws secretsmanager get-secret-value --region us-east-1 --secret-id arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB --query SecretString --output text | jq -r .password)"
+    if [[ $ENABLE_PA_UPGRADE == true ]]
+    then
+        go run $GS_ROOT/pa_titans/resources/papatcher.go \
+            --dir $GS_ROOT/pa_titans/PA/ \
+            --stream stable \
+            --update-only \
+            --username "$(aws secretsmanager get-secret-value --region us-east-1 --secret-id arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB --query SecretString --output text | jq -r .username)" \
+            --password "$(aws secretsmanager get-secret-value --region us-east-1 --secret-id arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB --query SecretString --output text | jq -r .password)"
+    fi
 
     echo "INFO: Version of Planetary Annihilationvers : Titans is $(cat $GS_ROOT/pa_titans/PA/version.txt)"
 
@@ -219,12 +224,12 @@ then
         systemctl restart pa_titans.service
     fi
 
-    echo "INFO: Restart pa_titans service"
+    echo "INFO: Planetary Annihilation : Titans service status"
     systemctl status pa_titans.service
 fi
 
 # -----
-# Satisfactory (~/.config/Epic)
+# Satisfactory (~/.config/Epic, ~/.config/Epic/satisfactory)
 # -----
 
 if [[ $ENABLE_SATISFACTORY == true ]]
@@ -235,8 +240,8 @@ then
     tail -10 /etc/fstab
     mount -a
 
-    echo "INFO: Resetting user dir ownership"
-    chown ubuntu:ubuntu -R $GS_ROOT/.config
+    echo "INFO: Resetting Satisfactory dir ownership"
+    chown ubuntu:ubuntu -R $GS_ROOT/.config/Epic
 
     echo "INFO: Install Satisfactory system packages" 
     apt update -y
@@ -245,11 +250,12 @@ then
         libsdl2-2.0-0
     apt autoremove
 
-    if [[ ! -d $GS_ROOT/satisfactory ]]
+    if [[ ! -d $GS_ROOT/.config/Epic/satisfactory ]]
     then
         echo "INFO: Install of Satisfactory Dedicated Server via steamcmd"
+        mkdir -p $GS_ROOT/.config/Epic/satisfactory
         sudo -u ubuntu /usr/games/steamcmd \
-            +force_install_dir $GS_ROOT/satisfactory \
+            +force_install_dir $GS_ROOT/.config/Epic/satisfactory \
             +login anonymous \
             +app_update 1690800 \
             -beta public validate \
@@ -267,14 +273,14 @@ then
 
         [Service]
             Environment=\"LD_LIBRARY_PATH=./linux64\"
-            ExecStart=$GS_ROOT/satisfactory/FactoryServer.sh
-            ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir \"$GS_ROOT/satisfactory\" +app_update 1690800 -beta public validate +quit
+            ExecStart=$GS_ROOT/.config/Epic/satisfactory/FactoryServer.sh
+            ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir \"$GS_ROOT/.config/Epic/satisfactory\" +app_update 1690800 -beta public validate +quit
             Group=ubuntu
             KillSignal=SIGINT
             Restart=on-failure
             StandardOutput=journal
             User=ubuntu
-            WorkingDirectory=$GS_ROOT/satisfactory
+            WorkingDirectory=$GS_ROOT/.config/Epic/satisfactory
 
         [Install]
             WantedBy=multi-user.target" | tee "/etc/systemd/system/satisfactory.service"
@@ -285,7 +291,7 @@ then
         systemctl restart satisfactory.service
     fi
 
-    echo "INFO: Restart Satisfactory service"
+    echo "INFO: Satisfactory service status"
     systemctl status satisfactory.service
 fi
 
