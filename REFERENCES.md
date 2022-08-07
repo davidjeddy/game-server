@@ -18,6 +18,8 @@
 
 ## Planetary Annihilation : Titans
 
+Client will need the [Connect Button](https://forums.planetaryannihilation.com/threads/rel-connect-buttons-2-1-0.65769/) mod, installable via the in-game mod manager. Add the DNS pr IP via the Settings -> Server configurations.
+
 - [https://planetaryannihilation.com/guides/hosting-a-local-server/](https://planetaryannihilation.com/guides/hosting-a-local-server/)
 - [https://wiki.palobby.com/wiki/Planetary_Annihilation_Custom_/_Dedicated_/_LAN_/_Local_Servers](https://wiki.palobby.com/wiki/Planetary_Annihilation_Custom_/_Dedicated_/_LAN_/_Local_Servers)
 - [https://www.reddit.com/r/planetaryannihilation/comments/r5nqwq/how_to_self_host_server_with_mods/](https://www.reddit.com/r/planetaryannihilation/comments/r5nqwq/how_to_self_host_server_with_mods/)
