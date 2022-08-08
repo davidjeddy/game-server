@@ -116,8 +116,10 @@ then
 
         [Service]
             ExecStart=mono /usr/share/dmpserver/DMPServer.exe
+
             Group=ubuntu
             KillSignal=SIGINT
+            Restart=always
             Restart=on-failure
             StandardOutput=journal
             User=ubuntu
@@ -221,6 +223,7 @@ then
             ProtectControlGroups=yes
             ProtectKernelModules=yes
             ProtectKernelTunables=yes
+            Restart=always
             Restart=on-failure
             StandardOutput=journal
             User=ubuntu
@@ -286,8 +289,10 @@ then
             Environment=\"LD_LIBRARY_PATH=./linux64\"
             ExecStart=/home/ubuntu/.config/Epic/satisfactory/FactoryServer.sh
             ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir \"/home/ubuntu/.config/Epic/satisfactory\" +app_update 1690800 -beta public validate +quit
+            
             Group=ubuntu
             KillSignal=SIGINT
+            Restart=always
             Restart=on-failure
             StandardOutput=journal
             User=ubuntu
