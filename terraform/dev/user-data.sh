@@ -91,21 +91,21 @@ which mono
 if [[ $ENABLE_KSP == true ]]
 then
     echo "INFO: Mount Kerbal Space Program EBS volume"
-    mkdir -p $GS_ROOT/ksp
-    echo "UUID=ede148d6-c668-404f-9836-8ab16cc5b663 $GS_ROOT/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    mkdir -p /home/ubuntu/ksp
+    echo "UUID=ede148d6-c668-404f-9836-8ab16cc5b663 /home/ubuntu/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
     tail /etc/fstab
     mount -a
 
     echo "INFO: Resetting Kerbal Space Program dir ownership"
-    chown ubuntu:ubuntu -R $GS_ROOT/ksp
+    chown ubuntu:ubuntu -R /home/ubuntu/ksp
 
     if [[ ! -f "/etc/systemd/system/ksp.service" ]]
     then
         echo "INFO: Creating symlinks for ksp"
-        ln -sfn $GS_ROOT/ksp/etc/dmpserver /etc/dmpserver
-        ln -sfn $GS_ROOT/ksp/srv/dmpserver /srv/dmpserver
-        ln -sfn $GS_ROOT/ksp/usr/share/dmpserver /usr/share/dmpserver
-        ln -sfn $GS_ROOT/ksp/var/lib/dmpserver /var/lib/dmpserver
+        ln -sfn /home/ubuntu/ksp/etc/dmpserver /etc/dmpserver
+        ln -sfn /home/ubuntu/ksp/srv/dmpserver /srv/dmpserver
+        ln -sfn /home/ubuntu/ksp/usr/share/dmpserver /usr/share/dmpserver
+        ln -sfn /home/ubuntu/ksp/var/lib/dmpserver /var/lib/dmpserver
 
         echo "INFO: Create system service for KSP"
         echo -e "\
@@ -143,13 +143,13 @@ fi
 if [[ $ENABLE_PA_TITANS == true ]]
 then
     echo "INFO: Mount Planetary Annihilation : Titans EBS volume"
-    mkdir -p $GS_ROOT/pa_titans
-    echo "UUID=94006143-dbf5-47e7-b508-470e19728b4c $GS_ROOT/pa_titans ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    mkdir -p /home/ubuntu/pa_titans
+    echo "UUID=94006143-dbf5-47e7-b508-470e19728b4c /home/ubuntu/pa_titans ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
     tail /etc/fstab
     mount -a
 
     echo "INFO: Resetting Planetary Annihilation : Titans dir ownership"
-    chown ubuntu:ubuntu -R $GS_ROOT/pa_titans
+    chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
 
     echo "INFO: Planetary Annihilation : Titans system packages"
     apt update -y
@@ -160,32 +160,38 @@ then
         libxext6
     apt autoremove
 
-    if [[ ! -f $GS_ROOT/pa_titans/PA/stable/server ]]
+    if [[ ! -f /home/ubuntu/pa_titans/PA/stable/server ]]
     then
         echo "INFO: Unpack Planetary Annihilation : Titans archive"
-        tar -xf $GS_ROOT/pa_titans/resources/PA_Linux_115872.tar.bz2 -C $GS_ROOT/pa_titans --verbose
+        tar -xf /home/ubuntu/pa_titans/resources/PA_Linux_115872.tar.bz2 -C /home/ubuntu/pa_titans --verbose
     fi
 
     if [[ $ENABLE_PA_UPGRADE == true ]]
     then
         echo "INFO: Patching Planetary Annihilation : Titans from stable branch"
-        mkdir -p $GS_ROOT/.cache
-        XDG_CACHE_HOME=$GS_ROOT/.cache
+        mkdir -p /home/ubuntu/.cache
+        XDG_CACHE_HOME=/home/ubuntu/.cache
         export XDG_CACHE_HOME
 
-        go run $GS_ROOT/pa_titans/resources/papatcher.go \
-            --dir $GS_ROOT/pa_titans/PA/ \
+        go run /home/ubuntu/pa_titans/resources/papatcher.go \
+            --dir /home/ubuntu/pa_titans/PA/ \
             --stream stable \
             --update-only \
             --username "$(aws secretsmanager get-secret-value --region us-east-1 --secret-id arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB --query SecretString --output text | jq -r .username)" \
             --password "$(aws secretsmanager get-secret-value --region us-east-1 --secret-id arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB --query SecretString --output text | jq -r .password)"
     fi
 
-    echo "INFO: Version of Planetary Annihilationvers : Titans is $(cat $GS_ROOT/pa_titans/PA/version.txt)"
+    echo "INFO: Version of Planetary Annihilationvers : Titans is $(cat /home/ubuntu/pa_titans/PA/version.txt)"
 
     if [[ ! -f "/etc/systemd/system/pa_titans.service" ]]
     then
         echo "INFO: Create system service for Planetary Annihilation : Titans"
+
+        mkdir -p "/home/ubuntu/.local/Uber Entertainment/PA Server/log/"
+        mkdir -p "/home/ubuntu/pa_titans/download"
+        mkdir -p "/home/ubuntu/pa_titans/network"
+        mkdir -p "/home/ubuntu/pa_titans/output"
+        
         echo -e "\
         [Unit]
             After=syslog.target network.target nss-lookup.target network-online.target
@@ -193,27 +199,32 @@ then
             Wants=network-online.target
 
         [Service]
-            ExecStart=$GS_ROOT/pa_titans/PA/stable/server \
-                --port 20545 \
+            ExecStart=/home/ubuntu/pa_titans/PA/stable/server \
+                --allow-lan \
+                --game-mode \"PAExpansion1:config\" \
+                --gameover-timeout 360 \
                 --headless \
-                --mt-enabled \
                 --max-players 8 \
                 --max-spectators 2 \
-                --spectators 2 \
-                --empty-timeout 5 \
-                --enable-crash-reporting \
+                --mt-enabled \
+                --output-dir /home/ubuntu/pa_titans/output \
+                --port 20545 \
                 --replay-filename \"UTCTIMESTAMP\" \
                 --replay-timeout 180 \
-                --gameover-timeout 360 \
-                --server-name \"LanOrDie_PA_Titans\" \
-                --game-mode \"PAExpansion1:config\" \
-                --output-dir $GS_ROOT/pa_titans/output
+                --server-name \"LanOrDie_PA_Titans\"
+
             Group=ubuntu
             KillSignal=SIGINT
+            NoNewPrivileges=yes
+            PrivateDevices=yes
+            PrivateTmp=yes
+            ProtectControlGroups=yes
+            ProtectKernelModules=yes
+            ProtectKernelTunables=yes
             Restart=on-failure
             StandardOutput=journal
             User=ubuntu
-            WorkingDirectory=$GS_ROOT/pa_titans/PA/stable/
+            WorkingDirectory=/home/ubuntu/pa_titans/PA/stable/
 
         [Install]
             WantedBy=multi-user.target" | tee "/etc/systemd/system/pa_titans.service"
@@ -235,13 +246,13 @@ fi
 if [[ $ENABLE_SATISFACTORY == true ]]
 then
     echo "INFO: Mount Epic EBS volume"
-    mkdir -p $GS_ROOT/.config/Epic
-    echo "UUID=dc31b9cd-fc42-4ff6-80ee-fb42ea6ce012 $GS_ROOT/.config/Epic ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    mkdir -p /home/ubuntu/.config/Epic
+    echo "UUID=dc31b9cd-fc42-4ff6-80ee-fb42ea6ce012 /home/ubuntu/.config/Epic ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
     tail -10 /etc/fstab
     mount -a
 
     echo "INFO: Resetting Satisfactory dir ownership"
-    chown ubuntu:ubuntu -R $GS_ROOT/.config/Epic
+    chown ubuntu:ubuntu -R /home/ubuntu/.config/Epic
 
     echo "INFO: Install Satisfactory system packages" 
     apt update -y
@@ -250,12 +261,12 @@ then
         libsdl2-2.0-0
     apt autoremove
 
-    if [[ ! -d $GS_ROOT/.config/Epic/satisfactory ]]
+    if [[ ! -d /home/ubuntu/.config/Epic/satisfactory ]]
     then
         echo "INFO: Install of Satisfactory Dedicated Server via steamcmd"
-        mkdir -p $GS_ROOT/.config/Epic/satisfactory
+        mkdir -p /home/ubuntu/.config/Epic/satisfactory
         sudo -u ubuntu /usr/games/steamcmd \
-            +force_install_dir $GS_ROOT/.config/Epic/satisfactory \
+            +force_install_dir /home/ubuntu/.config/Epic/satisfactory \
             +login anonymous \
             +app_update 1690800 \
             -beta public validate \
@@ -273,14 +284,14 @@ then
 
         [Service]
             Environment=\"LD_LIBRARY_PATH=./linux64\"
-            ExecStart=$GS_ROOT/.config/Epic/satisfactory/FactoryServer.sh
-            ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir \"$GS_ROOT/.config/Epic/satisfactory\" +app_update 1690800 -beta public validate +quit
+            ExecStart=/home/ubuntu/.config/Epic/satisfactory/FactoryServer.sh
+            ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir \"/home/ubuntu/.config/Epic/satisfactory\" +app_update 1690800 -beta public validate +quit
             Group=ubuntu
             KillSignal=SIGINT
             Restart=on-failure
             StandardOutput=journal
             User=ubuntu
-            WorkingDirectory=$GS_ROOT/.config/Epic/satisfactory
+            WorkingDirectory=/home/ubuntu/.config/Epic/satisfactory
 
         [Install]
             WantedBy=multi-user.target" | tee "/etc/systemd/system/satisfactory.service"
