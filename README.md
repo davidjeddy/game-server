@@ -27,3 +27,8 @@
 - [CHANGELOG.md](./CHANGELOG.md) - Published changes per version of each release
 - [ROADMAP.md](./ROADMAP.md) - Ideas to implement
 - [RUNBOOK.md](./RUNBOOK.md) - How-to execute actions
+
+## Bugs
+
+- KSP : DMP vessel ownership needs reset
+- PA : Titans is binding to locahost or 127.0.0.1, not the public interface.
