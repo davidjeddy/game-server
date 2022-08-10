@@ -3,7 +3,3 @@ include "common" {
   expose = true
 }
 
-locals {
-  common = find_in_parent_folders("common.yml")
-}
-

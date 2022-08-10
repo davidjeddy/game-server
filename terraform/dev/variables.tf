@@ -1,11 +1,3 @@
-## Generics
-
-variable "delete_timeout" {
-  default     = 7
-  description = "Default timeout in days when deleting protected resources"
-  type        = number
-}
-
 ## EC2
 
 variable "base_ami" {
@@ -32,10 +24,22 @@ variable "aws_acct_id" {
   type        = number
 }
 
+variable "delete_timeout" {
+  default     = 7
+  description = "Default timeout in days when deleting protected resources"
+  type        = number
+}
+
 variable "name" {
   default     = "game-server"
   description = "Project name"
   type        = string
+}
+
+variable "region" {
+  default     = "us-east-1"
+  type        = string
+  description = "(optional) describe your variable"
 }
 
 variable "stage" {
