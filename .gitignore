@@ -1,6 +1,7 @@
 .infracost
 .terraform
-.terraform.*
+.terraform/*
+.terragrunt/*
 terraform.tfstate
 terraform.tfstate.*
 terraform.tfvars
