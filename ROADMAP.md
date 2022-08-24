@@ -19,6 +19,8 @@ Topics in a very loose order of priority.
   - Installed services
   - ready-to-go
 
+- Generate SSH key pair for EC2 instance at creation, not manually
+
 - Bastion host for non application ingress
 
 - Load balancer in front of EC2 instances for better traffic and routing management

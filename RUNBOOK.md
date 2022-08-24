@@ -4,9 +4,19 @@
 
 ### Deploy Resources
 
-Edit `terraform.tfvars` as needed. Then ...
+```sh
+git clone ...
+cd terraform/aws/dev
+cp terraform.tfvars.dist terraform.tfvars
+```
+
+- Log into AWS account using the root user
+- Create `Admin` user xziP51QzSJ&2g*q*G4jhPe8GA@mTV6DX%A43d5^fMn@xsd5@r#uBW0D%rk25O%lN
+- Assign `AdministratorAccess` role to user
+- Create API Key pair
 
 ```sh
+# populate values in terraform.tfvars
 terragrunt init
 terragrunt plan
 terragrunt apply
