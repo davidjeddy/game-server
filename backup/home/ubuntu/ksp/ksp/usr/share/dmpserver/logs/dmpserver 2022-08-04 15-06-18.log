@@ -1,0 +1,10 @@
+[15:06:18][DEBUG] : Loading settings...
+[15:06:18][DEBUG] : System.IO compression works: True, test time: 6 ms.
+[15:06:18][DEBUG] : Loading plugins!
+[15:06:18][DEBUG] : Done!
+[15:06:18][INFO] : Starting DMPServer v0.2.4.1, protocol 45
+[15:06:18][INFO] : Loading universe... 
+[15:06:18][INFO] : Starting SUBSPACE server on port 6702... 
+[15:06:18][DEBUG] : Terminal may be not attached or broken, Exiting out of command handler
+[15:06:18][INFO] : Removed 0 debris
+[15:06:18][INFO] : Ready!

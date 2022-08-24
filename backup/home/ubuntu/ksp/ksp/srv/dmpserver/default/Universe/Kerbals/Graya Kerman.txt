@@ -1,0 +1,57 @@
+name = Graya Kerman
+gender = Female
+type = Crew
+trait = Scientist
+brave = 0.578157842
+dumb = 0.0436302312
+badS = False
+veteran = False
+tour = False
+state = Available
+inactive = False
+inactiveTimeEnd = 0
+gExperienced = 0
+outDueToG = False
+ToD = 2000.0999999999999
+idx = 0
+extraXP = 0
+CAREER_LOG
+{
+	flight = 5
+	0 = Spawn
+	0 = Flight,Kerbin
+	0 = Suborbit,Kerbin
+	0 = Orbit,Kerbin
+	0 = ExitVessel,Kerbin
+	0 = BoardVessel,Kerbin
+	0 = Spawn
+	0 = Recover
+	1 = Flight,Kerbin
+	1 = Suborbit,Kerbin
+	1 = Orbit,Kerbin
+	1 = Flyby,Mun
+	1 = Escape,Mun
+	1 = Orbit,Mun
+	1 = Suborbit,Mun
+	1 = Land,Mun
+	1 = PlantFlag,Mun
+	1 = ExitVessel,Mun
+	1 = BoardVessel,Mun
+	1 = Flyby,Kerbin
+	1 = Land,Kerbin
+	1 = Recover
+	2 = Recover
+	3 = Orbit,Mun
+	3 = Escape,Mun
+	3 = Flyby,Kerbin
+	3 = Suborbit,Kerbin
+	3 = Flight,Kerbin
+	3 = Land,Kerbin
+	3 = PlantFlag,Kerbin
+	3 = Recover
+	4 = Recover
+}
+FLIGHT_LOG
+{
+	flight = 5
+}

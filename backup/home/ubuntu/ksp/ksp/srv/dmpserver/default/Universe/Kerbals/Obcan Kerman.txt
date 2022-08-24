@@ -1,0 +1,26 @@
+name = Obcan Kerman
+gender = Male
+type = Crew
+trait = Scientist
+brave = 0.797110677
+dumb = 0.0792348906
+badS = False
+veteran = False
+tour = False
+state = Assigned
+inactive = False
+inactiveTimeEnd = 0
+gExperienced = 0
+outDueToG = False
+ToD = 0
+idx = 1
+extraXP = 0
+CAREER_LOG
+{
+	flight = 1
+	0 = Recover
+}
+FLIGHT_LOG
+{
+	flight = 1
+}

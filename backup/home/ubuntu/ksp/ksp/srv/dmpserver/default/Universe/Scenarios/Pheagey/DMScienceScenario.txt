@@ -1,0 +1,8 @@
+name = DMScienceScenario
+scene = 7, 5, 8, 6
+Asteroid_Science
+{
+}
+Anomaly_Records
+{
+}

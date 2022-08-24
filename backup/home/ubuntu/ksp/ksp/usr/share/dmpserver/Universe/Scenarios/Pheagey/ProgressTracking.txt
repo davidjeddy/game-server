@@ -1,0 +1,54 @@
+name = ProgressTracking
+scene = 6, 7, 8, 5
+Progress
+{
+	FirstLaunch
+	{
+		completedManned = 383666.59878109914
+	}
+	FirstCrewToSurvive
+	{
+		completed = 372357.92792449996
+		crew
+		{
+			crews = Eildun Kerman
+		}
+	}
+	RecordsAltitude
+	{
+		completed = 383850.10168894148
+		record = 70000
+	}
+	RecordsDepth
+	{
+		reached = 372317.9716413276
+		record = 0.39198822714388371
+	}
+	RecordsSpeed
+	{
+		reached = 383761.43878118746
+		record = 1362.7199394077174
+	}
+	RecordsDistance
+	{
+		completed = 383830.85098580859
+		record = 100000
+	}
+	ReachedSpace
+	{
+		completed = 383847.14168894087
+		vessel
+		{
+			name = Test 1-1 Debris
+			flag = Squad/Flags/default
+		}
+	}
+	Kerbin
+	{
+		reached = 372206.26900091913
+		Splashdown
+		{
+			completed = 372206.26900091913
+		}
+	}
+}

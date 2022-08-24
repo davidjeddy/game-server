@@ -1,0 +1,4587 @@
+name = TCAScenario
+scene = 5, 7, 6
+VESSELS
+{
+	VSLCONFIG
+	{
+		VesselID = a0a5a54a-4456-4239-ba4a-ca9032ba317c
+		Enabled = True
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = a8f3ceac-2e0c-428c-baad-25424657b746
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = True
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					7150037
+					{
+						Name = KW Rocketry Vesta VR-9D (KWVR9DLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2628829002
+					{
+						Name = Ullage Motor (KWUSRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					133855324
+					{
+						Name = Ullage Motor (KWUSRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					173696461
+					{
+						Name = RE-M3 "Mainsail" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2606260846
+					{
+						Name = Ullage Motor (KWUSRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					648653126
+					{
+						Name = Ullage Motor (KWUSRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3106717695
+					{
+						Name = RE-M3 "Mainsail" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					716059464
+					{
+						Name = Ullage Motor (KWUSRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2673949514
+					{
+						Name = Ullage Motor (KWUSRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					1842597913
+					{
+						Name = RE-M3 "Mainsail" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					1481797056
+					{
+						Name = Ullage Motor (KWUSRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2028565692
+					{
+						Name = Ullage Motor (KWUSRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3578179041
+					{
+						Name = RE-M3 "Mainsail" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = c16322a4-ad54-4f50-abfc-e8a53e66dfb3
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					110785951
+					{
+						Name = KW Rocketry Wildcat-XR (KWWCXRLE)
+						On = True
+						Limit = 1
+						role = UNBALANCE
+					}
+					494742705
+					{
+						Name = LV-909 "Terrier" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3937203003
+					{
+						Name = LV-909 "Terrier" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3701326189
+					{
+						Name = LV-909 "Terrier" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2155094655
+					{
+						Name = LV-909 "Terrier" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = c2a03f08-f6fe-4e93-9935-12b3b4873e69
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+					2
+					{
+						Name = Group 2
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+					1
+					{
+						Name = Group 1
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+				}
+				Single
+				{
+					3122889415
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 0.842839837
+						role = MAIN
+					}
+					2190774511
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+					1018121925
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+					2433663469
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 0.855746627
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = c5e697e7-5d31-4018-9e87-99c0f4c1fa7f
+		Enabled = True
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = e6cb965d-0890-4f8b-879d-bd5ec41bc7a0
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+					2
+					{
+						Name = Group 2
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+					1
+					{
+						Name = Group 1
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+				}
+				Single
+				{
+					3122889415
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 0.842839837
+						role = MAIN
+					}
+					2190774511
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+					1018121925
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+					2433663469
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 0.855746627
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = fc07a971-716b-4c04-bff8-010b27a54c35
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+					2
+					{
+						Name = Group 2
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+					1
+					{
+						Name = Group 1
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+				}
+				Single
+				{
+					3122889415
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 0.842839837
+						role = MAIN
+					}
+					2190774511
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+					1018121925
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 1
+						role = MAIN
+					}
+					2433663469
+					{
+						Name = IX-6315 "Dawn" Electric Propulsion System (Ion)
+						On = True
+						Limit = 0.855746627
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = ffb84c18-25ef-4b1f-9bf3-85ab37833938
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = True
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					138013779
+					{
+						Name = Mk-55 "Thud" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					1590521939
+					{
+						Name = Mk-55 "Thud" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					132607241
+					{
+						Name = Mk-55 "Thud" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3372077085
+					{
+						Name = Mk-55 "Thud" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					1800995279
+					{
+						Name = LFB KR-1x2 "Twin-Boar" Liquid Fuel Engine (KSLFB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3729102971
+					{
+						Name = LFB KR-1x2 "Twin-Boar" Liquid Fuel Engine (KSLFB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3518633102
+					{
+						Name = LFB KR-1x2 "Twin-Boar" Liquid Fuel Engine (KSLFB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2884427177
+					{
+						Name = LFB KR-1x2 "Twin-Boar" Liquid Fuel Engine (KSLFB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					1595525744
+					{
+						Name = LFB KR-1x2 "Twin-Boar" Liquid Fuel Engine (KSLFB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 0aa3529d-6d33-473b-8767-4c807d39b491
+		Enabled = True
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 0c29e335-2ef5-4b9c-aed1-34b519f14889
+		Enabled = True
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = True
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					3187468154
+					{
+						Name = KW Rocketry Wildcat-XR (KWWCXRLE)
+						On = True
+						Limit = 1
+						role = UNBALANCE
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 22d2e45a-2086-4316-b5d0-93c0053c271f
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					3260076095
+					{
+						Name = KW Rocketry Wildcat-XR (KWWCXRLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3588246947
+					{
+						Name = KW Rocketry Griffon Century (KWTVLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					4044897354
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					648161446
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					4058162534
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2194689648
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 316ba8e8-f657-468a-88dd-dd5ff429f9c2
+		Enabled = True
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					3678668540
+					{
+						Name = RE-L10 "Poodle" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = UNBALANCE
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 36388ee5-800f-45b5-8ab5-4b9fee1fccc5
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = True
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					2616795904
+					{
+						Name = KW Rocketry Wildcat-XR (KWWCXRLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3499006863
+					{
+						Name = KW Rocketry Griffon Century (KWTVLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					1283080617
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					4881255
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3414882343
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2477716721
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 3cb95458-cd12-41b6-8764-e6793bb7644a
+		Enabled = True
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 54614e1f-0973-4284-ac65-14d26571bc20
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					496068435
+					{
+						Name = LV-909 "Terrier" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2180566019
+					{
+						Name = KW Rocketry Wildcat-XR (KWWCXRLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2508736871
+					{
+						Name = KW Rocketry Griffon Century (KWTVLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					1641928423
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2510308969
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					1625342761
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					717096819
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 71f8b1c4-f7c6-49d7-981a-633c86344b64
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					2271712001
+					{
+						Name = RE-L10 "Poodle" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2472263369
+					{
+						Name = LFB KR-1x2 "Twin-Boar" Liquid Fuel Engine (KSLFB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2390203557
+					{
+						Name = LFB KR-1x2 "Twin-Boar" Liquid Fuel Engine (KSLFB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2386945107
+					{
+						Name = LFB KR-1x2 "Twin-Boar" Liquid Fuel Engine (KSLFB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 76550b7e-9068-4469-b466-868382ddcbe5
+		Enabled = True
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 7719bdcb-581b-438f-a276-713788b0f011
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					1897316540
+					{
+						Name = RE-L10 "Poodle" Liquid Fuel Engine
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					110785951
+					{
+						Name = KW Rocketry Wildcat-XR (KWWCXRLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					992996910
+					{
+						Name = KW Rocketry Griffon Century (KWTVLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					1878148115
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					301171645
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3711172733
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3744939975
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+	VSLCONFIG
+	{
+		VesselID = 7d2e8ba4-a5a7-432d-9536-1778de618536
+		Enabled = False
+		GUIVisible = False
+		ActiveTab = 0
+		ActionGroup = None
+		WarpToNode = False
+		AltitudeAboveTerrain = False
+		DesiredAltitude = 0
+		VerticalCutoff = 10
+		BlockThrottle = False
+		ControlSensitivity = 0.00999999978
+		ControlTransform = 0
+		SteeringGain = 1
+		SteeringModifier = 1,1,1
+		PitchYawLinked = True
+		AutoTune = True
+		SASIsControlled = False
+		SASWasEnabled = False
+		SavedUp = 0,0,0
+		NeededHorVelocity = 0,0,0
+		MaxNavSpeed = 100
+		ShowPath = False
+		VTOLAssistON = True
+		AutoGear = True
+		AutoBrakes = True
+		StabilizeFlight = True
+		UseCPS = True
+		CorrectWithTranslation = True
+		ShowManualLimits = False
+		AutoStage = True
+		AutoParachutes = True
+		UseSmartEngines = False
+		Squad = 0
+		MacroIsActive = False
+		ModuleConfigs
+		{
+			AttitudeControl
+			{
+			}
+			BearingControl
+			{
+			}
+			CollisionPreventionSystem
+			{
+			}
+			EngineOptimizer
+			{
+			}
+			HorizontalSpeedControl
+			{
+			}
+			ManeuverAutopilot
+			{
+			}
+			MatchVelocityAutopilot
+			{
+				stage = Start
+			}
+			PointNavigator
+			{
+			}
+			Radar
+			{
+			}
+			RCSOptimizer
+			{
+			}
+			RendezvousAutopilot
+			{
+				stage = None
+				ToOrbitTarget = 0,0,0
+			}
+			SASBlocker
+			{
+			}
+			ThrottleControl
+			{
+			}
+			TimeWarpControl
+			{
+			}
+			ToOrbitAutopilot
+			{
+				Target = 0,0,0
+				stage = None
+				TargetOrbit
+				{
+					DescendingNode = False
+					RetrogradeOrbit = False
+					ApA
+					{
+						format = R
+						fvalue = 0
+						Min = -3.40282347E+38
+						Max = 3.40282347E+38
+						Circle = False
+					}
+					Inclination
+					{
+						format = F3
+						fvalue = 0
+						Min = 0
+						Max = 180
+						Circle = False
+					}
+					Slope
+					{
+						format = F1
+						fvalue = 50
+						Min = 0
+						Max = 100
+						Circle = False
+					}
+				}
+			}
+			TranslationControl
+			{
+			}
+			VTOLAssist
+			{
+			}
+		}
+		EnabledTCAParts
+		{
+			item = TCAModuleHorizontalSpeedControl
+			item = TCAModulePointNavigator
+			item = TCAModuleCollisionPreventionSystem
+			item = TCAModuleRadar
+			item = TCAModuleToOrbitAutopilot
+			item = TCAModuleRendezvousAutopilot
+			item = TCAModuleVTOLAssist
+			item = TCAModuleManeuverAutopilot
+			item = TCAModuleThrottleControl
+			item = TCAModuleAttitudeControl
+			item = TCAModuleMatchVelocityAutopilot
+		}
+		AT
+		{
+			State = None
+		}
+		VF
+		{
+			State = None
+		}
+		CTRL
+		{
+			State = None
+		}
+		HF
+		{
+			State = None
+		}
+		BR
+		{
+			State = None
+		}
+		Nav
+		{
+			State = None
+		}
+		AP1
+		{
+			State = None
+		}
+		AP2
+		{
+			State = None
+		}
+		Engines
+		{
+			p = 0.400000006
+			i = 0.200000003
+		}
+		SmartEngines
+		{
+			State = None
+		}
+		Path
+		{
+			Name = 
+		}
+		EnginesProfiles
+		{
+			ENGINESPROF
+			{
+				Name = Default
+				Active = True
+				Activated = False
+				Default = True
+				NumManual = 0
+				OnPlanet = 2
+				Stage = -1
+				Level = False
+				SmartEngines = 0
+				Groups
+				{
+				}
+				Single
+				{
+					4104547966
+					{
+						Name = KW Rocketry Wildcat-XR (KWWCXRLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					137751522
+					{
+						Name = KW Rocketry Griffon Century (KWTVLE)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					1155826636
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					139323620
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					3549324708
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+					2827810606
+					{
+						Name = S1 SRB-KD25k "Kickback" Solid Fuel Booster (S1SRB)
+						On = False
+						Limit = 1
+						role = MAIN
+					}
+				}
+			}
+		}
+		Macros
+		{
+			type = ThrottleControlledAvionics.TCAMacroLibrary, ThrottleControlledAvionics
+			DB
+			{
+			}
+		}
+	}
+}
+PATH_DB
+{
+}

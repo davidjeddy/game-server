@@ -1,0 +1,221 @@
+[15:55:38][DEBUG] : Loading settings...
+[15:55:38][DEBUG] : Loading plugins!
+[15:55:38][DEBUG] : Done!
+[15:55:38][INFO] : Starting DMPServer v0.3.8.3, protocol 54
+[15:55:38][INFO] : Loading universe... 
+[15:55:38][INFO] : Starting SUBSPACE server on port 6702... 
+[15:55:38][DEBUG] : Terminal may be not attached or broken, Exiting out of command handler
+[15:55:38][INFO] : Removed 0 debris
+[15:55:39][DEBUG] : Starting mesh server
+[15:55:39][INFO] : Ready!
+[15:56:07][DEBUG] : Online players is now: 0, connected: 1
+[15:56:07][INFO] : New client connection from [::ffff:92.109.222.35]:54729
+[15:56:07][DEBUG] : Client Pheagey registered!
+[15:56:07][DEBUG] : Loading admins
+[15:56:07][DEBUG] : Saving admins
+[15:56:07][INFO] : Client Pheagey handshook successfully, version: v0.3.8.3
+[15:56:07][DEBUG] : Online players is now: 1, connected: 1
+[15:56:08][DEBUG] : Sending groups to Pheagey
+[15:56:08][DEBUG] : Sending permissions to Pheagey
+[15:56:08][DEBUG] : Sending Pheagey to subspace 0
+[15:56:08][DEBUG] : Sending Pheagey 0 craft library entries
+[15:56:08][DEBUG] : Sending Pheagey 0 kerbals...
+[15:56:08][DEBUG] : Sending Pheagey 0 vessels, cached: 0...
+[15:56:08][DEBUG] : Saving kerbal Jebediah Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Bill Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Bob Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Valentina Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Jendock Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Eildun Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Nadan Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Hudlong Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Rodfrid Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Phoebe Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Dason Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Cordard Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Mellin Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Munley Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Wehring Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Catmore Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Jamin Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Catfal Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Marlorf Kerman from Pheagey
+[15:56:08][DEBUG] : Saving kerbal Nedock Kerman from Pheagey
+[15:56:13][DEBUG] : Saving 13 scenario modules from Pheagey
+[15:56:13][DEBUG] : Pheagey acquired lock asteroid-spawning
+[15:56:24][DEBUG] : Sending permissions to everyone, vessel: e526a808-91e3-4183-affb-5249354530b9
+[15:56:24][DEBUG] : Saving vessel e526a808-91e3-4183-affb-5249354530b9 from Pheagey
+[15:56:39][DEBUG] : Sending permissions to everyone, vessel: 4c71895d-93dd-40a1-9918-e80a1b741a77
+[15:56:39][DEBUG] : Saving vessel 4c71895d-93dd-40a1-9918-e80a1b741a77 from Pheagey
+[15:56:39][DEBUG] : Sending permissions to everyone, vessel: af2c89dd-fd9d-4249-b887-a9fed7d6dda8
+[15:56:39][DEBUG] : Saving vessel af2c89dd-fd9d-4249-b887-a9fed7d6dda8 from Pheagey
+[15:56:43][DEBUG] : Saving 3 scenario modules from Pheagey
+[15:56:53][DEBUG] : Sending permissions to everyone, vessel: 04a847da-dc38-4abd-a129-a6504ad3aa49
+[15:56:53][DEBUG] : Saving vessel 04a847da-dc38-4abd-a129-a6504ad3aa49 from Pheagey
+[15:57:13][DEBUG] : Saving 1 scenario modules from Pheagey
+[15:57:13][DEBUG] : Sending permissions to everyone, vessel: c593bc7a-e44b-4dba-bcd5-acd2797d29c5
+[15:57:13][DEBUG] : Saving vessel c593bc7a-e44b-4dba-bcd5-acd2797d29c5 from Pheagey
+[15:58:13][DEBUG] : Sending permissions to everyone, vessel: de91aa4b-6704-43fb-ae11-fbfad6430c22
+[15:58:13][DEBUG] : Saving vessel de91aa4b-6704-43fb-ae11-fbfad6430c22 from Pheagey
+[15:59:13][DEBUG] : Sending permissions to everyone, vessel: 905a2789-83e4-4fc6-bcaf-f6816d563dcc
+[15:59:13][DEBUG] : Saving vessel 905a2789-83e4-4fc6-bcaf-f6816d563dcc from Pheagey
+[16:00:13][DEBUG] : Sending permissions to everyone, vessel: 7369b94b-7797-4e56-b896-52dbf22bb6e8
+[16:00:13][DEBUG] : Saving vessel 7369b94b-7797-4e56-b896-52dbf22bb6e8 from Pheagey
+[16:00:40][DEBUG] : Pheagey sent connection end message, reason: Quit
+[16:00:40][DEBUG] : Online players is now: 0, connected: 0
+[16:22:29][DEBUG] : Online players is now: 0, connected: 1
+[16:22:29][INFO] : New client connection from [::ffff:92.109.222.35]:54815
+[16:22:30][INFO] : Client Pheagey handshook successfully, version: v0.3.8.3
+[16:22:30][DEBUG] : Online players is now: 1, connected: 1
+[16:22:31][DEBUG] : Sending groups to Pheagey
+[16:22:31][DEBUG] : Sending permissions to Pheagey
+[16:22:31][DEBUG] : Sending Pheagey to subspace 0
+[16:22:31][DEBUG] : Sending Pheagey 0 craft library entries
+[16:22:31][DEBUG] : Sending Pheagey 20 kerbals...
+[16:22:31][DEBUG] : Sending Pheagey 0 vessels, cached: 8...
+[16:22:36][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:22:36][DEBUG] : Pheagey acquired lock asteroid-spawning
+[16:23:06][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:25:38][INFO] : Removed 0 debris
+[16:28:11][DEBUG] : Sending permissions to everyone, vessel: 11db582d-1863-4d05-a8c5-cb7db1219aa1
+[16:28:11][DEBUG] : Saving vessel 11db582d-1863-4d05-a8c5-cb7db1219aa1 from Pheagey
+[16:28:16][DEBUG] : Sending permissions to everyone, vessel: 76d3fc5e-7640-4304-ad07-4b457feaf9be
+[16:28:16][DEBUG] : Saving vessel 76d3fc5e-7640-4304-ad07-4b457feaf9be from Pheagey
+[16:28:18][DEBUG] : Pheagey acquired lock control-b7737caf-22fb-437c-9ff3-4170e460a912
+[16:28:18][DEBUG] : Pheagey acquired lock update-b7737caf-22fb-437c-9ff3-4170e460a912
+[16:28:36][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:28:42][DEBUG] : Saving kerbal Eildun Kerman from Pheagey
+[16:28:42][DEBUG] : Sending permissions to everyone, vessel: b7737caf-22fb-437c-9ff3-4170e460a912
+[16:28:42][DEBUG] : Relaying FLYING vessel b7737caf-22fb-437c-9ff3-4170e460a912 from Pheagey
+[16:29:06][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:29:12][DEBUG] : Relaying FLYING vessel b7737caf-22fb-437c-9ff3-4170e460a912 from Pheagey
+[16:29:16][DEBUG] : Sending permissions to everyone, vessel: ffdadabe-579b-4f63-9178-da5d6eb3a855
+[16:29:16][DEBUG] : Saving vessel ffdadabe-579b-4f63-9178-da5d6eb3a855 from Pheagey
+[16:29:29][DEBUG] : Pheagey acquired lock update-41103e0b-7e09-419f-b255-69c9d39e9931
+[16:29:29][DEBUG] : Relaying FLYING vessel b7737caf-22fb-437c-9ff3-4170e460a912 from Pheagey
+[16:29:29][DEBUG] : Sending permissions to everyone, vessel: 41103e0b-7e09-419f-b255-69c9d39e9931
+[16:29:29][DEBUG] : Relaying FLYING vessel 41103e0b-7e09-419f-b255-69c9d39e9931 from Pheagey
+[16:29:36][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:29:53][DEBUG] : Relaying FLYING vessel 41103e0b-7e09-419f-b255-69c9d39e9931 from Pheagey
+[16:29:53][DEBUG] : Removing vessel 41103e0b-7e09-419f-b255-69c9d39e9931 from Pheagey
+[16:29:58][DEBUG] : Pheagey released lock update-41103e0b-7e09-419f-b255-69c9d39e9931
+[16:29:59][DEBUG] : Relaying FLYING vessel b7737caf-22fb-437c-9ff3-4170e460a912 from Pheagey
+[16:30:06][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:30:16][DEBUG] : Sending permissions to everyone, vessel: 25425091-d8c2-4a30-979b-ef55e898d631
+[16:30:16][DEBUG] : Saving vessel 25425091-d8c2-4a30-979b-ef55e898d631 from Pheagey
+[16:30:19][DEBUG] : Create subspace
+[16:30:19][DEBUG] : Sending Pheagey to subspace 1
+[16:30:26][DEBUG] : Saving vessel b7737caf-22fb-437c-9ff3-4170e460a912 from Pheagey
+[16:30:36][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:30:38][DEBUG] : Saving vessel b7737caf-22fb-437c-9ff3-4170e460a912 from Pheagey
+[16:30:38][DEBUG] : Pheagey released lock update-b7737caf-22fb-437c-9ff3-4170e460a912
+[16:30:38][DEBUG] : Pheagey acquired lock update-b7737caf-22fb-437c-9ff3-4170e460a912
+[16:30:56][DEBUG] : Pheagey released lock control-b7737caf-22fb-437c-9ff3-4170e460a912
+[16:31:07][DEBUG] : Saving kerbal Eildun Kerman from Pheagey
+[16:31:07][DEBUG] : Removing vessel b7737caf-22fb-437c-9ff3-4170e460a912 from Pheagey
+[16:31:36][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:33:06][DEBUG] : Sending permissions to everyone, vessel: 0b43091f-4ace-4c20-a977-aad3dbc9fec3
+[16:33:06][DEBUG] : Saving vessel 0b43091f-4ace-4c20-a977-aad3dbc9fec3 from Pheagey
+[16:33:07][DEBUG] : Create subspace
+[16:33:07][DEBUG] : Sending Pheagey to subspace 2
+[16:33:53][DEBUG] : Pheagey acquired lock control-02ab791b-8905-4539-9cfa-e31bb4089693
+[16:33:53][DEBUG] : Pheagey acquired lock update-02ab791b-8905-4539-9cfa-e31bb4089693
+[16:34:06][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:34:06][DEBUG] : Saving kerbal Eildun Kerman from Pheagey
+[16:34:06][DEBUG] : Sending permissions to everyone, vessel: 02ab791b-8905-4539-9cfa-e31bb4089693
+[16:34:06][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:34:06][DEBUG] : Sending permissions to everyone, vessel: 7806f60c-a1d6-4126-a7a2-760e94be34e9
+[16:34:06][DEBUG] : Saving vessel 7806f60c-a1d6-4126-a7a2-760e94be34e9 from Pheagey
+[16:34:06][DEBUG] : Sending permissions to everyone, vessel: 43bfb34f-d90f-4c47-876d-a3d84a14831b
+[16:34:06][DEBUG] : Saving vessel 43bfb34f-d90f-4c47-876d-a3d84a14831b from Pheagey
+[16:34:36][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:34:36][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:35:06][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:35:06][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:35:06][DEBUG] : Sending permissions to everyone, vessel: 2d90207e-60c1-460a-877a-aeb0ed50cf13
+[16:35:06][DEBUG] : Saving vessel 2d90207e-60c1-460a-877a-aeb0ed50cf13 from Pheagey
+[16:35:36][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:35:36][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:35:41][DEBUG] : Pheagey acquired lock update-95f6233b-1f82-4221-9a84-ce362c3d919c
+[16:35:41][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:35:41][DEBUG] : Sending permissions to everyone, vessel: 95f6233b-1f82-4221-9a84-ce362c3d919c
+[16:35:41][DEBUG] : Relaying FLYING vessel 95f6233b-1f82-4221-9a84-ce362c3d919c from Pheagey
+[16:36:06][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:36:06][DEBUG] : Sending permissions to everyone, vessel: a24c247b-6e92-4a6e-b879-0266cdeb6917
+[16:36:06][DEBUG] : Saving vessel a24c247b-6e92-4a6e-b879-0266cdeb6917 from Pheagey
+[16:36:06][DEBUG] : Create subspace
+[16:36:06][DEBUG] : Sending Pheagey to subspace 3
+[16:36:11][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:36:11][DEBUG] : Relaying FLYING vessel 95f6233b-1f82-4221-9a84-ce362c3d919c from Pheagey
+[16:36:22][DEBUG] : Saving vessel 95f6233b-1f82-4221-9a84-ce362c3d919c from Pheagey
+[16:36:23][DEBUG] : Saving vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:36:36][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:36:41][DEBUG] : Saving kerbal Eildun Kerman from Pheagey
+[16:36:41][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:36:42][DEBUG] : Relaying FLYING vessel 95f6233b-1f82-4221-9a84-ce362c3d919c from Pheagey
+[16:36:50][DEBUG] : Relaying FLYING vessel 95f6233b-1f82-4221-9a84-ce362c3d919c from Pheagey
+[16:36:50][DEBUG] : Pheagey released lock update-95f6233b-1f82-4221-9a84-ce362c3d919c
+[16:36:50][DEBUG] : Pheagey acquired lock update-95f6233b-1f82-4221-9a84-ce362c3d919c
+[16:36:50][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:36:50][DEBUG] : Pheagey released lock update-02ab791b-8905-4539-9cfa-e31bb4089693
+[16:36:50][DEBUG] : Pheagey acquired lock update-02ab791b-8905-4539-9cfa-e31bb4089693
+[16:37:06][DEBUG] : Sending permissions to everyone, vessel: c2f703ea-ece8-4da6-973a-71745d3d1f43
+[16:37:06][DEBUG] : Saving vessel c2f703ea-ece8-4da6-973a-71745d3d1f43 from Pheagey
+[16:37:11][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:37:12][DEBUG] : Relaying FLYING vessel 95f6233b-1f82-4221-9a84-ce362c3d919c from Pheagey
+[16:37:16][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:37:16][DEBUG] : Pheagey released lock update-02ab791b-8905-4539-9cfa-e31bb4089693
+[16:37:16][DEBUG] : Pheagey acquired lock update-02ab791b-8905-4539-9cfa-e31bb4089693
+[16:37:17][DEBUG] : Relaying FLYING vessel 95f6233b-1f82-4221-9a84-ce362c3d919c from Pheagey
+[16:37:17][DEBUG] : Pheagey released lock update-95f6233b-1f82-4221-9a84-ce362c3d919c
+[16:37:17][DEBUG] : Pheagey acquired lock update-95f6233b-1f82-4221-9a84-ce362c3d919c
+[16:37:41][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:37:42][DEBUG] : Relaying FLYING vessel 95f6233b-1f82-4221-9a84-ce362c3d919c from Pheagey
+[16:37:50][DEBUG] : Removing vessel 95f6233b-1f82-4221-9a84-ce362c3d919c from Pheagey
+[16:37:55][DEBUG] : Pheagey released lock update-95f6233b-1f82-4221-9a84-ce362c3d919c
+[16:38:06][DEBUG] : Sending permissions to everyone, vessel: ebf31b16-7485-4f69-ba0e-04f88fcb60ae
+[16:38:06][DEBUG] : Saving vessel ebf31b16-7485-4f69-ba0e-04f88fcb60ae from Pheagey
+[16:38:11][DEBUG] : Relaying FLYING vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:38:20][DEBUG] : Saving vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:38:27][DEBUG] : Pheagey released lock control-02ab791b-8905-4539-9cfa-e31bb4089693
+[16:38:33][DEBUG] : Create subspace
+[16:38:33][DEBUG] : Sending Pheagey to subspace 4
+[16:38:37][DEBUG] : Saving vessel 02ab791b-8905-4539-9cfa-e31bb4089693 from Pheagey
+[16:38:37][DEBUG] : Pheagey released lock update-02ab791b-8905-4539-9cfa-e31bb4089693
+[16:39:10][DEBUG] : Sending permissions to everyone, vessel: 80f63adc-b6d8-42c5-9cb3-878a4f1b12d3
+[16:39:10][DEBUG] : Saving vessel 80f63adc-b6d8-42c5-9cb3-878a4f1b12d3 from Pheagey
+[16:39:11][DEBUG] : Pheagey acquired lock control-7d03b4c4-9a00-44a5-a0a1-6ca366911543
+[16:39:11][DEBUG] : Pheagey acquired lock update-7d03b4c4-9a00-44a5-a0a1-6ca366911543
+[16:39:25][DEBUG] : Sending permissions to everyone, vessel: 9b07a14d-b0a8-4e2d-a130-796cdc60791d
+[16:39:25][DEBUG] : Saving vessel 9b07a14d-b0a8-4e2d-a130-796cdc60791d from Pheagey
+[16:39:40][DEBUG] : Saving 1 scenario modules from Pheagey
+[16:39:41][DEBUG] : Saving kerbal Jebediah Kerman from Pheagey
+[16:39:41][DEBUG] : Sending permissions to everyone, vessel: 7d03b4c4-9a00-44a5-a0a1-6ca366911543
+[16:39:41][DEBUG] : Saving vessel 7d03b4c4-9a00-44a5-a0a1-6ca366911543 from Pheagey
+[16:40:01][DEBUG] : Relaying FLYING vessel 7d03b4c4-9a00-44a5-a0a1-6ca366911543 from Pheagey
+[16:40:10][DEBUG] : Sending permissions to everyone, vessel: c672a263-1ef5-4ed4-854f-17ad5c14782c
+[16:40:10][DEBUG] : Saving vessel c672a263-1ef5-4ed4-854f-17ad5c14782c from Pheagey
+[16:40:31][DEBUG] : Saving kerbal Jebediah Kerman from Pheagey
+[16:40:31][DEBUG] : Relaying FLYING vessel 7d03b4c4-9a00-44a5-a0a1-6ca366911543 from Pheagey
+[16:41:01][DEBUG] : Relaying FLYING vessel 7d03b4c4-9a00-44a5-a0a1-6ca366911543 from Pheagey
+[16:41:10][DEBUG] : Sending permissions to everyone, vessel: 046dbd91-2f49-422d-888c-9e53aac15bb0
+[16:41:10][DEBUG] : Saving vessel 046dbd91-2f49-422d-888c-9e53aac15bb0 from Pheagey
+[16:41:13][DEBUG] : Saving vessel 7d03b4c4-9a00-44a5-a0a1-6ca366911543 from Pheagey
+[16:41:43][DEBUG] : Saving vessel 7d03b4c4-9a00-44a5-a0a1-6ca366911543 from Pheagey
+[16:42:09][DEBUG] : Pheagey released lock control-7d03b4c4-9a00-44a5-a0a1-6ca366911543
+[16:42:15][DEBUG] : Pheagey released lock update-7d03b4c4-9a00-44a5-a0a1-6ca366911543
+[16:42:15][DEBUG] : Saving vessel 7d03b4c4-9a00-44a5-a0a1-6ca366911543 from Pheagey
+[16:42:20][DEBUG] : Sending permissions to everyone, vessel: 85bf1452-85a8-491f-b5ba-a2a1fe41578f
+[16:42:20][DEBUG] : Saving vessel 85bf1452-85a8-491f-b5ba-a2a1fe41578f from Pheagey
+[16:42:20][DEBUG] : Saving kerbal Jebediah Kerman from Pheagey
+[16:42:20][DEBUG] : Removing vessel 7d03b4c4-9a00-44a5-a0a1-6ca366911543 from Pheagey
+[16:43:20][DEBUG] : Sending permissions to everyone, vessel: 545e2f45-52cc-4f62-a678-f9caa7366217
+[16:43:20][DEBUG] : Saving vessel 545e2f45-52cc-4f62-a678-f9caa7366217 from Pheagey
+[16:43:56][DEBUG] : Pheagey sent connection end message, reason: Quit to main menu
+[16:43:56][DEBUG] : Online players is now: 0, connected: 0
+[16:55:38][INFO] : Removed 0 debris
+[17:25:38][INFO] : Removed 0 debris
+[17:55:38][INFO] : Removed 0 debris
+[18:25:38][INFO] : Removed 0 debris
+[18:55:38][INFO] : Removed 0 debris
+[19:25:38][INFO] : Removed 0 debris

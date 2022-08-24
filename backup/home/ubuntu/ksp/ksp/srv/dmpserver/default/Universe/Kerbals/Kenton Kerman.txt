@@ -1,0 +1,59 @@
+name = Kenton Kerman
+gender = Male
+type = Crew
+trait = Scientist
+brave = 0.589537263
+dumb = 0.291405857
+badS = False
+veteran = False
+tour = False
+state = Available
+inactive = False
+inactiveTimeEnd = 0
+gExperienced = 0
+outDueToG = False
+ToD = 2000.0799999999999
+idx = 2
+extraXP = 0
+CAREER_LOG
+{
+	flight = 3
+	0 = Flight,Kerbin
+	0 = Suborbit,Kerbin
+	0 = Orbit,Kerbin
+	0 = Spawn
+	0 = Flyby,Minmus
+	0 = Escape,Minmus
+	0 = Orbit,Minmus
+	0 = ExitVessel,Minmus
+	0 = BoardVessel,Minmus
+	0 = Spawn
+	0 = Suborbit,Minmus
+	0 = Land,Minmus
+	0 = PlantFlag,Minmus
+	0 = Flyby,Kerbin
+	0 = Land,Kerbin
+	0 = Recover
+	1 = Die
+	2 = Spawn
+	2 = Flight,Kerbin
+	2 = Suborbit,Kerbin
+	2 = Orbit,Kerbin
+	2 = Spawn
+	2 = Escape,Kerbin
+	2 = Flyby,Sun
+	2 = Orbit,Sun
+	2 = Escape,Sun
+	2 = Flyby,Jool
+	2 = Escape,Jool
+	2 = Flyby,Tylo
+	2 = Escape,Tylo
+	2 = Flyby,Vall
+	2 = Escape,Vall
+	2 = Flyby,Kerbin
+	2 = Recover
+}
+FLIGHT_LOG
+{
+	flight = 3
+}

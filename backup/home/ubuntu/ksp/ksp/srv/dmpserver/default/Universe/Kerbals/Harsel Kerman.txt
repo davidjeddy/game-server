@@ -1,0 +1,50 @@
+name = Harsel Kerman
+gender = Male
+type = Crew
+trait = Scientist
+brave = 0.807252467
+dumb = 0.20049046
+badS = False
+veteran = False
+tour = False
+state = Available
+inactive = False
+inactiveTimeEnd = 0
+gExperienced = 0
+outDueToG = False
+ToD = 2000.0799999999999
+idx = 1
+extraXP = 0
+CAREER_LOG
+{
+	flight = 6
+	0 = Flight,Kerbin
+	0 = Suborbit,Kerbin
+	0 = Orbit,Kerbin
+	0 = Recover
+	1 = Recover
+	2 = Spawn
+	2 = Recover
+	3 = Flight,Kerbin
+	3 = Suborbit,Kerbin
+	3 = Orbit,Kerbin
+	3 = Flyby,Mun
+	3 = Escape,Mun
+	3 = Orbit,Mun
+	3 = ExitVessel,Mun
+	3 = BoardVessel,Mun
+	3 = Spawn
+	3 = Recover
+	4 = Flight,Kerbin
+	4 = Suborbit,Kerbin
+	4 = Orbit,Kerbin
+	4 = ExitVessel,Kerbin
+	4 = BoardVessel,Kerbin
+	4 = Land,Kerbin
+	4 = Recover
+	5 = Recover
+}
+FLIGHT_LOG
+{
+	flight = 6
+}

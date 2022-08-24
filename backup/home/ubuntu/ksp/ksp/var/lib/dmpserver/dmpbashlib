@@ -1,0 +1,67 @@
+## Text Formatting
+formatDone="\e[00;32m" # Green
+formatFail="\e[00;31m" # Red
+formatWarn="\033[1m"   # Bold
+formatEnd="\e[00m"     # End
+
+
+## System Functions
+function rootCheck(){    
+    if [ $(whoami) != 'root' ]; then
+        echo "This program must be run with root permissions."
+        exit 4
+    fi
+}
+
+
+## File Functions
+function dirExistTest(){
+    unset -v RETVAL
+    RETVAL="False"
+    if [ -d $1 ] ; then
+        RETVAL="True"
+    fi
+}
+
+function fileExistTest(){
+    unset -v RETVAL
+    RETVAL="False"
+    if [ -f $1 ] ; then
+        RETVAL="True"
+    fi
+}
+
+## Network Functions
+function checkStatusCode(){
+    unset -v RETVAL
+    RETVAL="False"
+    if [ $(curl -o /dev/null --silent --head --write-out '%{http_code}\n' $1) -eq 200 ] ; then
+        RETVAL="True"
+    fi
+    echo $(curl -o /dev/null --silent --head --write-out '%{http_code}\n' $1)
+}
+
+
+function getTargetNames(){
+    unset -v RETVAL
+    RETVAL=()    
+    
+    echo "Getting Target Names"
+    t=0
+    for file in $(curl -s $1) ; do
+        RETVAL[$t]=$(echo $file | awk -F "=" '{print $1}')
+        ((t++))
+    done
+}
+
+function getTargetHashes(){
+    unset -v RETVAL
+    RETVAL=()
+    
+    echo "Getting Target Hashes"
+    t=0
+    for file in $(curl -s $1) ; do
+        RETVAL[$t]=$(echo $file | awk -F "=" '{print $2}')
+        ((t++))
+    done
+}

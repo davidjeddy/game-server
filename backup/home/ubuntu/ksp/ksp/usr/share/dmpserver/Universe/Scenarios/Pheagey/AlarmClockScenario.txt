@@ -1,0 +1,15 @@
+name = AlarmClockScenario
+scene = 5, 6, 7, 8
+UIUpdatePeriod = 0.10000000000000001
+warpChangeTimeSafteyMultiplier = 1.20000005
+warpChangeIndicatorDuration = 3
+ALARMS
+{
+}
+SETTINGS
+{
+	defaultRawTime = 300
+	defaultManeuverMargin = 60
+	soundName = Classic
+	soundRepeats = 3
+}

@@ -1,0 +1,63 @@
+name = TRScenario
+scene = 5
+reflectionType = REAL
+isHelmetRemovalEnabled = True
+isAtmSuitEnabled = True
+Kerbals
+{
+	Arthy Kerman = F GENERIC GENERIC
+	Asiel Kerman = F GENERIC GENERIC
+	Barry Kerman = F GENERIC GENERIC
+	Bilcott Kerman = M GENERIC GENERIC
+	Bill Kerman = M GENERIC GENERIC
+	Bob Kerman = M GENERIC GENERIC
+	Calfield Kerman = M GENERIC GENERIC
+	Chaddred Kerman = M GENERIC GENERIC
+	Chris Kerman = M GENERIC GENERIC
+	Danrick Kerman = M GENERIC GENERIC
+	Derfred Kerman = M GENERIC GENERIC
+	Derry Kerman = M GENERIC GENERIC
+	Desdard Kerman = M GENERIC GENERIC
+	Desemy Kerman = M GENERIC GENERIC
+	Dilsey Kerman = M GENERIC GENERIC
+	Doodsen Kerman = M GENERIC GENERIC
+	Edby Kerman = M GENERIC GENERIC
+	Eluki Kerman = M GENERIC GENERIC
+	Fredgee Kerman = M GENERIC GENERIC
+	Graya Kerman = F GENERIC GENERIC
+	Gusger Kerman = M GENERIC GENERIC
+	Harrigh Kerman = M GENERIC GENERIC
+	Harsel Kerman = M GENERIC GENERIC
+	Helcia Kerman = F GENERIC GENERIC
+	Jebediah Kerman = M GENERIC GENERIC
+	Jeremy Kerman = M GENERIC GENERIC
+	Jeschelle Kerman = F GENERIC GENERIC
+	Jongan Kerman = M GENERIC GENERIC
+	Kenton Kerman = M GENERIC GENERIC
+	Kerdin Kerman = M GENERIC GENERIC
+	Lanbald Kerman = M GENERIC GENERIC
+	Langun Kerman = M GENERIC GENERIC
+	Lencas Kerman = M GENERIC GENERIC
+	Luble Kerman = M GENERIC GENERIC
+	Miice Kerman = F GENERIC GENERIC
+	Mirthis Kerman = F GENERIC GENERIC
+	Obcan Kerman = M GENERIC GENERIC
+	Obrie Kerman = M GENERIC GENERIC
+	Raydos Kerman = M GENERIC GENERIC
+	Roski Kerman = M GENERIC GENERIC
+	Ruben Kerman = M GENERIC GENERIC
+	Shelsel Kerman = M GENERIC GENERIC
+	Tesa Kerman = F GENERIC GENERIC
+	Texie Kerman = F GENERIC GENERIC
+	Thomely Kerman = M GENERIC GENERIC
+	Thompont Kerman = M GENERIC GENERIC
+	Trigie Kerman = F GENERIC GENERIC
+	Valemma Kerman = F GENERIC GENERIC
+	Valentina Kerman = F GENERIC GENERIC
+	Verlenna Kerman = F GENERIC GENERIC
+	Wenmy Kerman = F GENERIC GENERIC
+	Zelbe Kerman = F GENERIC GENERIC
+}
+ClassSuits
+{
+}

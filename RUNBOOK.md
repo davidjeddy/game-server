@@ -107,3 +107,18 @@ systemctl start satisfactory.service
   - install application
   - create/start system service
 - Update README.md `Services` list
+
+## Backup game save / recording / configurations files
+
+```sh
+# Factorio
+
+# KSP
+scp -i ~/.ssh/[[KEY_NAME]] -C -r -p ubuntu@[[REMOTE_IP]:/home/ubuntu/ksp ./backup/home/ubuntu/ksp
+
+# Satisfactory
+scp -i ~/.ssh/[[KEY_NAME]] -C -r -p ubuntu@[[REMOTE_IP]]:/home/ubuntu/.config/Epic/FactoryGame/Saved ./backup/home/ubuntu/.config/Epic/FactoryGame/Saved
+
+# PA: Titans
+scp -i ~/.ssh/[[KEY_NAME]] -C -r -p ubuntu@[[REMOTE_IP]]:/home/ubuntu/pa_titans/resources ./backup/home/ubuntu/pa_titans/resources
+```

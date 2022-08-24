@@ -1,0 +1,147 @@
+pid = 905a278983e44fc6bcaff6816d563dcc
+persistentId = 4147108968
+name = Ast. LXD-952
+type = SpaceObject
+sit = ORBITING
+landed = False
+skipGroundPositioning = False
+skipGroundPositioningForDroppedPart = False
+vesselSpawning = True
+launchedFrom = 
+landedAt = 
+displaylandedAt = 
+splashed = False
+met = 370329.72655797214
+lct = 370329.72655797214
+lastUT = -1
+distanceTraveled = 0
+root = 0
+lat = -0.72678997339433071
+lon = -112.9952582857193
+alt = 15196169609.449987
+hgt = -1
+nrm = 0,1,0
+rot = -0.180621549,-0.487961113,-0.764912188,0.379709333
+CoM = 0,0,0
+stg = 0
+prst = False
+ref = 0
+ctrl = False
+PQSMin = 0
+PQSMax = 0
+GroupOverride = 0
+OverrideDefault = False,False,False,False
+OverrideActionControl = 0,0,0,0
+OverrideAxisControl = 0,0,0,0
+OverrideGroupNames = ,,,
+altDispState = DEFAULT
+ORBIT
+{
+	SMA = 15823432725.252972
+	ECC = 0.14436963385835452
+	INC = 0.79095023519584651
+	LPE = 335.84307988722287
+	LAN = 308.85097809825743
+	MNA = 0.16046100440804129
+	EPH = 2995458.7561737215
+	REF = 0
+}
+PART
+{
+	name = PotatoRoid
+	cid = 0
+	uid = 0
+	mid = 0
+	persistentId = 2743210283
+	launchID = 0
+	parent = 0
+	position = 0,0,0
+	rotation = 0,0,0,1
+	mirror = 1,1,1
+	symMethod = Radial
+	istg = 0
+	resPri = 0
+	dstg = 0
+	sqor = 0
+	sepI = 0
+	sidx = 0
+	attm = 0
+	sameVesselCollision = False
+	srfN = None, -1
+	mass = 150
+	shielded = False
+	temp = -1
+	tempExt = 0
+	tempExtUnexp = 0
+	staticPressureAtm = 0
+	expt = 1
+	state = 0
+	PreFailState = 0
+	attached = True
+	autostrutMode = Off
+	rigidAttachment = False
+	flag = 
+	rTrf = 
+	modCost = 0
+	modMass = 0
+	moduleVariantName = 
+	moduleCargoStackableQuantity = 1
+}
+ACTIONGROUPS
+{
+}
+DISCOVERY
+{
+	state = 1
+	lastObservedTime = 370329.72655797214
+	lifetime = Infinity
+	refTime = Infinity
+	size = 2
+}
+FLIGHTPLAN
+{
+}
+CTRLSTATE
+{
+}
+VESSELMODULES
+{
+	FlightIntegrator
+	{
+	}
+	AxisGroupsModule
+	{
+	}
+	CometVessel
+	{
+		typeName = 
+		cometPartId = 0
+		vfxStartDistance = 1.5
+		comaWidthRatio = 10000
+		tailMaxWidthRatio = 1
+		tailMaxLengthRatio = 1000000
+		ionTailMaxWidthRatio = 0.29999999999999999
+		comaWidth = 10000
+		tailWidth = 1
+		tailLength = 1000000
+		ionTailWidth = 1
+		hasName = False
+		radius = 115
+		seed = 0
+		numGeysers = 0
+		numNearDustEmitters = 0
+		optimizedCollider = False
+		fragmentDynamicPressureModifier = 0
+	}
+	SuspensionLoadBalancer
+	{
+	}
+	CommNetVessel
+	{
+		controlState = None
+		canComm = True
+	}
+	RPMVesselComputer
+	{
+	}
+}

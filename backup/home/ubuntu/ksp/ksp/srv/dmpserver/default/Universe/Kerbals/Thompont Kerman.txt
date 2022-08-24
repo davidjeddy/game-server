@@ -1,0 +1,64 @@
+name = Thompont Kerman
+gender = Male
+type = Crew
+trait = Pilot
+brave = 0.926712334
+dumb = 0.387694716
+badS = False
+veteran = False
+tour = False
+state = Assigned
+inactive = False
+inactiveTimeEnd = 0
+gExperienced = 0
+outDueToG = False
+ToD = 0
+idx = 0
+extraXP = 0
+CAREER_LOG
+{
+	flight = 5
+	0 = Recover
+	1 = Recover
+	2 = Flight,Kerbin
+	2 = Suborbit,Kerbin
+	2 = Orbit,Kerbin
+	2 = Flyby,Minmus
+	2 = Escape,Minmus
+	2 = Orbit,Minmus
+	2 = Flyby,Kerbin
+	2 = Land,Kerbin
+	2 = Recover
+	3 = Flight,Kerbin
+	3 = Suborbit,Kerbin
+	3 = Orbit,Kerbin
+	3 = ExitVessel,Kerbin
+	3 = BoardVessel,Kerbin
+	3 = Land,Kerbin
+	3 = Recover
+	4 = Flight,Kerbin
+	4 = Suborbit,Kerbin
+	4 = Orbit,Kerbin
+	4 = ExitVessel,Kerbin
+	4 = BoardVessel,Kerbin
+	4 = Escape,Kerbin
+	4 = Flyby,Sun
+	4 = Orbit,Sun
+	4 = ExitVessel,Sun
+	4 = BoardVessel,Sun
+	4 = Flyby,Dres
+	4 = Escape,Dres
+	4 = Orbit,Dres
+	4 = ExitVessel,Dres
+	4 = BoardVessel,Dres
+	4 = Flyby,Kerbin
+	4 = Land,Kerbin
+	4 = Recover
+}
+FLIGHT_LOG
+{
+	flight = 5
+	5 = Flight,Kerbin
+	5 = Suborbit,Kerbin
+	5 = Orbit,Kerbin
+}

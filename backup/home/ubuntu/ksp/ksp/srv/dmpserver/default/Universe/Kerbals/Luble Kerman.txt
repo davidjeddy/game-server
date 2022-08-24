@@ -1,0 +1,49 @@
+name = Luble Kerman
+gender = Male
+type = Crew
+trait = Pilot
+brave = 0.165045038
+dumb = 0.0122933555
+badS = False
+veteran = False
+tour = False
+state = Available
+inactive = False
+inactiveTimeEnd = 0
+gExperienced = 0
+outDueToG = False
+ToD = 0
+idx = 0
+extraXP = 0
+CAREER_LOG
+{
+	flight = 7
+	0 = Recover
+	1 = Recover
+	2 = Recover
+	3 = Flight,Kerbin
+	3 = Suborbit,Kerbin
+	3 = Land,Kerbin
+	3 = Recover
+	4 = Recover
+	5 = Flight,Kerbin
+	5 = Suborbit,Kerbin
+	5 = Orbit,Kerbin
+	5 = Flyby,Mun
+	5 = Escape,Mun
+	5 = Orbit,Mun
+	5 = Suborbit,Mun
+	5 = Land,Mun
+	5 = PlantFlag,Mun
+	5 = Flyby,Kerbin
+	5 = ExitVessel,Kerbin
+	5 = BoardVessel,Kerbin
+	5 = Land,Kerbin
+	5 = PlantFlag,Kerbin
+	5 = Recover
+	6 = Recover
+}
+FLIGHT_LOG
+{
+	flight = 7
+}

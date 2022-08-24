@@ -1,0 +1,64 @@
+name = Calfield Kerman
+gender = Male
+type = Crew
+trait = Scientist
+brave = 0.936147571
+dumb = 0.843968928
+badS = False
+veteran = False
+tour = False
+state = Assigned
+inactive = False
+inactiveTimeEnd = 0
+gExperienced = 0
+outDueToG = False
+ToD = 2000.0799999999999
+idx = 1
+extraXP = 0
+CAREER_LOG
+{
+	flight = 3
+	0 = Spawn
+	0 = Flight,Kerbin
+	0 = Suborbit,Kerbin
+	0 = Orbit,Kerbin
+	0 = Flyby,Mun
+	0 = Escape,Mun
+	0 = Orbit,Mun
+	0 = Suborbit,Mun
+	0 = Land,Mun
+	0 = PlantFlag,Mun
+	0 = Flyby,Kerbin
+	0 = Land,Kerbin
+	0 = Recover
+	1 = Flight,Kerbin
+	1 = Suborbit,Kerbin
+	1 = Orbit,Kerbin
+	1 = ExitVessel,Kerbin
+	1 = BoardVessel,Kerbin
+	1 = Land,Kerbin
+	1 = Recover
+	2 = Flight,Kerbin
+	2 = Suborbit,Kerbin
+	2 = Orbit,Kerbin
+	2 = Escape,Kerbin
+	2 = Flyby,Sun
+	2 = Orbit,Sun
+	2 = Flyby,Duna
+	2 = Escape,Duna
+	2 = Orbit,Duna
+	2 = Suborbit,Duna
+	2 = Flight,Duna
+	2 = Land,Duna
+	2 = PlantFlag,Duna
+	2 = Spawn
+	2 = Land,Kerbin
+	2 = Recover
+}
+FLIGHT_LOG
+{
+	flight = 3
+	3 = Flight,Kerbin
+	3 = Suborbit,Kerbin
+	3 = Orbit,Kerbin
+}
