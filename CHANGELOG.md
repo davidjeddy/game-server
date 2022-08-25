@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.17
+
+- Replace static ARN with dynamic sources in [iam.tf](terraform/aws/dev/iam.tf)
+- Build PA Titans credentials secret ARN from vars, not static string, in user-data.sh
+- Migrate resources from davidjeddy account to eddy enterprises / lanordie account
+
 ## 0.0.16
 
 - Move Satisfactory runtime resources to ./config/ EBS volume

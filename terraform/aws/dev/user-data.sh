@@ -10,8 +10,23 @@ ENABLE_PA_UPGRADE=true
 ENABLE_SATISFACTORY=true
 
 # -----
-# Do not edit below this line
+# K/V's passed in from ec2_instance.tf
+# Key/Values are passed in via instance data.template_file.user_data invocation
 # -----
+
+# shellcheck disable=SC2269
+PA_TITAN_CRED_ARN="${PA_TITAN_CRED_ARN}"\
+
+# shellcheck disable=SC2269
+REGION="${REGION}"
+
+# -----
+# File system assignments
+# -----
+
+KSP_FS_UUID="71ce6087-ec2e-4df1-857b-ab1c7888d75b"
+PA_TITANS_FS_UUID="4df99be4-b9b5-4394-ab47-ed92ee1c9252"
+SATISFACTORY_FS_UUID="a0a3e05f-3e49-49a8-94fa-b9c220720d07"
 
 # -----
 # System configuration
@@ -80,7 +95,7 @@ which go
 which mono
 
 # -----
-# Application install, update, and execution
+# Application install, update, configuration, and execution
 # -----
 
 # -----
@@ -91,7 +106,7 @@ if [[ $ENABLE_KSP == true ]]
 then
     echo "INFO: Mount Kerbal Space Program EBS volume"
     mkdir -p /home/ubuntu/ksp
-    echo "UUID=ede148d6-c668-404f-9836-8ab16cc5b663 /home/ubuntu/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    echo "UUID=$KSP_FS_UUID /home/ubuntu/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
     tail /etc/fstab
     mount -a
 
@@ -143,7 +158,7 @@ if [[ $ENABLE_PA_TITANS == true ]]
 then
     echo "INFO: Mount Planetary Annihilation : Titans EBS volume"
     mkdir -p /home/ubuntu/pa_titans
-    echo "UUID=94006143-dbf5-47e7-b508-470e19728b4c /home/ubuntu/pa_titans ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    echo "UUID=$PA_TITANS_FS_UUID /home/ubuntu/pa_titans ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
     tail /etc/fstab
     mount -a
 
@@ -162,7 +177,8 @@ then
     if [[ ! -f /home/ubuntu/pa_titans/PA/stable/server ]]
     then
         echo "INFO: Unpack Planetary Annihilation : Titans archive"
-        tar -xf /home/ubuntu/pa_titans/resources/PA_Linux_115872.tar.bz2 -C /home/ubuntu/pa_titans --verbose
+        mkdir -p /home/ubuntu/pa_titans/stable
+        tar -xf /home/ubuntu/pa_titans/resources/PA_Linux_115872.tar.bz2 -C /home/ubuntu/pa_titans/stable --verbose
     fi
 
     if [[ $ENABLE_PA_UPGRADE == true ]]
@@ -172,12 +188,14 @@ then
         XDG_CACHE_HOME=/home/ubuntu/.cache
         export XDG_CACHE_HOME
 
+        # Key/Values are passed in via instance data.template_file.user_data invocation
+        # shellcheck disable=SC2086
         go run /home/ubuntu/pa_titans/resources/papatcher.go \
             --dir /home/ubuntu/pa_titans/PA/ \
             --stream stable \
             --update-only \
-            --username "$(aws secretsmanager get-secret-value --region us-east-1 --secret-id arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB --query SecretString --output text | jq -r .username)" \
-            --password "$(aws secretsmanager get-secret-value --region us-east-1 --secret-id arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB --query SecretString --output text | jq -r .password)"
+            --username "$(aws secretsmanager get-secret-value --region $REGION --secret-id $PA_TITAN_CRED_ARN --query SecretString --output text | jq -r .username)" \
+            --password "$(aws secretsmanager get-secret-value --region $REGION --secret-id $PA_TITAN_CRED_ARN --query SecretString --output text | jq -r .password)"
     fi
 
     echo "INFO: Version of Planetary Annihilationvers : Titans is $(cat /home/ubuntu/pa_titans/PA/version.txt)"
@@ -190,7 +208,7 @@ then
         mkdir -p "/home/ubuntu/pa_titans/download"
         mkdir -p "/home/ubuntu/pa_titans/network"
         mkdir -p "/home/ubuntu/pa_titans/output"
-        
+
         echo -e "\
         [Unit]
             After=syslog.target network.target nss-lookup.target network-online.target
@@ -239,14 +257,14 @@ then
 fi
 
 # -----
-# Satisfactory (~/.config/Epic, ~/.config/Epic/satisfactory)
+# Satisfactory (~/.config/Epic/satisfactory)
 # -----
 
 if [[ $ENABLE_SATISFACTORY == true ]]
 then
     echo "INFO: Mount Epic EBS volume"
     mkdir -p /home/ubuntu/.config/Epic
-    echo "UUID=dc31b9cd-fc42-4ff6-80ee-fb42ea6ce012 /home/ubuntu/.config/Epic ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    echo "UUID=$SATISFACTORY_FS_UUID /home/ubuntu/.config/Epic ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
     tail -10 /etc/fstab
     mount -a
 

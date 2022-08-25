@@ -17,3 +17,8 @@ output "satisfactory_games_lanordie_com" {
   description = "FQDN of Satisfactory server"
   value       = aws_route53_record.satisfactory_games_lanordie_com.fqdn
 }
+
+output "aws_secretsmanager_secret_pa_titans" {
+  description = "Credentials to authenticate with Planetary Annihilation servers, enabled downloading and patching"
+  value       = aws_secretsmanager_secret.pa_titans.arn
+}

@@ -8,15 +8,26 @@
 git clone ...
 cd terraform/aws/dev
 cp terraform.tfvars.dist terraform.tfvars
+# populate values in terraform.tfvars
 ```
 
 - Log into AWS account using the root user
 - Create `Admin` user xziP51QzSJ&2g*q*G4jhPe8GA@mTV6DX%A43d5^fMn@xsd5@r#uBW0D%rk25O%lN
 - Assign `AdministratorAccess` role to user
-- Create API Key pair
+- [Create API Key pair](https://us-east-1.console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:)
+  - Configuration: ED25519, .pem
+- Create EC2 key pair, save to localhost ~/.ssh/*
 
 ```sh
-# populate values in terraform.tfvars
+terragrunt apply --target  aws_secretsmanager_secret.pa_titans
+```
+
+- Populate the value for the PA account login credentials in Secrets Manager, it will be named something similar to `gs/pa_titans-*-0-*`.
+- Edit lanordie/terraform/aws/dev/user-data.sh `PA_TITAN_CRED_ARN` value with the value from Terragrunt output `aws_secretsmanager_secret_pa_titans`.
+
+Now, create all the other resources
+
+```sh
 terragrunt init
 terragrunt plan
 terragrunt apply
@@ -26,7 +37,11 @@ terragrunt apply
 
 ```sh
 lsblk -f
+sudo mkfs.ext4 /dev/nvme1n1
+sudo mkfs.ext4 /dev/nvme2n1
 sudo mkfs.ext4 /dev/nvme3n1
+...
+sudo mkfs.ext4 /dev/nvme[[N]]n1
 ```
 
 ### Attach and Mount Disk
@@ -52,6 +67,7 @@ sudo chown ubuntu:ubuntu -R ~/
 infracost breakdown \
     --path . \
     --format json \
+    --project-name lanordie/[[ENV]] \
     --out-file infracost-base.json
 ```
 
@@ -118,17 +134,26 @@ systemctl start satisfactory.service
   - create/start system service
 - Update README.md `Services` list
 
-## Backup game save / recording / configurations files
+## Backup user file system
 
 ```sh
-# Factorio
+cd [[project_root]]
 
 # KSP
-scp -i ~/.ssh/[[KEY_NAME]] -C -r -p ubuntu@[[REMOTE_IP]:/home/ubuntu/ksp ./backup/home/ubuntu/ksp
+scp -i ~/.ssh/$KEY_NAME -C -r -p ubuntu@[[REMOTE_IP]:/home/ubuntu ./backup/home/ubuntu/ksp
 
 # Satisfactory
-scp -i ~/.ssh/[[KEY_NAME]] -C -r -p ubuntu@[[REMOTE_IP]]:/home/ubuntu/.config/Epic/FactoryGame/Saved ./backup/home/ubuntu/.config/Epic/FactoryGame/Saved
+scp -i ~/.ssh/$KEY_NAME -C -r -p ubuntu@$REMOTE_IP:/home/ubuntu/.config/Epic/FactoryGame/Saved ./backup/home/ubuntu/.config/Epic/FactoryGame/Saved
 
 # PA: Titans
-scp -i ~/.ssh/[[KEY_NAME]] -C -r -p ubuntu@[[REMOTE_IP]]:/home/ubuntu/pa_titans/resources ./backup/home/ubuntu/pa_titans/resources
+scp -i ~/.ssh/$KEY_NAME -C -r -p ubuntu@$REMOTE_IP:/home/ubuntu/pa_titans ./backup/home/ubuntu/pa_titans
+```
+
+## Restore user file system
+
+```sh
+cd [[project_root]]
+scp -i ~/.ssh/$KEY_NAME -C -r -p ./backup/home/ubuntu/ksp ubuntu@$REMOTE_IP:~/ksp 
+scp -i ~/.ssh/$KEY_NAME -C -r -p ./backup/home/ubuntu/pa_titans ubuntu@$REMOTE_IP:~/pa_titans
+scp -i ~/.ssh/$KEY_NAME -C -r -p ./backup/home/ubuntu/.config/Epic/FactoryGame/Saved ubuntu@$REMOTE_IP:~/.config/Epic/FactoryGame/Saved
 ```
