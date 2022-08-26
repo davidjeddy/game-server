@@ -282,6 +282,7 @@ then
     then
         echo "INFO: Install of Satisfactory Dedicated Server via steamcmd"
         mkdir -p /home/ubuntu/.config/Epic/satisfactory
+        # NOTE The order of arguments is important when using steamcmd via automation.
         sudo -u ubuntu /usr/games/steamcmd \
             +force_install_dir /home/ubuntu/.config/Epic/satisfactory \
             +login anonymous \
@@ -302,7 +303,7 @@ then
         [Service]
             Environment=\"LD_LIBRARY_PATH=./linux64\"
             ExecStart=/home/ubuntu/.config/Epic/satisfactory/FactoryServer.sh
-            ExecStartPre=/usr/games/steamcmd +login anonymous +force_install_dir \"/home/ubuntu/.config/Epic/satisfactory\" +app_update 1690800 -beta public validate +quit
+            ExecStartPre=/usr/games/steamcmd +force_install_dir \"/home/ubuntu/.config/Epic/satisfactory\" +login anonymous +app_update 1690800 -beta public validate +quit
             Group=ubuntu
             KillSignal=SIGINT
             Restart=on-failure
