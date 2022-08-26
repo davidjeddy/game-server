@@ -32,4 +32,3 @@
 ## Bugs
 
 - KSP : DMP vessel ownership needs reset
-- PA : Titans is binding to locahost or 127.0.0.1, not the public interface.
