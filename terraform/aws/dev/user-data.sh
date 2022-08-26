@@ -4,6 +4,7 @@
 # Application activision toggle
 # -----
 
+ENABLE_FACTORIO=true
 ENABLE_KSP=true
 ENABLE_PA_TITANS=true
 ENABLE_PA_UPGRADE=true
@@ -24,6 +25,7 @@ REGION="${REGION}"
 # File system assignments
 # -----
 
+FACTORIO_FS_UUID="fbc93654-7cb1-46f5-86bc-a4a92e6bba10"
 KSP_FS_UUID="71ce6087-ec2e-4df1-857b-ab1c7888d75b"
 PA_TITANS_FS_UUID="4df99be4-b9b5-4394-ab47-ed92ee1c9252"
 SATISFACTORY_FS_UUID="a0a3e05f-3e49-49a8-94fa-b9c220720d07"
@@ -97,6 +99,67 @@ which mono
 # -----
 # Application install, update, configuration, and execution
 # -----
+
+# -----
+# Factorio (~/factorio)
+# -----
+
+curl -L https://www.factorio.com/get-download/1.1.61/headless/linux64 -o factorio_headless_x64_1.1.61.tar.xz
+
+cd /opt/
+
+tar -xJf /tmp/factorio.tar.xz
+
+factorio \
+    --start-server lanordie \
+    --create ./saves/newgame.zip
+
+if [[ $ENABLE_FACTORIO == true ]]
+then
+    echo "INFO: Mount Kerbal Space Program EBS volume"
+    mkdir -p /home/ubuntu/factorio
+    echo "UUID=fbc93654-7cb1-46f5-86bc-a4a92e6bba10 /home/ubuntu/factorio ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    tail /etc/fstab
+    mount -a
+
+    if [[ ! -f /home/ubuntu/factorio/bin/x64/factorio ]]
+    then
+        echo "INFO: Installing Factorio dedicated server"
+        curl -L https://www.factorio.com/get-download/1.1.61/headless/linux64 -o factorio_headless_x64_1.1.61.tar.xz
+        tar -xJf factorio_headless_x64_1.1.61.tar.xz
+        rm factorio_headless_x64_1.1.61.tar.xz
+        mkdir -p /home/ubuntu/factorio/saves
+        /home/ubuntu/factorio/bin/x64/factorio --create /home/ubuntu/factorio/saves/lanordie.zip
+    fi
+
+    echo "INFO: Resetting Factorio dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/factorio
+
+    if [[ ! -f "/etc/systemd/system/factorio.service" ]]
+    then
+        echo "INFO: Create system service for Factorio"
+        echo -e "\
+        [Unit]
+        Description=Factorio Dedicated Server service
+        After=network.target
+
+        [Service]
+        User=ubuntu
+        ExecStart=/home/ubuntu/factorio/bin/x64/factorio --start-server-load-latest --server-settings /home/ubuntu/factorio/data/server-settings.json --console-log /home/ubuntu/factorio/console.log
+        Restart=always
+
+        [Install]
+        WantedBy=multi-user.target" | tee "/etc/systemd/system/factorio.service"
+
+        sed -i 's/^ *//g' "/etc/systemd/system/factorio.service"
+
+        systemctl enable factorio.service --now
+        systemctl restart factorio.service
+    fi
+
+    echo "INFO: Factorio service status"
+    systemctl status factorio.service
+fi
 
 # -----
 # KSP (~/ksp)

@@ -29,3 +29,9 @@ Topics in a very loose order of priority.
   - Also, stop instance if no-one is connected for X minutes
 
 - Different Linux users per service
+
+- Add `fail2ban` OS package as the instance is public facing
+
+- Move EBS/KMS/Secret/SG/TF resources into a Terraform module to reduce duplication
+
+- Split user-data.sh into segments isolated in TF modules, merge and output via root TF module
