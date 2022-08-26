@@ -16,11 +16,12 @@
 
 ## Services
 
-| Name                 | Version  | Device  | Mount Point                 | System Service | Port               | Notes  |
-| -------------------- | -------- | ------- | --------------------------- | -------------- | ------------------ | -----: |
-| Kerbal Space Program | 1.12.2   | nvme2n1 | /home/ubuntu/ksp            | yes            | 6702               | Includes `Making History` and `Breaking Ground` expansions. Includes mods, see notice at login. |
-| PA : Titans          | 115958   | nvme3n1 | /home/ubuntu/pa_titans      | yes            | 20545              | |
-| Satisfactory         | Update 5 | nvme1n1 | /home/ubuntu/.config/Epic   | yes            | 7777, 15000, 15777 | |
+| Name                 | Version  | Mount Point                 | System Service | Port               | Notes  |
+| -------------------- | -------- | --------------------------- | -------------- | ------------------ | -----: |
+| Factorio ns          | 59839    | /home/ubuntu/factorio       | yes            | 34197              |  |
+| Kerbal Space Program | 1.12.2   | /home/ubuntu/ksp            | yes            | 6702               | Includes `Making History` and `Breaking Ground` expansions. Includes mods, see notice at login. |
+| PA:  Titans          | 115958   | /home/ubuntu/pa_titans      | yes            | 20545              | |
+| Satisfactory         | Update 5 | /home/ubuntu/.config/Epic   | yes            | 7777, 15000, 15777 | |
 
 ## Additional Documentation
 
