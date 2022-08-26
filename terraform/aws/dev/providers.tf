@@ -3,7 +3,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
 
-  # Always shows changes to apply
+  # This always shows changes to apply
   # https://github.com/hashicorp/terraform-provider-aws/issues/18311
   # default_tags {
   #   tags = var.tags
