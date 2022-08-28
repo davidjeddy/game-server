@@ -45,29 +45,29 @@ resource "aws_iam_role_policy" "game_server" {
 
   policy = <<EOF
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "kms:Decrypt",
-        "kms:Encrypt",
-        "kms:GetPublicKey"
-      ],
-      "Effect": "Allow",
-      "Resource": [
-        "arn:aws:kms:us-east-1:530589290119:key/8ec2a9ed-6dc6-41a9-baa6-f47b11d63890"
-      ]
-    },
-    {
-      "Action": [
-        "secretsmanager:GetSecretValue"
-      ],
-      "Effect": "Allow",
-      "Resource": [
-        "arn:aws:secretsmanager:us-east-1:530589290119:secret:gs/pa_titans-uops-0-ux4b-WYzVAB"
-      ]
-    }
-  ]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "kms:Decrypt",
+                "kms:Encrypt",
+                "kms:GetPublicKey"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "${aws_kms_key.pa_titans.arn}"
+            ]
+        },
+        {
+            "Action": [
+                "secretsmanager:GetSecretValue"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "${aws_secretsmanager_secret.pa_titans.arn}"
+            ]
+        }
+    ]
 }
 EOF
 }

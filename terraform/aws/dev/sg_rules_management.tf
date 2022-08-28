@@ -1,8 +1,8 @@
 
 #tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "egress" {
-  cidr_blocks       = local.source_cidrs
-  description       = "Satisfactory egress"
+  cidr_blocks       = var.source_cidr
+  description       = "General network traffic egress"
   from_port         = 0
   protocol          = -1
   security_group_id = aws_security_group.management.id

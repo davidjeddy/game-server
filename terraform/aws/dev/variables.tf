@@ -6,11 +6,6 @@ variable "base_ami" {
   type        = string
 }
 
-variable "key_name" {
-  type        = string
-  description = "SSH PEM key pair name"
-}
-
 variable "instance_type" {
   default     = "m5.large"
   description = "Type and size of EC2 instance"
@@ -18,11 +13,6 @@ variable "instance_type" {
 }
 
 ## Generic
-
-variable "aws_acct_id" {
-  description = "AWS account ID"
-  type        = number
-}
 
 variable "delete_timeout" {
   default     = 7
@@ -32,7 +22,7 @@ variable "delete_timeout" {
 
 variable "name" {
   default     = "game-server"
-  description = "Project name"
+  description = "(required) The application or project name"
   type        = string
 }
 
@@ -41,6 +31,7 @@ variable "region" {
   type        = string
   description = "(optional) describe your variable"
 }
+
 
 variable "stage" {
   description = "The stage; aka environment"
@@ -54,16 +45,36 @@ variable "delimiter" {
   default     = "-"
 }
 
+variable "source_cidr" {
+  default     = ["0.0.0.0/0"]
+  type        = list(any)
+  description = "(required) CIDR ranges to allow traffic from"
+}
+
+# No defaults
+
+variable "key_name" {
+  type        = string
+  description = "SSH PEM key pair name"
+}
+
+variable "access_key" {
+  type        = string
+  description = "(required) AWS API access key id"
+}
+
+
+variable "aws_acct_id" {
+  description = "AWS account ID"
+  type        = number
+}
+
 variable "tags" {
   description = "Default shared tags"
   type        = map(any)
 }
 
-### Route 53
-
-variable "route53_zone" {
-  description = "DNS zone"
+variable "secret_key" {
   type        = string
+  description = "(required) AWS API secret key id"
 }
-
-### Delete

@@ -1,25 +1,25 @@
 resource "aws_iam_role" "game_server_dlm" {
   name = join(var.delimiter, [var.name, "dlm", var.stage, random_string.root.id])
 
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "sts:AssumeRole",
+            "Principal": {
+                "Service": "dlm.amazonaws.com"
+            },
+            "Effect": "Allow"
+        }
+    ]
+}
+EOF
+
   tags = merge(
     var.tags,
     { Name = join(var.delimiter, [var.name, "dlm", var.stage, random_string.root.id]) }
   )
-
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "dlm.amazonaws.com"
-      },
-      "Effect": "Allow"
-    }
-  ]
-}
-EOF
 }
 
 #tfsec:ignore:aws-iam-no-policy-wildcards
@@ -29,28 +29,28 @@ resource "aws_iam_role_policy" "game_server_dlm" {
 
   policy = <<EOF
 {
-   "Version": "2012-10-17",
-   "Statement": [
-      {
-         "Effect": "Allow",
-         "Action": [
-            "ec2:CreateSnapshot",
-            "ec2:CreateSnapshots",
-            "ec2:DeleteSnapshot",
-            "ec2:DescribeInstances",
-            "ec2:DescribeVolumes",
-            "ec2:DescribeSnapshots"
-         ],
-         "Resource": "arn:aws:ec2:us-east-1:530589290119::snapshot/*"
-      },
-      {
-         "Effect": "Allow",
-         "Action": [
-            "ec2:CreateTags"
-         ],
-         "Resource": "arn:aws:ec2:us-east-1:530589290119::snapshot/*"
-      }
-   ]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateSnapshot",
+                "ec2:CreateSnapshots",
+                "ec2:DeleteSnapshot",
+                "ec2:DescribeInstances",
+                "ec2:DescribeVolumes",
+                "ec2:DescribeSnapshots"
+            ],
+            "Resource": "arn:aws:ec2:us-east-1:530589290119::snapshot/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateTags"
+            ],
+            "Resource": "arn:aws:ec2:us-east-1:530589290119::snapshot/*"
+        }
+    ]
 }
 EOF
 }
@@ -85,7 +85,7 @@ resource "aws_dlm_lifecycle_policy" "game_server_dlm" {
         SnapshotCreator = "DLM"
       }
 
-      copy_tags = false
+      copy_tags = true
     }
 
     target_tags = {

@@ -1,6 +1,6 @@
 #tfsec:ignore:aws-vpc-no-public-ingress-sgr
 resource "aws_security_group_rule" "pa_titans_0" {
-  cidr_blocks       = local.source_cidrs
+  cidr_blocks       = var.source_cidr
   description       = "Planetary Annihilation : Titans"
   from_port         = 20545
   protocol          = "tcp"
