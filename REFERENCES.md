@@ -9,6 +9,13 @@
 
 - [https://www.cyberciti.biz/faq/linux-finding-using-uuids-to-update-fstab/](https://www.cyberciti.biz/faq/linux-finding-using-uuids-to-update-fstab/)
 
+## Factorio
+
+- [https://gist.github.com/othyn/e1287fd937c1e267cdbcef07227ed48c](https://gist.github.com/othyn/e1287fd937c1e267cdbcef07227ed48c)
+- [https://github.com/Bisa/factorio-init](https://github.com/Bisa/factorio-init)
+- [https://wiki.factorio.com/Multiplayer](https://wiki.factorio.com/Multiplayer)
+- [https://www.reddit.com/r/factorio/comments/6qo2ge/guide_setting_up_an_ubuntu_headless_server/](https://www.reddit.com/r/factorio/comments/6qo2ge/guide_setting_up_an_ubuntu_headless_server/)
+
 ## Kerbal Space Program
 
 - [https://github.com/godarklight/DarkMultiPlayer](https://github.com/godarklight/DarkMultiPlayer)

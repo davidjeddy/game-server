@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.18
+
+- Added Factorio service
+
 ## 0.0.17
 
 - Replace static ARN with dynamic sources in [iam.tf](terraform/aws/dev/iam.tf)

@@ -2,30 +2,33 @@
 
 Topics in a very loose order of priority.
 
-- Add Factorio
-  - https://wiki.factorio.com/Multiplayer
-  - https://gist.github.com/othyn/e1287fd937c1e267cdbcef07227ed48c
-  - https://github.com/Bisa/factorio-init
+## Infra/AWS/TF
 
+- Generate SSH key pair for EC2 instance at creation, not manually
+- Load balancer in front of EC2 instances for better traffic and routing management
+  - Bastion host for non application ingress
+- API Gateway + Lambda to start instance if stopped
+  - Also, stop instance if no-one is connected for X minutes
 - ADD Logging
   - CloudWatch logging for storage
     - retention: 1yr
   - logrotate to contain disk usage
     - 1 day on the machine
     - no compressed archives
-
 - Build base image using Packer
-  - AMI configuration
-  - Installed services
-  - ready-to-go
+  - system packages
+  - shared resources (steamcmd/golang)
 
-- Generate SSH key pair for EC2 instance at creation, not manually
+## OS / system
 
-- Bastion host for non application ingress
+- Add `fail2ban` OS package as the instance is public facing
 
-- Load balancer in front of EC2 instances for better traffic and routing management
+- Services should be Terraform modules
+  - Move EBS/KMS/Secret/SG/etc
+  - Split user-data.sh into segments isolated in TF modules
+    - merge and output via root TF module
+    - Different Linux users per service
 
-- API Gateway + Lambda to start instance if stopped
-  - Also, stop instance if no-one is connected for X minutes
+## Services
 
-- Different Linux users per service
+- Can KSP : DMP vessels be recovered?

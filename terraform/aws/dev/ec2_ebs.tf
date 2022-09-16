@@ -1,6 +1,40 @@
 # Pattern: [game_name]-[version_from_vendor]-[4_character_random_string]-[counter]-[tf_deployment_random_string]
 
 # -----
+# Factorio (/home/ubuntu/factorio)
+#-----
+
+resource "aws_volume_attachment" "factorio" {
+  device_name = "/dev/sdi"
+  instance_id = aws_instance.this.id
+  volume_id   = aws_ebs_volume.factorio.id
+}
+
+resource "aws_ebs_volume" "factorio" {
+  availability_zone = module.vpc.azs[0]
+  encrypted         = true
+  kms_key_id        = aws_kms_key.factorio.arn
+  size              = 32
+
+  tags = merge(
+    var.tags,
+    { Name = join(var.delimiter, ["factorio", "59839", "wube", random_string.factorio.id, 0, random_string.root.id]) },
+    { Snapshot = true }, # for Data Lifecycle Management policy
+  )
+}
+
+resource "aws_ebs_snapshot" "factorio" {
+  description = aws_ebs_volume.factorio.id
+  volume_id   = aws_ebs_volume.factorio.id
+
+  tags = merge(
+    var.tags,
+    { Name = join(var.delimiter, ["factorio", "59839", "wube", random_string.factorio.id, 0, random_string.root.id]) }
+  )
+}
+
+
+# -----
 # Kerbal Space Program (KSP) (/home/ubuntu/ksp)
 #-----
 

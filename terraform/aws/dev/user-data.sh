@@ -4,10 +4,16 @@
 # Application activision toggle
 # -----
 
+ENABLE_FACTORIO=true
 ENABLE_KSP=true
 ENABLE_PA_TITANS=true
-ENABLE_PA_UPGRADE=true
 ENABLE_SATISFACTORY=true
+
+# -----
+# Application specific VARs
+# -----
+
+TITANS_UPGRADE=true
 
 # -----
 # K/V's passed in from ec2_instance.tf
@@ -24,6 +30,7 @@ REGION="${REGION}"
 # File system assignments
 # -----
 
+FACTORIO_FS_UUID="fbc93654-7cb1-46f5-86bc-a4a92e6bba10"
 KSP_FS_UUID="71ce6087-ec2e-4df1-857b-ab1c7888d75b"
 PA_TITANS_FS_UUID="4df99be4-b9b5-4394-ab47-ed92ee1c9252"
 SATISFACTORY_FS_UUID="a0a3e05f-3e49-49a8-94fa-b9c220720d07"
@@ -74,7 +81,7 @@ which jq
 
 # -----
 # Service system package requirements
-#-----
+# -----
 
 echo "INFO: Install Golang language and runtime"
 echo steam steam/question select "I AGREE" | sudo -u root debconf-set-selections
@@ -97,6 +104,63 @@ which mono
 # -----
 # Application install, update, configuration, and execution
 # -----
+
+# -----
+# Factorio (~/factorio)
+# -----
+
+if [[ $ENABLE_FACTORIO == true ]]
+then
+    echo "INFO: Mount Kerbal Space Program EBS volume"
+    mkdir -p /home/ubuntu/factorio
+    echo "UUID=$FACTORIO_FS_UUID /home/ubuntu/factorio ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    tail /etc/fstab
+    mount -a
+
+    if [[ ! -f /home/ubuntu/factorio/bin/x64/factorio ]]
+    then
+        echo "INFO: Installing Factorio dedicated server"
+        curl -L https://www.factorio.com/get-download/1.1.61/headless/linux64 -o factorio_headless_x64_1.1.61.tar.xz
+        tar -xJf factorio_headless_x64_1.1.61.tar.xz
+        rm factorio_headless_x64_1.1.61.tar.xz
+        mkdir -p /home/ubuntu/factorio/saves
+        /home/ubuntu/factorio/bin/x64/factorio --create /home/ubuntu/factorio/saves/lanordie.zip
+    fi
+
+    echo "INFO: Resetting Factorio dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/factorio
+
+    if [[ ! -f "/etc/systemd/system/factorio.service" ]]
+    then
+        echo "INFO: Create system service for Factorio"
+        echo -e "\
+        [Unit]
+        Description=Factorio Dedicated Server service
+        After=network.target
+
+        [Service]
+        ExecStart=/home/ubuntu/factorio/bin/x64/factorio --start-server-load-latest --server-settings /home/ubuntu/factorio/data/server-settings.json --console-log /home/ubuntu/factorio/console.log
+        Group=ubuntu
+        KillSignal=SIGINT
+        Restart=always
+        Restart=on-failure
+        StandardOutput=journal
+        User=ubuntu
+        User=ubuntu
+        WorkingDirectory==/home/ubuntu/factorio
+
+        [Install]
+        WantedBy=multi-user.target" | tee "/etc/systemd/system/factorio.service"
+
+        sed -i 's/^ *//g' "/etc/systemd/system/factorio.service"
+
+        systemctl enable factorio.service --now
+        systemctl restart factorio.service
+    fi
+
+    echo "INFO: Factorio service status"
+    systemctl status factorio.service
+fi
 
 # -----
 # KSP (~/ksp)
@@ -164,6 +228,7 @@ then
 
     echo "INFO: Resetting Planetary Annihilation : Titans dir ownership"
     chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
+    chown ubuntu:ubuntu -R /home/ubuntu/.local
 
     echo "INFO: Planetary Annihilation : Titans system packages"
     apt update -y
@@ -181,7 +246,7 @@ then
         tar -xf /home/ubuntu/pa_titans/resources/PA_Linux_115872.tar.bz2 -C /home/ubuntu/pa_titans/stable --verbose
     fi
 
-    if [[ $ENABLE_PA_UPGRADE == true ]]
+    if [[ $TITANS_UPGRADE == true ]]
     then
         echo "INFO: Patching Planetary Annihilation : Titans from stable branch"
         mkdir -p /home/ubuntu/.cache
@@ -269,7 +334,7 @@ then
     mount -a
 
     echo "INFO: Resetting Satisfactory dir ownership"
-    chown ubuntu:ubuntu -R /home/ubuntu/.config/Epic
+    chown ubuntu:ubuntu -R /home/ubuntu/.config
 
     echo "INFO: Install Satisfactory system packages" 
     apt update -y
@@ -303,7 +368,6 @@ then
         [Service]
             Environment=\"LD_LIBRARY_PATH=./linux64\"
             ExecStart=/home/ubuntu/.config/Epic/satisfactory/FactoryServer.sh
-            ExecStartPre=/usr/games/steamcmd +force_install_dir \"/home/ubuntu/.config/Epic/satisfactory\" +login anonymous +app_update 1690800 -beta public validate +quit
             Group=ubuntu
             KillSignal=SIGINT
             Restart=on-failure
