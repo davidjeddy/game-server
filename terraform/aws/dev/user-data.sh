@@ -147,7 +147,7 @@ then
         StandardOutput=journal
         User=ubuntu
         User=ubuntu
-        WorkingDirectory==/home/ubuntu/factorio
+        WorkingDirectory=/home/ubuntu/factorio
 
         [Install]
         WantedBy=multi-user.target" | tee "/etc/systemd/system/factorio.service"

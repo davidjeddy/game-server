@@ -4,7 +4,9 @@ Topics in a very loose order of priority.
 
 ## Infra/AWS/TF
 
-- Generate SSH key pair for EC2 instance at creation, not manually
+- Build base image using Packer
+  - system packages
+  - shared resources (steamcmd/golang)
 - Load balancer in front of EC2 instances for better traffic and routing management
   - Bastion host for non application ingress
 - API Gateway + Lambda to start instance if stopped
@@ -15,9 +17,9 @@ Topics in a very loose order of priority.
   - logrotate to contain disk usage
     - 1 day on the machine
     - no compressed archives
-- Build base image using Packer
-  - system packages
-  - shared resources (steamcmd/golang)
+- Fix DLM policy and permissions to enable daily backup snapshots
+- Remove default VPC via Cloud Posse provider resource
+- Dump SSH, replace with SSM
 
 ## OS / system
 
@@ -28,6 +30,7 @@ Topics in a very loose order of priority.
   - Split user-data.sh into segments isolated in TF modules
     - merge and output via root TF module
     - Different Linux users per service
+- Iterate on resources and config logic the reduce duplication; DRY it out
 
 ## Services
 
