@@ -53,11 +53,6 @@ variable "source_cidr" {
 
 # No defaults
 
-variable "key_name" {
-  type        = string
-  description = "SSH PEM key pair name"
-}
-
 variable "access_key" {
   type        = string
   description = "(required) AWS API access key id"

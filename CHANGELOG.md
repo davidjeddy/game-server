@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.19
+
+- EC2 SSH pem key lifecycle now tied to instance lifecycle
+- ADD Packer to build base AMI
+- ADD DLM to manager snapshot lifecycle
+
 ## 0.0.18
 
 - Added Factorio service
