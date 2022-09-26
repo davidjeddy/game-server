@@ -1,11 +1,4 @@
 ## EC2
-
-variable "base_ami" {
-  default     = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20220118"
-  description = "Base machine image to use for the server"
-  type        = string
-}
-
 variable "instance_type" {
   default     = "m5.large"
   description = "Type and size of EC2 instance"

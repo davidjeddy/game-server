@@ -1,17 +1,16 @@
-data "aws_ami" "ubuntu" {
-  most_recent = false
+data "aws_ami" "this" {
+  most_recent = true
 
   filter {
     name = "name"
 
     values = [
-      var.base_ami
+      join(var.delimiter, [var.name, var.stage])
     ]
   }
 
-  # Canonical AWS account id
   owners = [
-    "099720109477"
+    var.aws_acct_id
   ]
 }
 

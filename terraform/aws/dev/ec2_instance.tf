@@ -1,5 +1,5 @@
 resource "aws_instance" "this" {
-  ami                  = data.aws_ami.ubuntu.id
+  ami                  = data.aws_ami.this.id
   availability_zone    = module.vpc.azs[0]
   ebs_optimized        = true
   iam_instance_profile = aws_iam_instance_profile.game_server.name
