@@ -22,3 +22,7 @@ output "aws_secretsmanager_secret_pa_titans" {
   description = "Credentials to authenticate with Planetary Annihilation servers, enabled downloading and patching"
   value       = aws_secretsmanager_secret.pa_titans.arn
 }
+
+output "tags" {
+  value = var.tags
+}

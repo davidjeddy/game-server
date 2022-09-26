@@ -7,6 +7,7 @@ Topics in a very loose order of priority.
 - Build base image using Packer
   - system packages
   - shared resources (steamcmd/golang)
+- Add Satisfactory Experimental as atomic service
 - Load balancer in front of EC2 instances for better traffic and routing management
   - Bastion host for non application ingress
 - API Gateway + Lambda to start instance if stopped

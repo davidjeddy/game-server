@@ -43,65 +43,6 @@ set -e
 exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
 
 # -----
-# Server wide configurations
-# -----
-
-echo "INFO: Starting..."
-
-echo "INFO: Configure journal log limiting"
-echo "[Journal]
-/RuntimeMaxUse=4G
-SystemMaxUse=4G" > /etc/systemd/journald.conf
-
-# -----
-# Server wide packages install and configuration
-# -----
-
-echo "INFO: Install system packages"
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
-
-apt update -y
-apt install -y \
-    apt-transport-https \
-    awscli \
-    ca-certificates \
-    dirmngr \
-    gnupg \
-    iotop \
-    jq \
-    software-properties-common
-apt autoremove
-
-echo "INFO: System package location and versions"
-aws --version
-jq --version
-which aws
-which jq
-
-# -----
-# Service system package requirements
-# -----
-
-echo "INFO: Install Golang language and runtime"
-echo steam steam/question select "I AGREE" | sudo -u root debconf-set-selections
-echo steam steam/license note "" | sudo -u root debconf-set-selections
-dpkg --add-architecture i386
-
-apt update -y
-apt install -y \
-    golang \
-    mono-complete \
-    steamcmd
-apt autoremove
-
-echo "INFO: Service system package location and versions"
-go version
-mono --version
-which go
-which mono
-
-# -----
 # Application install, update, configuration, and execution
 # -----
 
@@ -230,15 +171,6 @@ then
     chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
     chown ubuntu:ubuntu -R /home/ubuntu/.local
 
-    echo "INFO: Planetary Annihilation : Titans system packages"
-    apt update -y
-    apt install -y \
-        libgl1-mesa-glx \
-        libsdl2-dev \
-        libsm6 \
-        libxext6
-    apt autoremove
-
     if [[ ! -f /home/ubuntu/pa_titans/PA/stable/server ]]
     then
         echo "INFO: Unpack Planetary Annihilation : Titans archive"
@@ -335,13 +267,6 @@ then
 
     echo "INFO: Resetting Satisfactory dir ownership"
     chown ubuntu:ubuntu -R /home/ubuntu/.config
-
-    echo "INFO: Install Satisfactory system packages" 
-    apt update -y
-    apt install -y \
-        lib32gcc1 \
-        libsdl2-2.0-0
-    apt autoremove
 
     if [[ ! -d /home/ubuntu/.config/Epic/satisfactory ]]
     then

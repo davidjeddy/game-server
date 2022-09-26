@@ -157,3 +157,11 @@ scp -i ~/.ssh/$KEY_NAME -C -r -p ./backup/home/ubuntu/ksp ubuntu@$REMOTE_IP:~/ks
 scp -i ~/.ssh/$KEY_NAME -C -r -p ./backup/home/ubuntu/pa_titans ubuntu@$REMOTE_IP:~/pa_titans
 scp -i ~/.ssh/$KEY_NAME -C -r -p ./backup/home/ubuntu/.config/Epic/FactoryGame/Saved ubuntu@$REMOTE_IP:~/.config/Epic/FactoryGame/Saved
 ```
+
+## Building AMI with Packer
+
+NOTE: Uses default VPC for simplicity and to decouple from the run time VPC
+
+```sh
+${PROJECT HOME}/libs/packer-build.sh dev us-east-1
+```
