@@ -128,7 +128,7 @@ systemctl start satisfactory.service
 - Create KMS CMK resource
 - Create Security Group rule
 - Create EBS block store
-- Update ./packer/user-data.sh
+- Update ./packer/[vendor]/[env]/user-data.sh
   - mount drive
   - install application
   - create/start system service

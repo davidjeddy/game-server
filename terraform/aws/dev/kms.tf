@@ -115,5 +115,5 @@ resource "aws_kms_key" "satisfactory_experimental" {
 
 resource "aws_kms_alias" "_experimental" {
   name          = "alias/gs/_experimental"
-  target_key_id = aws_kms_key._experimental.key_id
+  target_key_id = aws_kms_key.satisfactory_experimental.key_id
 }

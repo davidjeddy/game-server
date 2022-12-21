@@ -4,10 +4,8 @@ Topics in a very loose order of priority.
 
 ## Infra/AWS/TF
 
-- Build base image using Packer
-  - system packages
-  - shared resources (steamcmd/golang)
-- Add Satisfactory Experimental as atomic service
+FIX: user-data.sh is over the 16k limit, how to deal with this now?
+
 - Load balancer in front of EC2 instances for better traffic and routing management
   - Bastion host for non application ingress
 - API Gateway + Lambda to start instance if stopped

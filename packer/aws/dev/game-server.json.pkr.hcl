@@ -13,9 +13,9 @@ data "amazon-ami" "this" {
   }
   most_recent             = true
   owners                  = ["099720109477"]
-  profile                 = "game_server"
+  profile                 = var.aws_profile
   region                  = var.region
-  shared_credentials_file = "~/.aws/credentials"
+  shared_credentials_file = var.shared_credentials_file
 }
 
 source "amazon-ebs" "this" {
@@ -24,15 +24,13 @@ source "amazon-ebs" "this" {
   associate_public_ip_address               = true
   ebs_optimized                             = true
   force_delete_snapshot                     = true
-  // force_deregister                          = true
   instance_type                             = "m5.large"
-  profile                                   = "game_server"
+  profile                                   = var.aws_profile
   region                                    = var.region
-  shared_credentials_file                   = "~/.aws/credentials"
+  shared_credentials_file                   = var.shared_credentials_file
   shutdown_behavior                         = "terminate"
   source_ami                                = data.amazon-ami.this.id
   ssh_username                              = "ubuntu"
-  user_data_file                            = "./user-data.sh"
   temporary_security_group_source_public_ip = true
 
   run_tags = {
@@ -44,7 +42,12 @@ source "amazon-ebs" "this" {
 
 variable "aws_profile" {
   type    = string
-  default = "game-server"
+  default = "lanordie_game_server"
+}
+
+variable "shared_credentials_file" {
+  type = string
+  default = "~/.aws/credentials"
 }
 
 variable "server_name" {

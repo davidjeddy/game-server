@@ -1,6 +1,5 @@
-access_key  = ""
 aws_acct_id = ""
-secret_key  = ""
+key_name = ""
 
 tags = {
   Owner   = ""
