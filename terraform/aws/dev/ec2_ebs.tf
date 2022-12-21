@@ -18,7 +18,7 @@ resource "aws_ebs_volume" "factorio" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["factorio", "59839", "wube", random_string.factorio.id, 0, random_string.root.id]) },
+    { Name = join(var.delimiter, ["factorio", "wube", random_string.factorio.id, 0, random_string.root.id]) },
     { Snapshot = true }, # for Data Lifecycle Management policy
   )
 }
@@ -29,7 +29,7 @@ resource "aws_ebs_snapshot" "factorio" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["factorio", "59839", "wube", random_string.factorio.id, 0, random_string.root.id]) }
+    { Name = join(var.delimiter, ["factorio", "wube", random_string.factorio.id, 0, random_string.root.id]) }
   )
 }
 
@@ -52,7 +52,7 @@ resource "aws_ebs_volume" "ksp" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["ksp", "1.x", "squad", random_string.ksp.id, 0, random_string.root.id]) },
+    { Name = join(var.delimiter, ["ksp","squad", random_string.ksp.id, 0, random_string.root.id]) },
     { Snapshot = true }, # for Data Lifecycle Management policy
   )
 }
@@ -63,7 +63,7 @@ resource "aws_ebs_snapshot" "ksp" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["ksp", "1.x", "squad", random_string.ksp.id, 0, random_string.root.id]) }
+    { Name = join(var.delimiter, ["ksp","squad", random_string.ksp.id, 0, random_string.root.id]) }
   )
 }
 
@@ -85,7 +85,7 @@ resource "aws_ebs_volume" "pa_titans" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["pa_titans", "115958", "squad", random_string.pa_titans.id, 0, random_string.root.id]) },
+    { Name = join(var.delimiter, ["pa_titans", "pa", random_string.pa_titans.id, 0, random_string.root.id]) },
     { Snapshot = true }, # for Data Lifecycle Management policy
   )
 }
@@ -96,12 +96,12 @@ resource "aws_ebs_snapshot" "pa_titans" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["pa_titans", "115958", "squad", random_string.pa_titans.id, 0, random_string.root.id]) }
+    { Name = join(var.delimiter, ["pa_titans", "pa", random_string.pa_titans.id, 0, random_string.root.id]) }
   )
 }
 
 # -----
-# Satisfactory (/home/ubuntu/.config/Epic)
+# Satisfactory (/home/ubuntu/satisfactory)
 #-----
 
 resource "aws_volume_attachment" "satisfactory" {
@@ -118,7 +118,7 @@ resource "aws_ebs_volume" "satisfactory" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["satisfactory", "update5", "coffeestainstudios", random_string.satisfactory.id, 0, random_string.root.id]) },
+    { Name = join(var.delimiter, ["satisfactory", "coffeestainstudios", random_string.satisfactory.id, 0, random_string.root.id]) },
     { Snapshot = true }, # for Data Lifecycle Management policy
   )
 }
@@ -129,6 +129,39 @@ resource "aws_ebs_snapshot" "satisfactory" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["satisfactory", "update5", "coffeestainstudios", random_string.satisfactory.id, 0, random_string.root.id]) }
+    { Name = join(var.delimiter, ["satisfactory", "coffeestainstudios", random_string.satisfactory.id, 0, random_string.root.id]) }
+  )
+}
+
+# -----
+# Satisfactory Experimental (/home/ubuntu/satisfactory_experimental)
+#-----
+
+resource "aws_volume_attachment" "satisfactory_experimental" {
+  device_name = "/dev/sdh"
+  instance_id = aws_instance.this.id
+  volume_id   = aws_ebs_volume.satisfactory_experimental.id
+}
+
+resource "aws_ebs_volume" "satisfactory_experimental" {
+  availability_zone = module.vpc.azs[0]
+  encrypted         = true
+  kms_key_id        = aws_kms_key.satisfactory_experimental.arn
+  size              = 32
+
+  tags = merge(
+    var.tags,
+    { Name = join(var.delimiter, ["satisfactory", "experimental","coffeestainstudios", random_string.satisfactory.id, 0, random_string.root.id]) },
+    { Snapshot = true }, # for Data Lifecycle Management policy
+  )
+}
+
+resource "aws_ebs_snapshot" "satisfactory_experimental" {
+  description = aws_ebs_volume.satisfactory_experimental.id
+  volume_id   = aws_ebs_volume.satisfactory_experimental.id
+
+  tags = merge(
+    var.tags,
+    { Name = join(var.delimiter, ["satisfactory", "experimental", "coffeestainstudios", random_string.satisfactory.id, 0, random_string.root.id]) }
   )
 }

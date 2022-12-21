@@ -28,3 +28,9 @@ resource "random_string" "satisfactory" {
   special = false
   upper   = false
 }
+
+resource "random_string" "satisfactory_experimental" {
+  length  = 4
+  special = false
+  upper   = false
+}

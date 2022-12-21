@@ -20,11 +20,11 @@ data "amazon-ami" "this" {
 
 source "amazon-ebs" "this" {
   ami_description                           = "Game Server AMI for LAN or DIE."
-  ami_name                                  = "game-server-${var.env}"
+  ami_name                                  = "${var.server_name}-${formatdate("YYYYMMDDhhmmss", timestamp())}-${var.env}"
   associate_public_ip_address               = true
   ebs_optimized                             = true
   force_delete_snapshot                     = true
-  force_deregister                          = true
+  // force_deregister                          = true
   instance_type                             = "m5.large"
   profile                                   = "game_server"
   region                                    = var.region
@@ -33,12 +33,21 @@ source "amazon-ebs" "this" {
   source_ami                                = data.amazon-ami.this.id
   ssh_username                              = "ubuntu"
   user_data_file                            = "./user-data.sh"
-  # temporary_security_group_source_public_ip = true
+  temporary_security_group_source_public_ip = true
+
+  run_tags = {
+    "Name" = "${var.server_name}-${formatdate("YYYYMMDDhhmmss", timestamp())}-${var.env}"
+  }
 }
 
 # variables
 
 variable "aws_profile" {
+  type    = string
+  default = "game-server"
+}
+
+variable "server_name" {
   type    = string
   default = "game-server"
 }

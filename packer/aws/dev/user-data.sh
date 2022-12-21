@@ -8,6 +8,7 @@ ENABLE_FACTORIO=true
 ENABLE_KSP=true
 ENABLE_PA_TITANS=true
 ENABLE_SATISFACTORY=true
+ENABLE_SATISFACTORY_EXPERIMENTAL=true
 
 # -----
 # Application specific VARs
@@ -34,6 +35,7 @@ FACTORIO_FS_UUID="fbc93654-7cb1-46f5-86bc-a4a92e6bba10"
 KSP_FS_UUID="71ce6087-ec2e-4df1-857b-ab1c7888d75b"
 PA_TITANS_FS_UUID="4df99be4-b9b5-4394-ab47-ed92ee1c9252"
 SATISFACTORY_FS_UUID="a0a3e05f-3e49-49a8-94fa-b9c220720d07"
+SATISFACTORY_EXPERIMENTAL_FS_UUID=""
 
 # -----
 # System configuration
@@ -259,22 +261,22 @@ fi
 
 if [[ $ENABLE_SATISFACTORY == true ]]
 then
-    echo "INFO: Mount Epic EBS volume"
-    mkdir -p /home/ubuntu/.config/Epic
-    echo "UUID=$SATISFACTORY_FS_UUID /home/ubuntu/.config/Epic ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    echo "INFO: Mount Satisfactory EBS volume"
+    mkdir -p /home/ubuntu/satisfactory
+    echo "UUID=$SATISFACTORY_FS_UUID /home/ubuntu/satisfactory ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
     tail -10 /etc/fstab
     mount -a
 
     echo "INFO: Resetting Satisfactory dir ownership"
     chown ubuntu:ubuntu -R /home/ubuntu/.config
 
-    if [[ ! -d /home/ubuntu/.config/Epic/satisfactory ]]
+    if [[ ! -d /home/ubuntu/satisfactory/satisfactory ]]
     then
         echo "INFO: Install of Satisfactory Dedicated Server via steamcmd"
-        mkdir -p /home/ubuntu/.config/Epic/satisfactory
+        mkdir -p /home/ubuntu/satisfactory/satisfactory
         # NOTE The order of arguments is important when using steamcmd via automation.
         sudo -u ubuntu /usr/games/steamcmd \
-            +force_install_dir /home/ubuntu/.config/Epic/satisfactory \
+            +force_install_dir /home/ubuntu/satisfactory/satisfactory \
             +login anonymous \
             +app_update 1690800 \
             -beta public validate \
@@ -292,13 +294,13 @@ then
 
         [Service]
             Environment=\"LD_LIBRARY_PATH=./linux64\"
-            ExecStart=/home/ubuntu/.config/Epic/satisfactory/FactoryServer.sh
+            ExecStart=/home/ubuntu/satisfactory/satisfactory/FactoryServer.sh
             Group=ubuntu
             KillSignal=SIGINT
             Restart=on-failure
             StandardOutput=journal
             User=ubuntu
-            WorkingDirectory=/home/ubuntu/.config/Epic/satisfactory
+            WorkingDirectory=/home/ubuntu/satisfactory/satisfactory
 
         [Install]
             WantedBy=multi-user.target" | tee "/etc/systemd/system/satisfactory.service"
@@ -312,5 +314,68 @@ then
     echo "INFO: Satisfactory service status"
     systemctl status satisfactory.service
 fi
+
+# -----
+# Satisfactory Experimental (~/.config/Epic/satisfactory_experimental)
+# -----
+
+if [[ $ENABLE_SATISFACTORY_EXPERIMENTAL == true ]]
+then
+    echo "INFO: Mount Satisfactory Experimental EBS volume"
+    mkdir -p /home/ubuntu/satisfactory_experimental
+    echo "UUID=$SATISFACTORY_EXPERIMENTAL_FS_UUID /home/ubuntu/satisfactory_experimental ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+    tail -10 /etc/fstab
+    mount -a
+
+    echo "INFO: Resetting Satisfactory Experimental dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/.config
+
+    if [[ ! -d /home/ubuntu/satisfactory_experimental ]]
+    then
+        echo "INFO: Install of Satisfactory Experimental Dedicated Server via steamcmd"
+        mkdir -p /home/ubuntu/satisfactory/satisfactory_experimental
+        # NOTE The order of arguments is important when using steamcmd via automation.
+        sudo -u ubuntu /usr/games/steamcmd \
+            +force_install_dir /home/ubuntu/satisfactory_experimenta \
+            +login anonymous \
+            +app_update 1690800 \
+            -beta experimental validate \
+            +quit
+    fi
+
+    if [[ ! -f "/etc/systemd/system/satisfactory_experimental.service" ]]
+    then
+        echo "INFO: Create system service for Satisfactory Experimental"
+        echo -e "\
+        [Unit]
+            After=syslog.target network.target nss-lookup.target network-online.target
+            Description=Satisfactory Experimental dedicated server
+            Wants=network-online.target
+
+        [Service]
+            Environment=\"LD_LIBRARY_PATH=./linux64\"
+            ExecStart=/home/ubuntu/satisfactory_experimental/FactoryServer.sh
+            Group=ubuntu
+            KillSignal=SIGINT
+            Restart=on-failure
+            StandardOutput=journal
+            User=ubuntu
+            WorkingDirectory=/home/ubuntu/satisfactory_experimental
+
+        [Install]
+            WantedBy=multi-user.target" | tee "/etc/systemd/system/satisfactory_experimental.service"
+
+        sed -i 's/^ *//g' "/etc/systemd/system/satisfactory_experimental.service"
+
+        systemctl enable satisfactory_experimental.service --now
+        systemctl restart satisfactory_experimental.service
+    fi
+
+    echo "INFO: Satisfactory Experimental service status"
+    systemctl status satisfactory_experimental.service
+fi
+
+# create cron job to update and restart services once a week
+
 
 echo "INFO: ...done."
