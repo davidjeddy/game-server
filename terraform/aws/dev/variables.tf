@@ -46,12 +46,6 @@ variable "source_cidr" {
 
 # No defaults
 
-variable "access_key" {
-  type        = string
-  description = "(required) AWS API access key id"
-}
-
-
 variable "aws_acct_id" {
   description = "AWS account ID"
   type        = number
@@ -62,7 +56,7 @@ variable "tags" {
   type        = map(any)
 }
 
-variable "secret_key" {
+variable "key_name" {
   type        = string
-  description = "(required) AWS API secret key id"
+  description = "(required) Name prefix for the SSH key pair."
 }

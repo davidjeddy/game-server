@@ -1,3 +1,22 @@
+Content-Type: multipart/mixed; boundary="//"
+MIME-Version: 1.0
+
+--//
+Content-Type: text/cloud-config; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="cloud-config.txt"
+
+#cloud-config
+cloud_final_modules:
+- [scripts-user, always]
+
+--//
+Content-Type: text/x-shellscript; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="userdata.txt"
+
 #!/bin/bash
 
 # -----
@@ -22,7 +41,7 @@ TITANS_UPGRADE=true
 # -----
 
 # shellcheck disable=SC2269
-PA_TITAN_CRED_ARN="${PA_TITAN_CRED_ARN}"\
+PA_TITAN_CRED_ARN="${PA_TITAN_CRED_ARN}"
 
 # shellcheck disable=SC2269
 REGION="${REGION}"
@@ -377,5 +396,5 @@ fi
 
 # create cron job to update and restart services once a week
 
-
 echo "INFO: ...done."
+--//--

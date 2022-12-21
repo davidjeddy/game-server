@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.20
+
+- ADD Satisfactory Experimental service
+- ADD Instance user-data.sh migrated back to Terraform, no counter-productive to rebuild the AMI for the smallest changes to instance start-up behavior.
+
 ## 0.0.19
 
 - EC2 SSH pem key lifecycle now tied to instance lifecycle

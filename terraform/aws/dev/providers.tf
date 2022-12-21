@@ -1,7 +1,10 @@
 provider "aws" {
-  region     = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
+  profile = "lanordie_game_server"
+  region  = var.region
+
+  shared_credentials_files = [
+    "~/.aws/credentials"
+  ]
 
   # This always shows changes to apply
   # https://github.com/hashicorp/terraform-provider-aws/issues/18311

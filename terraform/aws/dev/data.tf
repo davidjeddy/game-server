@@ -5,7 +5,7 @@ data "aws_ami" "this" {
     name = "name"
 
     values = [
-      join(var.delimiter, [var.name, var.stage])
+      join(var.delimiter, [var.name, "*", var.stage])
     ]
   }
 

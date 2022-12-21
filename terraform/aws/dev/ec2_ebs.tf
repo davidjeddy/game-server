@@ -52,7 +52,7 @@ resource "aws_ebs_volume" "ksp" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["ksp","squad", random_string.ksp.id, 0, random_string.root.id]) },
+    { Name = join(var.delimiter, ["ksp", "squad", random_string.ksp.id, 0, random_string.root.id]) },
     { Snapshot = true }, # for Data Lifecycle Management policy
   )
 }
@@ -63,7 +63,7 @@ resource "aws_ebs_snapshot" "ksp" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["ksp","squad", random_string.ksp.id, 0, random_string.root.id]) }
+    { Name = join(var.delimiter, ["ksp", "squad", random_string.ksp.id, 0, random_string.root.id]) }
   )
 }
 
@@ -138,7 +138,7 @@ resource "aws_ebs_snapshot" "satisfactory" {
 #-----
 
 resource "aws_volume_attachment" "satisfactory_experimental" {
-  device_name = "/dev/sdh"
+  device_name = "/dev/sdj"
   instance_id = aws_instance.this.id
   volume_id   = aws_ebs_volume.satisfactory_experimental.id
 }
@@ -151,7 +151,7 @@ resource "aws_ebs_volume" "satisfactory_experimental" {
 
   tags = merge(
     var.tags,
-    { Name = join(var.delimiter, ["satisfactory", "experimental","coffeestainstudios", random_string.satisfactory.id, 0, random_string.root.id]) },
+    { Name = join(var.delimiter, ["satisfactory", "experimental", "coffeestainstudios", random_string.satisfactory.id, 0, random_string.root.id]) },
     { Snapshot = true }, # for Data Lifecycle Management policy
   )
 }
