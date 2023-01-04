@@ -28,6 +28,23 @@ data "template_file" "user_data" {
     {
       "PA_TITAN_CRED_ARN" = aws_secretsmanager_secret.pa_titans.arn,
       "REGION"            = data.aws_region.current.name
-      "BUCKET_ARN"        = aws_s3_bucket.installers.id
+      "BUCKET_ARN"        = module.installers.s3_bucket_id
   })
+}
+
+data "aws_iam_policy_document" "installer" {
+  statement {
+    sid       = "Enable IAM User Permissions"
+    effect    = "Allow"
+    resources = ["*"]
+    actions   = ["kms:*"]
+
+    principals {
+      type = "AWS"
+      identifiers = [
+        "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root",
+        "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/Admin"
+      ]
+    }
+  }
 }

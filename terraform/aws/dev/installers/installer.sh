@@ -42,8 +42,7 @@ SATISFACTORY_EXPERIMENTAL_FS_UUID=""
 # System configuration
 # -----
 
-set -e
-exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
+exec > >(tee /var/log/installer.log | logger -t user-data -s 2>/dev/console) 2>&1
 
 # -----
 # Application install, update, configuration, and execution
@@ -172,7 +171,6 @@ then
 
     echo "INFO: Resetting Planetary Annihilation : Titans dir ownership"
     chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
-    chown ubuntu:ubuntu -R /home/ubuntu/.local
 
     if [[ ! -f /home/ubuntu/pa_titans/PA/stable/server ]]
     then
@@ -204,7 +202,6 @@ then
     then
         echo "INFO: Create system service for Planetary Annihilation : Titans"
 
-        mkdir -p "/home/ubuntu/.local/Uber Entertainment/PA Server/log/"
         mkdir -p "/home/ubuntu/pa_titans/download"
         mkdir -p "/home/ubuntu/pa_titans/network"
         mkdir -p "/home/ubuntu/pa_titans/output"

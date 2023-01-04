@@ -26,6 +26,7 @@ resource "aws_kms_key" "installers" {
   description             = "KMS key used for S3 installer bucket encryption"
   deletion_window_in_days = var.delete_timeout
   enable_key_rotation     = true
+  policy                  = data.aws_iam_policy_document.installer.json
 
   tags = merge(
     var.tags,

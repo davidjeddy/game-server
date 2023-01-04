@@ -49,9 +49,29 @@ resource "aws_iam_role_policy" "game_server" {
     "Statement": [
         {
             "Action": [
-                "kms:Decrypt",
-                "kms:Encrypt",
-                "kms:GetPublicKey"
+              "s3:Get*",
+              "s3:List*"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "${module.installers.s3_bucket_arn}",
+                "${module.installers.s3_bucket_arn}/*"
+            ]
+        },
+        {
+            "Action": [
+                "kms:Decrypt*",
+                "kms:GenerateDateKey*"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "${aws_kms_key.installers.arn}"
+            ]
+        },
+        {
+            "Action": [
+                "kms:Decrypt*",
+                "kms:GenerateDateKey*"
             ],
             "Effect": "Allow",
             "Resource": [
