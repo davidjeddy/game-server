@@ -19,6 +19,27 @@ resource "aws_kms_alias" "root" {
 }
 
 # -----
+# S3 installer
+#-----
+
+resource "aws_kms_key" "installers" {
+  description             = "KMS key used for S3 installer bucket encryption"
+  deletion_window_in_days = var.delete_timeout
+  enable_key_rotation     = true
+
+  tags = merge(
+    var.tags,
+    { Name = join(var.delimiter, [var.name, var.stage, "installers", random_string.root.id]) }
+  )
+}
+
+resource "aws_kms_alias" "installers" {
+  name          = "alias/gs/installers"
+  target_key_id = aws_kms_key.installers.key_id
+}
+
+
+# -----
 # Factorio (Factorio)
 #-----
 
@@ -113,7 +134,7 @@ resource "aws_kms_key" "satisfactory_experimental" {
   )
 }
 
-resource "aws_kms_alias" "_experimental" {
-  name          = "alias/gs/_experimental"
+resource "aws_kms_alias" "satisfactory_experimental" {
+  name          = "alias/gs/satisfactory_experimental"
   target_key_id = aws_kms_key.satisfactory_experimental.key_id
 }

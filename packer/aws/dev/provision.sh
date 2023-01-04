@@ -1,13 +1,4 @@
-#!/bin/bash
-
-# becomes (g)root
-sudo su
-
-# -----
-# System configuration
-# -----
-
-set -e
+#!/bin/bash -e
 
 # exec > >(sudo tee /var/log/packer.log | sudo logger -t user-data -s 2> /dev/console) 2>&1
 

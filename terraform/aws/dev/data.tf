@@ -28,5 +28,6 @@ data "template_file" "user_data" {
     {
       "PA_TITAN_CRED_ARN" = aws_secretsmanager_secret.pa_titans.arn,
       "REGION"            = data.aws_region.current.name
+      "BUCKET_ARN"        = aws_s3_bucket.installers.id
   })
 }
