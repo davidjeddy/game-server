@@ -21,21 +21,21 @@ TITANS_UPGRADE=true
 # Key/Values are passed in via instance data.template_file.user_data invocation
 # -----
 
-# shellcheck disable=SC2269
+# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
 PA_TITAN_CRED_ARN="${2}"
 
-# shellcheck disable=SC2269
+# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
 REGION="${1}"
 
 # -----
 # File system assignments
 # -----
 
-FACTORIO_FS_UUID="fbc93654-7cb1-46f5-86bc-a4a92e6bba10"
-KSP_FS_UUID="71ce6087-ec2e-4df1-857b-ab1c7888d75b"
-PA_TITANS_FS_UUID="4df99be4-b9b5-4394-ab47-ed92ee1c9252"
-SATISFACTORY_FS_UUID="a0a3e05f-3e49-49a8-94fa-b9c220720d07"
-SATISFACTORY_EXPERIMENTAL_FS_UUID=""
+FACTORIO_FS_UUID="728348fc-0937-417a-a41d-aebf800ee662"
+KSP_FS_UUID="4c7b6e43-e3eb-46cf-88db-ce92a027c093"
+PA_TITANS_FS_UUID="488fa00f-a1c1-4177-8bfd-e81d05fb3f95"
+SATISFACTORY_FS_UUID="5fcf53ed-23af-4de1-8fb8-f9ab59e42bc6"
+SATISFACTORY_EXPERIMENTAL_FS_UUID="0fab4de1-05ee-4399-928f-ea4a4d1fd690"
 
 # -----
 # System configuration
@@ -43,7 +43,8 @@ SATISFACTORY_EXPERIMENTAL_FS_UUID=""
 
 exec > >(tee /var/log/installer.log | logger -t user-data -s 2>/dev/console) 2>&1
 
-echo "INFO: Have set ENV VARS in installer.sh ..."
+echo "INFO: Have set ENV VARS in installer.sh..."
+
 # -----
 # Application install, update, configuration, and execution
 # -----
@@ -55,17 +56,24 @@ echo "INFO: Have set ENV VARS in installer.sh ..."
 if [[ $ENABLE_FACTORIO == true ]]
 then
     echo "INFO: Mount Kerbal Space Program EBS volume"
-    mkdir -p /home/ubuntu/factorio
-    echo "UUID=$FACTORIO_FS_UUID /home/ubuntu/factorio ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
-    tail /etc/fstab
-    mount -a
+    mkdir -p /home/ubuntu/factorio || true
+
+    # check if the FS is already listed in /etc/fstab
+    if [[ ! $(grep -rnw '/etc/fstab' -e "$FACTORIO_FS_UUID") ]]
+    then
+        echo "UUID=$FACTORIO_FS_UUID /home/ubuntu/factorio ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+        mount -a
+    fi
+
+    echo "INFO: /etc/fstab contents"
+    cat /etc/fstab
 
     if [[ ! -f /home/ubuntu/factorio/bin/x64/factorio ]]
     then
         echo "INFO: Installing Factorio dedicated server"
         curl -L https://www.factorio.com/get-download/1.1.61/headless/linux64 -o factorio_headless_x64_1.1.61.tar.xz
         tar -xJf factorio_headless_x64_1.1.61.tar.xz
-        rm factorio_headless_x64_1.1.61.tar.xz
+        cp -rf factorio /home/ubuntu
         mkdir -p /home/ubuntu/factorio/saves
         /home/ubuntu/factorio/bin/x64/factorio --create /home/ubuntu/factorio/saves/lanordie.zip
     fi
@@ -112,21 +120,34 @@ fi
 if [[ $ENABLE_KSP == true ]]
 then
     echo "INFO: Mount Kerbal Space Program EBS volume"
-    mkdir -p /home/ubuntu/ksp
-    echo "UUID=$KSP_FS_UUID /home/ubuntu/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
-    tail /etc/fstab
-    mount -a
+    mkdir -p /home/ubuntu/ksp || true
+
+    # check if the FS is already listed in /etc/fstab
+    if [[ ! $(grep -rnw '/etc/fstab' -e "$KSP_FS_UUID") ]]
+    then
+        echo "UUID=$KSP_FS_UUID /home/ubuntu/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+        mount -a
+    fi
+
+    echo "INFO: /etc/fstab contents"
+    cat /etc/fstab
+
+    if [[ ! -f /home/ubuntu/factorio/bin/x64/factorio ]]
+    then
+        echo "INFO: Installing KSP DMPServer dedicated server and DMPUpdater"
+        curl -L  https://d-mp.org/builds/release/v0.3.8.3/DMPServer.zip -o DMPServer.zip
+        unzip -u DMPServer.zip
+        cd  DMPServer
+        curl -L https://godarklight.privatedns.org/dmp/downloads/dmpupdater/DMPUpdater.exe -o DMPUpdater.exe
+        mono DMPUpdater.exe >1 /dev/null
+        cp -rf . /home/ubuntu/ksp
+    fi
 
     echo "INFO: Resetting Kerbal Space Program dir ownership"
     chown ubuntu:ubuntu -R /home/ubuntu/ksp
 
     if [[ ! -f "/etc/systemd/system/ksp.service" ]]
     then
-        echo "INFO: Creating symlinks for ksp"
-        ln -sfn /home/ubuntu/ksp/etc/dmpserver /etc/dmpserver
-        ln -sfn /home/ubuntu/ksp/srv/dmpserver /srv/dmpserver
-        ln -sfn /home/ubuntu/ksp/usr/share/dmpserver /usr/share/dmpserver
-        ln -sfn /home/ubuntu/ksp/var/lib/dmpserver /var/lib/dmpserver
 
         echo "INFO: Create system service for KSP"
         echo -e "\
@@ -136,13 +157,13 @@ then
             Wants=network-online.target
 
         [Service]
-            ExecStart=mono /usr/share/dmpserver/DMPServer.exe
+            ExecStart=mono /usr/share/ksp/DMPServer.exe
             Group=ubuntu
             KillSignal=SIGINT
             Restart=on-failure
             StandardOutput=journal
             User=ubuntu
-            WorkingDirectory=/usr/share/dmpserver
+            WorkingDirectory=/usr/share/ksp
 
         [Install]
             WantedBy=multi-user.target" | tee "/etc/systemd/system/ksp.service"
@@ -164,13 +185,17 @@ fi
 if [[ $ENABLE_PA_TITANS == true ]]
 then
     echo "INFO: Mount Planetary Annihilation : Titans EBS volume"
-    mkdir -p /home/ubuntu/pa_titans
-    echo "UUID=$PA_TITANS_FS_UUID /home/ubuntu/pa_titans ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
-    tail /etc/fstab
-    mount -a
+    mkdir -p /home/ubuntu/pa_titans || true
 
-    echo "INFO: Resetting Planetary Annihilation : Titans dir ownership"
-    chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
+    # check if the FS is already listed in /etc/fstab
+    if [[ ! $(grep -rnw '/etc/fstab' -e "$PA_TITANS_FS_UUID") ]]
+    then
+        echo "UUID=$PA_TITANS_FS_UUID /home/ubuntu/pa_titans ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+        mount -a
+    fi
+
+    echo "INFO: /etc/fstab contents"
+    cat /etc/fstab
 
     if [[ ! -f /home/ubuntu/pa_titans/PA/stable/server ]]
     then
@@ -178,6 +203,9 @@ then
         mkdir -p /home/ubuntu/pa_titans/stable
         tar -xf /home/ubuntu/pa_titans/resources/PA_Linux_115872.tar.bz2 -C /home/ubuntu/pa_titans/stable --verbose
     fi
+
+    echo "INFO: Resetting Planetary Annihilation : Titans dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
 
     if [[ $TITANS_UPGRADE == true ]]
     then
@@ -260,13 +288,17 @@ fi
 if [[ $ENABLE_SATISFACTORY == true ]]
 then
     echo "INFO: Mount Satisfactory EBS volume"
-    mkdir -p /home/ubuntu/satisfactory
-    echo "UUID=$SATISFACTORY_FS_UUID /home/ubuntu/satisfactory ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
-    tail -10 /etc/fstab
-    mount -a
+    mkdir -p /home/ubuntu/satisfactory || true
 
-    echo "INFO: Resetting Satisfactory dir ownership"
-    chown ubuntu:ubuntu -R /home/ubuntu/.config
+    # check if the FS is already listed in /etc/fstab
+    if [[ ! $(grep -rnw '/etc/fstab' -e "$SATISFACTORY_FS_UUID") ]]
+    then
+        echo "UUID=$SATISFACTORY_FS_UUID /home/ubuntu/satisfactory ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+        mount -a
+    fi
+
+    echo "INFO: /etc/fstab contents"
+    cat /etc/fstab
 
     if [[ ! -d /home/ubuntu/satisfactory/satisfactory ]]
     then
@@ -280,6 +312,9 @@ then
             -beta public validate \
             +quit
     fi
+
+    echo "INFO: Resetting Satisfactory dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/satisfactory
 
     if [[ ! -f "/etc/systemd/system/satisfactory.service" ]]
     then
@@ -320,13 +355,17 @@ fi
 if [[ $ENABLE_SATISFACTORY_EXPERIMENTAL == true ]]
 then
     echo "INFO: Mount Satisfactory Experimental EBS volume"
-    mkdir -p /home/ubuntu/satisfactory_experimental
-    echo "UUID=$SATISFACTORY_EXPERIMENTAL_FS_UUID /home/ubuntu/satisfactory_experimental ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
-    tail -10 /etc/fstab
-    mount -a
+    mkdir -p /home/ubuntu/satisfactory_experimental || true
 
-    echo "INFO: Resetting Satisfactory Experimental dir ownership"
-    chown ubuntu:ubuntu -R /home/ubuntu/.config
+    # check if the FS is already listed in /etc/fstab
+    if [[ ! $(grep -rnw '/etc/fstab' -e "$SATISFACTORY_EXPERIMENTAL_FS_UUID") ]]
+    then
+        echo "UUID=$SATISFACTORY_EXPERIMENTAL_FS_UUID /home/ubuntu/satisfactory_experimental ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+        mount -a
+    fi
+
+    echo "INFO: /etc/fstab contents"
+    cat /etc/fstab
 
     if [[ ! -d /home/ubuntu/satisfactory_experimental ]]
     then
@@ -340,6 +379,9 @@ then
             -beta experimental validate \
             +quit
     fi
+
+    echo "INFO: Resetting Satisfactory Experimental dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/satisfactory_experimental
 
     if [[ ! -f "/etc/systemd/system/satisfactory_experimental.service" ]]
     then

@@ -31,7 +31,8 @@ sudo apt-get install -y \
     gnupg \
     iotop \
     jq \
-    software-properties-common
+    software-properties-common \
+    unzip
 sudo apt-get autoremove -y
 
 echo "INFO: System package location and versions"

@@ -165,3 +165,16 @@ NOTE: Uses default VPC for simplicity and to decouple from the run time VPC
 ```sh
 ${PROJECT HOME}/libs/packer-build.sh dev us-east-1
 ```
+
+## Errors and Fixes
+
+Error: File System ID not found
+
+Fix:
+
+- `lsblk`, review FS IDs.
+  - if not FS IDs exist, you messed up. Recreate FS to allow user-data/installer to re-create program assets.
+
+Source:
+
+- https://www.easeus.com/computer-instruction/linux-format-disk.html
