@@ -1,6 +1,5 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
-echo "INFO: Starting installer.sh ..."
 # -----
 # Application activision toggle
 # -----
@@ -44,6 +43,7 @@ SATISFACTORY_EXPERIMENTAL_FS_UUID=""
 
 exec > >(tee /var/log/installer.log | logger -t user-data -s 2>/dev/console) 2>&1
 
+echo "INFO: Have set ENV VARS in installer.sh ..."
 # -----
 # Application install, update, configuration, and execution
 # -----

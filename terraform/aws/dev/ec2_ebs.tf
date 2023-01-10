@@ -11,6 +11,10 @@ resource "aws_volume_attachment" "factorio" {
 }
 
 resource "aws_ebs_volume" "factorio" {
+  lifecycle {
+    prevent_destroy = true
+  }
+
   availability_zone = module.vpc.azs[0]
   encrypted         = true
   kms_key_id        = aws_kms_key.factorio.arn
@@ -45,6 +49,10 @@ resource "aws_volume_attachment" "ksp" {
 }
 
 resource "aws_ebs_volume" "ksp" {
+  lifecycle {
+    prevent_destroy = true
+  }
+
   availability_zone = module.vpc.azs[0]
   encrypted         = true
   kms_key_id        = aws_kms_key.ksp.arn
@@ -78,6 +86,10 @@ resource "aws_volume_attachment" "pa_titans" {
 }
 
 resource "aws_ebs_volume" "pa_titans" {
+  lifecycle {
+    prevent_destroy = true
+  }
+
   availability_zone = module.vpc.azs[0]
   encrypted         = true
   kms_key_id        = aws_kms_key.pa_titans.arn
@@ -111,6 +123,10 @@ resource "aws_volume_attachment" "satisfactory" {
 }
 
 resource "aws_ebs_volume" "satisfactory" {
+  lifecycle {
+    prevent_destroy = true
+  }
+
   availability_zone = module.vpc.azs[0]
   encrypted         = true
   kms_key_id        = aws_kms_key.satisfactory.arn
@@ -144,6 +160,10 @@ resource "aws_volume_attachment" "satisfactory_experimental" {
 }
 
 resource "aws_ebs_volume" "satisfactory_experimental" {
+  lifecycle {
+    prevent_destroy = true
+  }
+
   availability_zone = module.vpc.azs[0]
   encrypted         = true
   kms_key_id        = aws_kms_key.satisfactory_experimental.arn
