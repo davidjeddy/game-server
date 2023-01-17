@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.22
+
+- MOVED title install / system service creation out of user-data.sh, now resides in installer.sh which is stored in the S3 bucket `installers`.
+- ADDED archive for Factorio, KSP, and PA:Titans to `installer` S3 bucket.
+
 ## 0.0.20
 
 - ADD Satisfactory Experimental service

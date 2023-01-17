@@ -26,9 +26,10 @@ data "template_file" "user_data" {
   template = templatefile(
     "${path.module}/user-data.sh",
     {
-      "BUCKET_ID"         = module.installers.s3_bucket_id
-      "PA_TITAN_CRED_ARN" = aws_secretsmanager_secret.pa_titans.arn,
-      "REGION"            = data.aws_region.current.name
+      "BUCKET_ID"          = module.installers.s3_bucket_id
+      "PA_TITAN_CRED_ARN"  = aws_secretsmanager_secret.pa_titans.arn,
+      "REGION"             = data.aws_region.current.name
+      "INSTALLER_DIR_PATH" = "/usr/local/lanordie/gameserver"
   })
 }
 

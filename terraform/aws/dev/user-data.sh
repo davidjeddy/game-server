@@ -34,24 +34,29 @@ REGION="${REGION}"
 # shellcheck disable=SC2269 Pass variables to runtime ENV VAR
 BUCKET_ID="${BUCKET_ID}"
 
+# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
+INSTALLER_DIR_PATH="${INSTALLER_DIR_PATH}"
+
+# Init logic
+
 echo "INFO: ENV VAR check"
 printenv | sort
 
-echo "INFO: reset FS resources"
-mkdir -p /opt/lanordie/gameserver/ || true
-rm /opt/lanordie/gameserver/installer.sh || true
+echo "INFO: Reset FS resources."
+mkdir -p "${INSTALLER_DIR_PATH}" || true
+rm "${INSTALLER_DIR_PATH}/installer.sh" || true
 
-echo "INFO: copy installer.sh from S3 bucket"
+echo "INFO: Copy installer.sh from S3 bucket."
 aws s3 ls "s3://${BUCKET_ID}" --recursive --human-readable --summarize
-aws s3 cp "s3://${BUCKET_ID}/installer.sh" /opt/lanordie/gameserver/installer.sh
-chmod +x /opt/lanordie/gameserver/installer.sh
+aws s3 cp "s3://${BUCKET_ID}/installer.sh" "${INSTALLER_DIR_PATH}/installer.sh"
+chmod +x "${INSTALLER_DIR_PATH}/installer.sh"
 
-echo "INFO: change into /opt/lanordie/gameserver/ dir"
-cd "/opt/lanordie/gameserver/" || exit
+echo "INFO: Change into ${INSTALLER_DIR_PATH} dir."
+cd "${INSTALLER_DIR_PATH}" || exit
 
-echo "INFO: execution installer.sh with REGION PA_TITAN_CRED_ARN"
+echo "INFO: Execution installer.sh with REGION PA_TITAN_CRED_ARN"
 # shellcheck disable=SC2269
-./installer.sh "${REGION}" "${PA_TITAN_CRED_ARN}"
+./installer.sh --REGION "${REGION}" --PA_TITAN_CRED_ARN "${PA_TITAN_CRED_ARN}"
 
-echo "INFO: ...done."
+echo "INFO: ...done with user-data.sh."
 --//--
