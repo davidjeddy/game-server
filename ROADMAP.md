@@ -2,6 +2,14 @@
 
 Topics in a very loose order of priority.
 
+## Next
+
+- Intall process for services we have archives for
+- Fix DLM policy and permissions to enable daily backup snapshots
+- Remove default VPC via Cloud Posse provider resource
+- Dump SSH, replace with SSM
+- Convert IAM JSON to HCL
+
 ## BizOps
 
 - Patreon - Donations
@@ -14,7 +22,7 @@ Topics in a very loose order of priority.
 ## Infra/AWS/TF
 
 - Load balancer in front of EC2 instances for better traffic and routing management
-  - Bastion host for non application ingress
+  - Bastion host for non application ingress - why did we want this?
 - API Gateway + Lambda to start instance if stopped
   - Also, stop instance if no-one is connected for X minutes
 - ADD Logging
@@ -23,22 +31,13 @@ Topics in a very loose order of priority.
   - logrotate to contain disk usage
     - 1 day on the machine
     - no compressed archives
-- Fix DLM policy and permissions to enable daily backup snapshots
-- Remove default VPC via Cloud Posse provider resource
-- Dump SSH, replace with SSM
-- Convert IAM JSON to HCL
 
 ## OS / system
 
 - Add `fail2ban` OS package as the instance is public facing
-
 - Services should be Terraform modules
   - Move EBS/KMS/Secret/SG/etc
-  - Split user-data.sh into segments isolated in TF modules
+  - Split installer.sh into segments isolated in TF modules
     - merge and output via root TF module
     - Different Linux users per service
 - Iterate on resources and config logic the reduce duplication; DRY it out
-
-## Services
-
-- Can KSP : DMP vessels be recovered?
