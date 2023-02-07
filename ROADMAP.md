@@ -4,7 +4,7 @@ Topics in a very loose order of priority.
 
 ## Next
 
-- Intall process for services we have archives for
+- Install process for services we have archives for
 - Fix DLM policy and permissions to enable daily backup snapshots
 - Remove default VPC via Cloud Posse provider resource
 - Dump SSH, replace with SSM

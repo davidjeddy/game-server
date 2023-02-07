@@ -42,13 +42,19 @@ INSTALLER_DIR_PATH="${INSTALLER_DIR_PATH}"
 echo "INFO: ENV VAR check"
 printenv | sort
 
-echo "INFO: Reset FS resources."
-mkdir -p "${INSTALLER_DIR_PATH}" || true
-rm "${INSTALLER_DIR_PATH}/installer.sh" || true
+echo "INFO: Installing system services."
+apt-get install -y \
+    htop \
+    unzip
 
-echo "INFO: Copy installer.sh from S3 bucket."
-aws s3 ls "s3://${BUCKET_ID}" --recursive --human-readable --summarize
-aws s3 cp "s3://${BUCKET_ID}/installer.sh" "${INSTALLER_DIR_PATH}/installer.sh"
+echo "INFO: Reset FS resources."
+rm -rf "${INSTALLER_DIR_PATH}" || true
+mkdir -p "${INSTALLER_DIR_PATH}" || true
+
+echo "INFO: Copy install archives and script from S3 bucket to EC2 instance."
+aws s3 ls "s3://${BUCKET_ID}/" --recursive --human-readable --summarize
+aws s3 cp "s3://${BUCKET_ID}/" "${INSTALLER_DIR_PATH}/" --recursive
+
 chmod +x "${INSTALLER_DIR_PATH}/installer.sh"
 
 echo "INFO: Change into ${INSTALLER_DIR_PATH} dir."

@@ -168,9 +168,11 @@ ${PROJECT HOME}/libs/packer-build.sh dev us-east-1
 
 ## Errors and Fixes
 
-Error: File System ID not found
+**Error**
 
-Fix:
+File System ID not found
+
+**Fix**
 
 - `lsblk`, review FS IDs.
   - if not FS IDs exist, you messed up. Recreate FS to allow user-data/installer to re-create program assets.
@@ -178,3 +180,11 @@ Fix:
 Source:
 
 - https://www.easeus.com/computer-instruction/linux-format-disk.html
+
+**Error**
+
+Failed to read organization "landordie" at host app.terraform.io
+
+**Fix**
+
+`export TF_CLI_CONFIG_FILE=~/.terraform.d/landordie-credentials.tfrc.json`

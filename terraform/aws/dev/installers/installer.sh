@@ -72,6 +72,7 @@ then
     mkdir -p /home/ubuntu/factorio || true
 
     # check if the FS is already listed in /etc/fstab
+    # shellcheck disable=SC2143
     if [[ ! $(grep -rnw '/etc/fstab' -e "$FACTORIO_FS_UUID") ]]
     then
         echo "UUID=$FACTORIO_FS_UUID /home/ubuntu/factorio ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
@@ -84,14 +85,15 @@ then
     if [[ ! -f /home/ubuntu/factorio/bin/x64/factorio ]]
     then
         echo "INFO: Installing Factorio dedicated server"
-        curl -L https://www.factorio.com/get-download/1.1.61/headless/linux64 -o factorio_headless_x64_1.1.61.tar.xz
-        tar -xJf factorio_headless_x64_1.1.61.tar.xz
-        cp -rf factorio /home/ubuntu
-        mkdir -p /home/ubuntu/factorio/saves
-        /home/ubuntu/factorio/bin/x64/factorio --create /home/ubuntu/factorio/saves/lanordie.zip
+        cd /usr/local/lanordie/gameserver/
+        tar -xJf factorio_headless_x64_1.1.74.tar.xz -C /home/ubuntu
+        cd /home/ubuntu/factorio/bin/x64 || exit 1
+        ./factorio --create /home/ubuntu/factorio/saves/lanordie.zip
+        ls -la /home/ubuntu/factorio/saves
     fi
 
     echo "INFO: Resetting Factorio dir ownership"
+    cd "$HOME" || exit 1
     chown ubuntu:ubuntu -R /home/ubuntu/factorio
 
     if [[ ! -f "/etc/systemd/system/factorio.service" ]]
@@ -136,6 +138,7 @@ fi
 #     mkdir -p /home/ubuntu/ksp || true
 
 #     # check if the FS is already listed in /etc/fstab
+#     # shellcheck disable=SC2143
 #     if [[ ! $(grep -rnw '/etc/fstab' -e "$KSP_FS_UUID") ]]
 #     then
 #         echo "UUID=$KSP_FS_UUID /home/ubuntu/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
@@ -147,13 +150,18 @@ fi
 
 #     if [[ ! -f /home/ubuntu/factorio/bin/x64/factorio ]]
 #     then
-#         echo "INFO: Installing KSP DMPServer dedicated server and DMPUpdater"
-#         curl -L  https://d-mp.org/builds/release/v0.3.8.3/DMPServer.zip -o DMPServer.zip
-#         unzip -u DMPServer.zip
-#         cd  DMPServer
-#         curl -L https://godarklight.privatedns.org/dmp/downloads/dmpupdater/DMPUpdater.exe -o DMPUpdater.exe
-#         mono DMPUpdater.exe >1 /dev/null
-#         cp -rf . /home/ubuntu/ksp
+#         echo "INFO: Install KSP base"
+#         unzip -q ksp-linux-1.12.5.zip
+#         cp -rf KSP_linux/. /home/ubuntu/ksp/
+#         rm -rf KSP_linux
+#         echo "INFO: Install KSP expansions"
+#         unzip -q KSP-Breaking_Ground_Expansion-en-us-lin-1.7.1.zip -d /home/ubuntu/ksp
+#         unzip -q KSP-Making_History_Expansion-en-us-lin-1.12.1.zip -d /home/ubuntu/ksp
+#         cd /home/ubuntu/ksp
+#         ./dlc-bge-en-us.sh
+#         ./dlc-mhe-en-us.sh
+
+#         echo "INFO: Installing and update KSP DMPServer dedicated server and DMPUpdater"
 #     fi
 
 #     echo "INFO: Resetting Kerbal Space Program dir ownership"
@@ -196,109 +204,110 @@ fi
 # -----
 
 # TODO we need the install commands for PA:Titans
-# if [[ $ENABLE_PA_TITANS == true ]]
-# then
-#     echo "INFO: Mount Planetary Annihilation : Titans EBS volume"
-#     mkdir -p /home/ubuntu/pa_titans || true
+if [[ $ENABLE_PA_TITANS == true ]]
+then
+    echo "INFO: Mount Planetary Annihilation : Titans EBS volume"
+    mkdir -p /home/ubuntu/pa_titans || true
 
-#     # check if the FS is already listed in /etc/fstab
-#     if [[ ! $(grep -rnw '/etc/fstab' -e "$PA_TITANS_FS_UUID") ]]
-#     then
-#         echo "UUID=$PA_TITANS_FS_UUID /home/ubuntu/pa_titans ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
-#         mount -a
-#     fi
+    # check if the FS is already listed in /etc/fstab
+    # shellcheck disable=SC2143
+    if [[ ! $(grep -rnw '/etc/fstab' -e "$PA_TITANS_FS_UUID") ]]
+    then
+        echo "UUID=$PA_TITANS_FS_UUID /home/ubuntu/pa_titans ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+        mount -a
+    fi
 
-#     echo "INFO: /etc/fstab contents"
-#     cat /etc/fstab
+    echo "INFO: /etc/fstab contents"
+    cat /etc/fstab
 
-#     if [[ ! -f /home/ubuntu/pa_titans/PA/stable/server ]]
-#     then
-#         # source https://store.planetaryannihilation.net/Download/Install?titleId=4&sessionTicket=7065387651658097800
-#         echo "INFO: Install Planetary Annihilation : Titans archive"
-#         mkdir -p /home/ubuntu/pa_titans/stable
-        
-#         s3 cp ... /home/ubuntu/pa_titans/resources/PA_Linux_115872.tar.bz2 
-#         tar -xf /home/ubuntu/pa_titans/resources/PA_Linux_115872.tar.bz2 -C /home/ubuntu/pa_titans/stable --verbose
-#     fi
+    if [[ ! -f /home/ubuntu/pa_titans/PA/stable/server ]]
+    then
+        # source https://store.planetaryannihilation.net/Download/Install?titleId=4&sessionTicket=7065387651658097800
+        echo "INFO: Install Planetary Annihilation : Titans archive"
+        mkdir -p /home/ubuntu/pa_titans/stable
+        tar -xf PA_Linux_116400.tar.bz2 -C /home/ubuntu/pa_titans/stable
+    fi
 
-#     echo "INFO: Resetting Planetary Annihilation : Titans dir ownership"
-#     chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
+    if [[ $TITANS_UPGRADE == true ]]
+    then
+        # source https://service.planetaryannihilation.net/User/Login?titleId=4&redirectUrl=https://store.planetaryannihilation.net/Download/Install?titleId=4
+        echo "INFO: Patching Planetary Annihilation : Titans from stable branch"
+        mkdir -p /home/ubuntu/.cache
+        XDG_CACHE_HOME=/home/ubuntu/.cache
+        export XDG_CACHE_HOME
 
-#     if [[ $TITANS_UPGRADE == true ]]
-#     then
-#         # source https://service.planetaryannihilation.net/User/Login?titleId=4&redirectUrl=https://store.planetaryannihilation.net/Download/Install?titleId=4
-#         echo "INFO: Patching Planetary Annihilation : Titans from stable branch"
-#         mkdir -p /home/ubuntu/.cache
-#         XDG_CACHE_HOME=/home/ubuntu/.cache
-#         export XDG_CACHE_HOME
+        # Key/Values are passed in via instance data.template_file.user_data invocation
+        # shellcheck disable=SC2086
+        curl -sL https://raw.githubusercontent.com/planetary-annihilation/papatcher/master/papatcher.go -o /usr/local/lanordie/gameserver/papatcher.go
+        chmod +x papatcher.go
+        go run /usr/local/lanordie/gameserver/papatcher.go \
+            --dir /home/ubuntu/pa_titans/pa/ \
+            --stream stable \
+            --update-only \
+            --username "$(aws secretsmanager get-secret-value --region "$REGION" --secret-id "$PA_TITAN_CRED_ARN" --query SecretString --output text | jq -r .username)" \
+            --password "$(aws secretsmanager get-secret-value --region "$REGION" --secret-id "$PA_TITAN_CRED_ARN" --query SecretString --output text | jq -r .password)"
+    fi
 
-#         # Key/Values are passed in via instance data.template_file.user_data invocation
-#         # shellcheck disable=SC2086
-#         curl -l https://raw.githubusercontent.com/planetary-annihilation/papatcher/master/papatcher.go -o /home/ubuntu/pa_titans/resources/papatcher.go
-#         go run /home/ubuntu/pa_titans/resources/papatcher.go \
-#             --dir /home/ubuntu/pa_titans/pa/ \
-#             --stream stable \
-#             --update-only \
-#             --username "$(aws secretsmanager get-secret-value --region $REGION --secret-id $PA_TITAN_CRED_ARN --query SecretString --output text | jq -r .username)" \
-#             --password "$(aws secretsmanager get-secret-value --region $REGION --secret-id $PA_TITAN_CRED_ARN --query SecretString --output text | jq -r .password)"
-#     fi
+    echo "INFO: Update PA: Titans"
+    echo "INFO: Resetting Planetary Annihilation : Titans dir ownership"
+    chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
 
-#     echo "INFO: Version of Planetary Annihilationvers : Titans is $(cat /home/ubuntu/pa_titans/PA/version.txt)"
+    echo "INFO: Version of Planetary Annihilationvers : Titans is $(cat /home/ubuntu/pa_titans/PA/version.txt)"
 
-#     if [[ ! -f "/etc/systemd/system/pa_titans.service" ]]
-#     then
-#         echo "INFO: Create system service for Planetary Annihilation : Titans"
+    if [[ ! -f "/etc/systemd/system/pa_titans.service" ]]
+    then
+        echo "INFO: Create system service for Planetary Annihilation : Titans"
 
-#         mkdir -p "/home/ubuntu/pa_titans/download"
-#         mkdir -p "/home/ubuntu/pa_titans/network"
-#         mkdir -p "/home/ubuntu/pa_titans/output"
+        mkdir -p "/home/ubuntu/pa_titans/download"
+        mkdir -p "/home/ubuntu/pa_titans/network"
+        mkdir -p "/home/ubuntu/pa_titans/output"
 
-#         echo -e "\
-#         [Unit]
-#             After=syslog.target network.target nss-lookup.target network-online.target
-#             Description=Planetary Annihilation : Titans dedicated server
-#             Wants=network-online.target
+        echo -e "\
+        [Unit]
+            After=syslog.target network.target nss-lookup.target network-online.target
+            Description=Planetary Annihilation : Titans dedicated server
+            Wants=network-online.target
 
-#         [Service]
-#             ExecStart=/home/ubuntu/pa_titans/PA/stable/server \
-#                 --allow-lan \
-#                 --game-mode \"PAExpansion1:config\" \
-#                 --gameover-timeout 360 \
-#                 --headless \
-#                 --max-players 8 \
-#                 --max-spectators 2 \
-#                 --mt-enabled \
-#                 --output-dir /home/ubuntu/pa_titans/output \
-#                 --port 20545 \
-#                 --replay-filename \"UTCTIMESTAMP\" \
-#                 --replay-timeout 180 \
-#                 --server-name \"LanOrDie_PA_Titans\"
+        [Service]
+            ExecStart=/home/ubuntu/pa_titans/PA/stable/server \
+                --allow-lan \
+                --game-mode \"PAExpansion1:config\" \
+                --gameover-timeout 360 \
+                --headless \
+                --max-players 8 \
+                --max-spectators 2 \
+                --mt-enabled \
+                --output-dir /home/ubuntu/pa_titans/output \
+                --port 20545 \
+                --replay-filename \"UTCTIMESTAMP\" \
+                --replay-timeout 180 \
+                --server-name \"LanOrDie_PA_Titans\"
 
-#             Group=ubuntu
-#             KillSignal=SIGINT
-#             NoNewPrivileges=yes
-#             PrivateDevices=yes
-#             PrivateTmp=yes
-#             ProtectControlGroups=yes
-#             ProtectKernelModules=yes
-#             ProtectKernelTunables=yes
-#             Restart=on-failure
-#             StandardOutput=journal
-#             User=ubuntu
-#             WorkingDirectory=/home/ubuntu/pa_titans/PA/stable/
+            Group=ubuntu
+            KillSignal=SIGINT
+            NoNewPrivileges=yes
+            PrivateDevices=yes
+            PrivateTmp=yes
+            ProtectControlGroups=yes
+            ProtectKernelModules=yes
+            ProtectKernelTunables=yes
+            Restart=on-failure
+            StandardOutput=journal
+            User=ubuntu
+            WorkingDirectory=/home/ubuntu/pa_titans/PA/stable/
 
-#         [Install]
-#             WantedBy=multi-user.target" | tee "/etc/systemd/system/pa_titans.service"
+        [Install]
+            WantedBy=multi-user.target" | tee "/etc/systemd/system/pa_titans.service"
 
-#         sed -i 's/^ *//g' "/etc/systemd/system/pa_titans.service"
+        sed -i 's/^ *//g' "/etc/systemd/system/pa_titans.service"
 
-#         systemctl enable pa_titans.service --now
-#         systemctl restart pa_titans.service
-#     fi
+        systemctl enable pa_titans.service --now
+        systemctl restart pa_titans.service
+    fi
 
-#     echo "INFO: Planetary Annihilation : Titans service status"
-#     systemctl status pa_titans.service
-# fi
+    echo "INFO: Planetary Annihilation : Titans service status"
+    systemctl status pa_titans.service
+fi
 
 # -----
 # Satisfactory (~/.config/Epic/satisfactory)
