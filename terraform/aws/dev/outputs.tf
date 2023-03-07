@@ -26,3 +26,7 @@ output "aws_secretsmanager_secret_pa_titans" {
 output "tags" {
   value = var.tags
 }
+
+output "bucket_id" {
+  value = ""
+}

@@ -16,13 +16,14 @@
 
 ## Services
 
-| Name                 | Mount Point                 | System Service | Port               | Notes  |
-| -------------------- |  --------------------------- | -------------- | ------------------ | -----: |
-| Factorio ns          | /home/ubuntu/factorio       | yes            | 34197              |  |
-| Kerbal Space Program | /home/ubuntu/ksp            | yes            | 6702               | Includes `Making History` and `Breaking Ground` expansions. Includes mods, see notice at login. |
-| PA:  Titans          | /home/ubuntu/pa_titans      | yes            | 20545              | |
-| Satisfactory         | /home/ubuntu/satisfactory   | yes            | 7777, 15000, 15777 | |
-| Satisfactory Experimental         | /home/ubuntu/satisfactory_experimental   | yes            | 7778, 15001, 15778 | |
+| Name                              | Mount Point                               | System Service | Port               | Notes  |
+| --------------------------------- |  ---------------------------------------- | -------------- | ------------------ | -----: |
+| Factorio ns                       | /home/ubuntu/factorio                     | yes            | 34197              | |
+| Kerbal Space Program              | /home/ubuntu/ksp                          | yes            | 6702               | Includes `Making History` and `Breaking Ground` expansions. Includes mods, see notice at login. |
+| Kerbal Space Program 2            | /home/ubuntu/ksp2                         | yes            | TBD                | |
+| PA:  Titans                       | /home/ubuntu/pa_titans                    | yes            | 20545              | |
+| Satisfactory                      | /home/ubuntu/satisfactory                 | yes            | 7777, 15000, 15777 | |
+| Satisfactory Experimental         | /home/ubuntu/satisfactory_experimental    | yes            | 7778, 15001, 15778 | |
 
 **Note:** Service versions: updated weekly from vendors via a cron job on the running instance.
 

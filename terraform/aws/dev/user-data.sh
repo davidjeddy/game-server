@@ -62,7 +62,12 @@ cd "${INSTALLER_DIR_PATH}" || exit
 
 echo "INFO: Execution installer.sh with REGION PA_TITAN_CRED_ARN"
 # shellcheck disable=SC2269
-./installer.sh --REGION "${REGION}" --PA_TITAN_CRED_ARN "${PA_TITAN_CRED_ARN}"
+./installer.sh \
+    --BUCKET_ID "${BUCKET_ID}" \
+    --DEPLOYMENT_ID "${DEPLOYMENT_ID}" \
+    --INSTALLER_DIR_PATH "${INSTALLER_DIR_PATH}" \
+    --PA_TITAN_CRED_ARN "${PA_TITAN_CRED_ARN}" \
+    --REGION "${REGION}"
 
 echo "INFO: ...done with user-data.sh."
 --//--

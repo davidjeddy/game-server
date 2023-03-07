@@ -21,6 +21,7 @@ Topics in a very loose order of priority.
 
 ## Infra/AWS/TF
 
+- AWS services should be accessed via VPC service endpoints
 - Load balancer in front of EC2 instances for better traffic and routing management
   - Bastion host for non application ingress - why did we want this?
 - API Gateway + Lambda to start instance if stopped
@@ -41,3 +42,7 @@ Topics in a very loose order of priority.
     - merge and output via root TF module
     - Different Linux users per service
 - Iterate on resources and config logic the reduce duplication; DRY it out
+
+## Titles
+
+- Add KSP:2 once it becomes available
