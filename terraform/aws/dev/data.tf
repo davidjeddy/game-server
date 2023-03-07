@@ -27,7 +27,6 @@ data "template_file" "user_data" {
     "${path.module}/user-data.sh",
     {
       "BUCKET_ID"          = module.installers.s3_bucket_id
-      "DEPLOYMENT_ID"      = random_string.root.id
       "INSTALLER_DIR_PATH" = "/usr/local/lanordie/gameserver"
       "PA_TITAN_CRED_ARN"  = aws_secretsmanager_secret.pa_titans.arn,
       "REGION"             = data.aws_region.current.name

@@ -26,45 +26,29 @@ echo "INFO: Starting user-data.sh ..."
 echo "INFO: Set passed in ARGs to ENV VARs"
 
 # shellcheck disable=SC2269 Pass variables to runtime ENV VAR
-PA_TITAN_CRED_ARN="${PA_TITAN_CRED_ARN}"
-
-# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
-REGION="${REGION}"
-
-# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
 BUCKET_ID="${BUCKET_ID}"
 
 # shellcheck disable=SC2269 Pass variables to runtime ENV VAR
 INSTALLER_DIR_PATH="${INSTALLER_DIR_PATH}"
 
+# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
+PA_TITAN_CRED_ARN="${PA_TITAN_CRED_ARN}"
+
+# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
+REGION="${REGION}"
+
+# Copy installer.sh to local FS
+mkdir -p "${INSTALLER_DIR_PATH}" || exit 1
+cd "${INSTALLER_DIR_PATH}" || exit 1
+aws s3 cp "s3://${BUCKET_ID}/installer.sh" .
+chmod +x "./installer.sh"
+
 # Init logic
 
-echo "INFO: ENV VAR check"
-printenv | sort
-
-echo "INFO: Installing system services."
-apt-get install -y \
-    htop \
-    unzip
-
-echo "INFO: Reset FS resources."
-rm -rf "${INSTALLER_DIR_PATH}" || true
-mkdir -p "${INSTALLER_DIR_PATH}" || true
-
-echo "INFO: Copy install archives and script from S3 bucket to EC2 instance."
-aws s3 ls "s3://${BUCKET_ID}/" --recursive --human-readable --summarize
-aws s3 cp "s3://${BUCKET_ID}/" "${INSTALLER_DIR_PATH}/" --recursive
-
-chmod +x "${INSTALLER_DIR_PATH}/installer.sh"
-
-echo "INFO: Change into ${INSTALLER_DIR_PATH} dir."
-cd "${INSTALLER_DIR_PATH}" || exit
-
-echo "INFO: Execution installer.sh with REGION PA_TITAN_CRED_ARN"
+echo "INFO: Execution installer.sh"
 # shellcheck disable=SC2269
 ./installer.sh \
     --BUCKET_ID "${BUCKET_ID}" \
-    --DEPLOYMENT_ID "${DEPLOYMENT_ID}" \
     --INSTALLER_DIR_PATH "${INSTALLER_DIR_PATH}" \
     --PA_TITAN_CRED_ARN "${PA_TITAN_CRED_ARN}" \
     --REGION "${REGION}"

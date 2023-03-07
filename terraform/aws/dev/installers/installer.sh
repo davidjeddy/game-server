@@ -63,7 +63,9 @@ SATISFACTORY_EXPERIMENTAL_FS_UUID="0fab4de1-05ee-4399-928f-ea4a4d1fd690"
 # -----
 
 echo "INFO: Create a tmp working dir to use as needed"
+rm -rf "${INSTALLER_DIR_PATH}" || true
 mkdir -p "${INSTALLER_DIR_PATH}" || exit 1
+cd "${INSTALLER_DIR_PATH}" || exit 1
 
 # -----
 # Factorio (~/factorio)
@@ -91,8 +93,8 @@ then
         cd "${INSTALLER_DIR_PATH}" || exit 1
         mkdir -p /home/ubuntu/factorio || exit 1
 
-        aws s3 cp "s3://${BUCKET_ID}-${DEPLOYMENT_ID}/factorio_headless_x64_1.1.74.tar.xz" .
-        tar -xf factorio_headless_x64_1.1.74.tar.xz -C /home/ubuntu/pa_titans/stable
+        aws s3 cp "s3://${BUCKET_ID}/factorio_headless_x64_1.1.74.tar.xz" .
+        tar -xf "factorio_headless_x64_1.1.74.tar.xz" -C /home/ubuntu/pa_titans/stable
 
         cd "${INSTALLER_DIR_PATH}"/
         ./factorio --create /home/ubuntu/factorio/saves/lanordie.zip
@@ -162,14 +164,14 @@ then
         mkdir -p "/home/ubuntu/ksp/" || exit 1
 
         echo "INFO: Copy KSP base archive"
-        aws s3 cp "s3://${BUCKET_ID}-${DEPLOYMENT_ID}/ksp-linux-1.12.5.zip" .
+        aws s3 cp "s3://${BUCKET_ID}/ksp-linux-1.12.5.zip" .
         unzip -oqq ksp-linux-1.12.5.zip /home/ubuntu/ksp/
 
         echo "INFO: Install KSP expansions"
-        aws s3 cp "s3://${BUCKET_ID}-${DEPLOYMENT_ID}/KSP-Breaking_Ground_Expansion-en-us-lin-1.7.1.zip" .
+        aws s3 cp "s3://${BUCKET_ID}/KSP-Breaking_Ground_Expansion-en-us-lin-1.7.1.zip" .
         unzip -oqq KSP-Breaking_Ground_Expansion-en-us-lin-1.7.1.zip -d /home/ubuntu/ksp
 
-        aws s3 cp "s3://${BUCKET_ID}-${DEPLOYMENT_ID}/KSP-Making_History_Expansion-en-us-lin-1.12.1.zip" .
+        aws s3 cp "s3://${BUCKET_ID}/KSP-Making_History_Expansion-en-us-lin-1.12.1.zip" .
         unzip -oqq KSP-Making_History_Expansion-en-us-lin-1.12.1.zip -d /home/ubuntu/ksp
 
         cd /home/ubuntu/ksp
@@ -179,7 +181,7 @@ then
         ./dlc-mhe-en-us.sh
 
         echo "INFO: Installing and update KSP DMPServer dedicated server and DMPUpdater"
-        aws s3 cp "s3://${BUCKET_ID}-${DEPLOYMENT_ID}/DMPServer.zip" .
+        aws s3 cp "s3://${BUCKET_ID}/DMPServer.zip" .
         unzip -oqq DMPServer.zip -d /home/ubuntu/ksp
 
         cp -rf DMPModpackUpdater.exe /home/ubuntu/ksp
@@ -251,7 +253,7 @@ then
         cd "${INSTALLER_DIR_PATH}" || exit 1
         mkdir -p /home/ubuntu/pa_titans/stable || exit 1
 
-        aws s3 cp "s3://${BUCKET_ID}-${DEPLOYMENT_ID}/PA_Linux_116400.tar.bz2" .
+        aws s3 cp "s3://${BUCKET_ID}/PA_Linux_116400.tar.bz2" .
         tar -xf PA_Linux_116400.tar.bz2 -C /home/ubuntu/pa_titans/stable
     fi
 
