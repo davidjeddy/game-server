@@ -122,6 +122,34 @@ run the following command
 systemctl start satisfactory.service
 ```
 
+## Factorio
+
+**Error**
+
+Validate connectivity
+
+**Fix**
+
+```sh
+nc -z -v [IP] 34197
+
+Connection to 127.0.0.1 34197 port [udp/*] succeeded!
+```
+
+## Planetary Annihilation : Titans
+
+**Error**
+
+Validate connectivity
+
+**Fix**
+
+```sh
+nc -z -v 0.0.0.0 20545
+
+Connection to 0.0.0.0 20545 port [tcp/*] succeeded!
+```
+
 ## Add new service
 
 - Create random string resource

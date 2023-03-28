@@ -94,11 +94,14 @@ then
         mkdir -p /home/ubuntu/factorio || exit 1
 
         aws s3 cp "s3://${BUCKET_ID}/factorio_headless_x64_1.1.74.tar.xz" .
-        tar -xf "factorio_headless_x64_1.1.74.tar.xz" -C /home/ubuntu/pa_titans/stable
+        tar -xf "factorio_headless_x64_1.1.74.tar.xz" -C /home/ubuntu/factorio
 
-        cd "${INSTALLER_DIR_PATH}"/
+        cd "/home/ubuntu/factorio/bin/x64/factorio" || exit 1
         ./factorio --create /home/ubuntu/factorio/saves/lanordie.zip
         ls -la /home/ubuntu/factorio/saves
+
+        # Factorio configuration
+        aws s3 cp "s3://${BUCKET_ID}/factorio/data/server-settings.json" "/home/ubuntu/factorio/data/server-settings.json" 
     fi
 
     echo "INFO: Resetting Factorio dir ownership"
@@ -121,7 +124,6 @@ then
         Restart=on-failure
         StandardOutput=journal
         User=ubuntu
-        User=ubuntu
         WorkingDirectory=/home/ubuntu/factorio
 
         [Install]
@@ -141,89 +143,89 @@ fi
 # KSP (~/ksp)
 # -----
 
-if [[ $ENABLE_KSP == true ]]
-then
-    echo "INFO: Mount Kerbal Space Program EBS volume"
-    mkdir -p /home/ubuntu/ksp || true
+# if [[ $ENABLE_KSP == true ]]
+# then
+#     echo "INFO: Mount Kerbal Space Program EBS volume"
+#     mkdir -p /home/ubuntu/ksp || true
 
-    # check if the FS is already listed in /etc/fstab
-    # shellcheck disable=SC2143
-    if [[ ! $(grep -rnw '/etc/fstab' -e "$KSP_FS_UUID") ]]
-    then
-        echo "UUID=$KSP_FS_UUID /home/ubuntu/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
-        mount -a
-    fi
+#     # check if the FS is already listed in /etc/fstab
+#     # shellcheck disable=SC2143
+#     if [[ ! $(grep -rnw '/etc/fstab' -e "$KSP_FS_UUID") ]]
+#     then
+#         echo "UUID=$KSP_FS_UUID /home/ubuntu/ksp ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
+#         mount -a
+#     fi
 
-    echo "INFO: /etc/fstab contents"
-    cat /etc/fstab
+#     echo "INFO: /etc/fstab contents"
+#     cat /etc/fstab
 
-    if [[ ! -f /home/ubuntu/factorio/bin/x64/factorio ]]
-    then
-        echo "INFO: Install KSP base"
-        cd "${INSTALLER_DIR_PATH}" || exit 1
-        mkdir -p "/home/ubuntu/ksp/" || exit 1
+#     if [[ ! -f /home/ubuntu/factorio/bin/x64/factorio ]]
+#     then
+#         echo "INFO: Install KSP base"
+#         cd "${INSTALLER_DIR_PATH}" || exit 1
+#         mkdir -p "/home/ubuntu/ksp/" || exit 1
 
-        echo "INFO: Copy KSP base archive"
-        aws s3 cp "s3://${BUCKET_ID}/ksp-linux-1.12.5.zip" .
-        unzip -oqq ksp-linux-1.12.5.zip /home/ubuntu/ksp/
+#         echo "INFO: Copy KSP base archive"
+#         aws s3 cp "s3://${BUCKET_ID}/ksp-linux-1.12.5.zip" .
+#         unzip -oqq ksp-linux-1.12.5.zip /home/ubuntu/ksp/
 
-        echo "INFO: Install KSP expansions"
-        aws s3 cp "s3://${BUCKET_ID}/KSP-Breaking_Ground_Expansion-en-us-lin-1.7.1.zip" .
-        unzip -oqq KSP-Breaking_Ground_Expansion-en-us-lin-1.7.1.zip -d /home/ubuntu/ksp
+#         echo "INFO: Install KSP expansions"
+#         aws s3 cp "s3://${BUCKET_ID}/KSP-Breaking_Ground_Expansion-en-us-lin-1.7.1.zip" .
+#         unzip -oqq KSP-Breaking_Ground_Expansion-en-us-lin-1.7.1.zip -d /home/ubuntu/ksp
 
-        aws s3 cp "s3://${BUCKET_ID}/KSP-Making_History_Expansion-en-us-lin-1.12.1.zip" .
-        unzip -oqq KSP-Making_History_Expansion-en-us-lin-1.12.1.zip -d /home/ubuntu/ksp
+#         aws s3 cp "s3://${BUCKET_ID}/KSP-Making_History_Expansion-en-us-lin-1.12.1.zip" .
+#         unzip -oqq KSP-Making_History_Expansion-en-us-lin-1.12.1.zip -d /home/ubuntu/ksp
 
-        cd /home/ubuntu/ksp
-        chmod +x ./dlc-bge-en-us.sh
-        ./dlc-bge-en-us.sh
-        chmod +x ./dlc-mhe-en-us.sh
-        ./dlc-mhe-en-us.sh
+#         cd /home/ubuntu/ksp
+#         chmod +x ./dlc-bge-en-us.sh
+#         ./dlc-bge-en-us.sh
+#         chmod +x ./dlc-mhe-en-us.sh
+#         ./dlc-mhe-en-us.sh
 
-        echo "INFO: Installing and update KSP DMPServer dedicated server and DMPUpdater"
-        aws s3 cp "s3://${BUCKET_ID}/DMPServer.zip" .
-        unzip -oqq DMPServer.zip -d /home/ubuntu/ksp
+#         echo "INFO: Installing and update KSP DMPServer dedicated server and DMPUpdater"
+#         aws s3 cp "s3://${BUCKET_ID}/DMPServer.zip" .
+#         unzip -oqq DMPServer.zip -d /home/ubuntu/ksp
 
-        cp -rf DMPModpackUpdater.exe /home/ubuntu/ksp
-        mono DMPModpackUpdater.exe
+#         cp -rf DMPModpackUpdater.exe /home/ubuntu/ksp
+#         mono DMPModpackUpdater.exe
 
-        cd /home/ubuntu/ksp
-    fi
+#         cd /home/ubuntu/ksp
+#     fi
 
-    echo "INFO: Resetting Kerbal Space Program dir ownership"
-    chown ubuntu:ubuntu -R /home/ubuntu/ksp
+#     echo "INFO: Resetting Kerbal Space Program dir ownership"
+#     chown ubuntu:ubuntu -R /home/ubuntu/ksp
 
-    if [[ ! -f "/etc/systemd/system/ksp.service" ]]
-    then
+#     if [[ ! -f "/etc/systemd/system/ksp.service" ]]
+#     then
 
-        echo "INFO: Create system service for KSP"
-        echo -e "\
-        [Unit]
-            After=syslog.target network.target nss-lookup.target network-online.target
-            Description=KSP dedicated server
-            Wants=network-online.target
+#         echo "INFO: Create system service for KSP"
+#         echo -e "\
+#         [Unit]
+#             After=syslog.target network.target nss-lookup.target network-online.target
+#             Description=KSP dedicated server
+#             Wants=network-online.target
 
-        [Service]
-            ExecStart=mono /home/ubuntu/ksp/DMPServer/DMPServer.exe
-            Group=ubuntu
-            KillSignal=SIGINT
-            Restart=on-failure
-            StandardOutput=journal
-            User=ubuntu
-            WorkingDirectory=/home/ubuntu/ksp
+#         [Service]
+#             ExecStart=mono /home/ubuntu/ksp/DMPServer/DMPServer.exe
+#             Group=ubuntu
+#             KillSignal=SIGINT
+#             Restart=on-failure
+#             StandardOutput=journal
+#             User=ubuntu
+#             WorkingDirectory=/home/ubuntu/ksp
 
-        [Install]
-            WantedBy=multi-user.target" | tee "/etc/systemd/system/ksp.service"
+#         [Install]
+#             WantedBy=multi-user.target" | tee "/etc/systemd/system/ksp.service"
 
-        sed -i 's/^ *//g' "/etc/systemd/system/ksp.service"
+#         sed -i 's/^ *//g' "/etc/systemd/system/ksp.service"
 
-        systemctl enable ksp.service --now
-        systemctl restart ksp.service
-    fi
+#         systemctl enable ksp.service --now
+#         systemctl restart ksp.service
+#     fi
 
-    echo "INFO: Kerbal Space Program service status"
-    systemctl status ksp.service
-fi
+#     echo "INFO: Kerbal Space Program service status"
+#     systemctl status ksp.service
+# fi
 
 # -----
 # Planetary Annihilation : Titans (~/ps_titans)
@@ -246,7 +248,7 @@ then
     echo "INFO: /etc/fstab contents"
     cat /etc/fstab
 
-    if [[ ! -f /home/ubuntu/pa_titans/PA/stable/server ]]
+    if [[ ! -f /home/ubuntu/pa_titans/stable/server ]]
     then
         # source https://store.planetaryannihilation.net/Download/Install?titleId=4&sessionTicket=7065387651658097800
         echo "INFO: Install Planetary Annihilation : Titans archive"
@@ -270,7 +272,7 @@ then
         curl -sL https://raw.githubusercontent.com/planetary-annihilation/papatcher/master/papatcher.go -o "${INSTALLER_DIR_PATH}"/papatcher.go
         chmod +x papatcher.go
         go run "${INSTALLER_DIR_PATH}"/papatcher.go \
-            --dir /home/ubuntu/pa_titans/pa/ \
+            --dir /home/ubuntu/pa_titans/stable/ \
             --stream stable \
             --update-only \
             --username "$(aws secretsmanager get-secret-value --region "$REGION" --secret-id "$PA_TITAN_CRED_ARN" --query SecretString --output text | jq -r .username)" \
@@ -281,7 +283,7 @@ then
     echo "INFO: Resetting Planetary Annihilation : Titans dir ownership"
     chown ubuntu:ubuntu -R /home/ubuntu/pa_titans
 
-    echo "INFO: Version of Planetary Annihilationvers : Titans is $(cat /home/ubuntu/pa_titans/PA/version.txt)"
+    echo "INFO: Version of Planetary Annihilationvers : Titans is $(cat /home/ubuntu/pa_titans/stable/version.txt)"
 
     if [[ ! -f "/etc/systemd/system/pa_titans.service" ]]
     then
@@ -298,7 +300,7 @@ then
             Wants=network-online.target
 
         [Service]
-            ExecStart=/home/ubuntu/pa_titans/PA/stable/server \
+            ExecStart=/home/ubuntu/pa_titans/stable/server \
                 --allow-lan \
                 --game-mode \"PAExpansion1:config\" \
                 --gameover-timeout 360 \
@@ -323,7 +325,7 @@ then
             Restart=on-failure
             StandardOutput=journal
             User=ubuntu
-            WorkingDirectory=/home/ubuntu/pa_titans/PA/stable/
+            WorkingDirectory=/home/ubuntu/pa_titans/stable
 
         [Install]
             WantedBy=multi-user.target" | tee "/etc/systemd/system/pa_titans.service"
@@ -348,6 +350,7 @@ then
     mkdir -p /home/ubuntu/satisfactory/stable || true
 
     # check if the FS is already listed in /etc/fstab
+    # shellcheck disable=SC2143
     if [[ ! $(grep -rnw '/etc/fstab' -e "$SATISFACTORY_FS_UUID") ]]
     then
         echo "UUID=$SATISFACTORY_FS_UUID /home/ubuntu/satisfactory/stable ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
@@ -414,6 +417,7 @@ then
     mkdir -p /home/ubuntu/satisfactory/experimental || true
 
     # check if the FS is already listed in /etc/fstab
+    # shellcheck disable=SC2143
     if [[ ! $(grep -rnw '/etc/fstab' -e "$SATISFACTORY_EXPERIMENTAL_FS_UUID") ]]
     then
         echo "UUID=$SATISFACTORY_EXPERIMENTAL_FS_UUID /home/ubuntu/satisfactory/experimental ext4 defaults,errors=remount-ro 0 1" >> /etc/fstab
@@ -469,9 +473,5 @@ then
     echo "INFO: Satisfactory Experimental service status"
     systemctl status satisfactory_experimental.service
 fi
-
-# umount the S3 drive
-
-# create cron job to update and restart services once a week
 
 echo "INFO: ...done with installer.sh."

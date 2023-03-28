@@ -25,16 +25,16 @@ echo "INFO: Starting user-data.sh ..."
 
 echo "INFO: Set passed in ARGs to ENV VARs"
 
-# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
+# shellcheck disable=SC2269 # Pass variables to runtime ENV VAR
 BUCKET_ID="${BUCKET_ID}"
 
-# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
+# shellcheck disable=SC2269 # Pass variables to runtime ENV VAR
 INSTALLER_DIR_PATH="${INSTALLER_DIR_PATH}"
 
-# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
+# shellcheck disable=SC2269 # Pass variables to runtime ENV VAR
 PA_TITAN_CRED_ARN="${PA_TITAN_CRED_ARN}"
 
-# shellcheck disable=SC2269 Pass variables to runtime ENV VAR
+# shellcheck disable=SC2269 # Pass variables to runtime ENV VAR
 REGION="${REGION}"
 
 # Copy installer.sh to local FS

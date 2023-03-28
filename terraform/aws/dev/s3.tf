@@ -42,17 +42,23 @@ resource "aws_s3_object" "text_shellscript" {
 }
 
 resource "aws_s3_object" "title_archives" {
-  for_each = fileset("${path.module}/installers", "{*.zip||*.tar.bz2||*.tar.xz}")
+  for_each = fileset("${path.module}/../../../backup", "**/*.*")
 
   lifecycle {
     prevent_destroy = true
   }
 
-  content_type           = "text/x-shellscript"
+  timeouts {
+    create = "1h"
+    update = "1h"
+    delete = "2m"
+  }
+
+  content_type           = "application/octet-stream"
   server_side_encryption = "AES256"
 
-  etag   = filemd5("${path.module}/installers/${each.value}")
-  source = "${path.module}/installers/${each.value}"
+  etag   = filemd5("${path.module}/../../../backup/${each.value}")
+  source = "${path.module}/../../../backup/${each.value}"
   key    = each.value
 
   bucket = module.installers.s3_bucket_id

@@ -4,11 +4,10 @@ Topics in a very loose order of priority.
 
 ## Next
 
-- Install process for services we have archives for
-- Fix DLM policy and permissions to enable daily backup snapshots
 - Remove default VPC via Cloud Posse provider resource
 - Dump SSH, replace with SSM
 - Convert IAM JSON to HCL
+- Fix DLM policy and permissions to enable daily backup snapshots
 
 ## BizOps
 

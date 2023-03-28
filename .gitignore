@@ -36,4 +36,4 @@ override.tf.json
 terraform.rc
 
 # EBS/EC2 data backup
-backup
+backup/

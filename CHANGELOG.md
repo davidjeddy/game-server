@@ -2,13 +2,13 @@
 
 ## 0.0.22
 
-- MOVED title install / system service creation out of user-data.sh, now resides in installer.sh which is stored in the S3 bucket `installers`.
+- MOVED title install / system service creation out of user-data.sh, now resides in installer.sh which is stored in the S3 bucket `installers`
 - ADDED archive for Factorio, KSP, and PA:Titans to `installer` S3 bucket. Titles now install from archives in S3 if missing on EC2 instance
 
 ## 0.0.20
 
 - ADD Satisfactory Experimental service
-- ADD Instance user-data.sh migrated back to Terraform, no counter-productive to rebuild the AMI for the smallest changes to instance start-up behavior.
+- ADD Instance user-data.sh migrated back to Terraform, no counter-productive to rebuild the AMI for the smallest changes to instance start-up behavior
 
 ## 0.0.19
 
