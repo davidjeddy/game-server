@@ -35,5 +35,5 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-# EBS/EC2 data backup
+# title install archives and configurations
 backup/

@@ -1,4 +1,4 @@
-# How To
+# RUNBOOK
 
 ## Provisioning
 
@@ -184,6 +184,12 @@ cd [[project_root]]
 scp -i ~/.ssh/$KEY_NAME -C -r -p ./backup/home/ubuntu/ksp ubuntu@$REMOTE_IP:~/ksp 
 scp -i ~/.ssh/$KEY_NAME -C -r -p ./backup/home/ubuntu/pa_titans ubuntu@$REMOTE_IP:~/pa_titans
 scp -i ~/.ssh/$KEY_NAME -C -r -p ./backup/home/ubuntu/.config/Epic/FactoryGame/Saved ubuntu@$REMOTE_IP:~/.config/Epic/FactoryGame/Saved
+```
+
+## Sync S3 installers bucket with local backup directory
+
+```sh
+aws s3 ls s3://game-server-dev-installers-15q7 $(pwd) --profile game_server
 ```
 
 ## Building AMI with Packer
