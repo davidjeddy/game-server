@@ -1,0 +1,62 @@
+## EC2
+variable "instance_type" {
+  default     = "m5.large"
+  description = "Type and size of EC2 instance"
+  type        = string
+}
+
+## Generic
+
+variable "delete_timeout" {
+  default     = 7
+  description = "Default timeout in days when deleting protected resources"
+  type        = number
+}
+
+variable "name" {
+  default     = "game-server"
+  description = "(required) The application or project name"
+  type        = string
+}
+
+variable "region" {
+  default     = "us-east-1"
+  type        = string
+  description = "(optional) describe your variable"
+}
+
+
+variable "stage" {
+  description = "The stage; aka environment"
+  type        = string
+  default     = "dev"
+}
+
+variable "delimiter" {
+  description = "Delimiter character"
+  type        = string
+  default     = "-"
+}
+
+variable "source_cidr" {
+  default     = ["0.0.0.0/0"]
+  type        = list(any)
+  description = "(required) CIDR ranges to allow traffic from"
+}
+
+# No defaults
+
+variable "aws_acct_id" {
+  description = "AWS account ID"
+  type        = number
+}
+
+variable "tags" {
+  description = "Default shared tags"
+  type        = map(any)
+}
+
+variable "key_name" {
+  type        = string
+  description = "(required) Name prefix for the SSH key pair."
+}

@@ -1,0 +1,2 @@
+name = ResizerConfig
+scene = 5, 7, 6

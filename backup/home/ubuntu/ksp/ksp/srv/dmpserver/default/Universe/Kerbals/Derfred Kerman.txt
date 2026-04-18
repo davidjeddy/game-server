@@ -1,0 +1,38 @@
+name = Derfred Kerman
+gender = Male
+type = Crew
+trait = Pilot
+brave = 0.104317233
+dumb = 0.730058074
+badS = False
+veteran = False
+tour = False
+state = Assigned
+inactive = False
+inactiveTimeEnd = 0
+gExperienced = 0
+outDueToG = False
+ToD = 0
+idx = 0
+extraXP = 0
+CAREER_LOG
+{
+	flight = 2
+	0 = Recover
+	1 = Recover
+}
+FLIGHT_LOG
+{
+	flight = 2
+	2 = Flight,Kerbin
+	2 = Suborbit,Kerbin
+	2 = Orbit,Kerbin
+	2 = Flyby,Mun
+	2 = Escape,Mun
+	2 = Orbit,Mun
+	2 = Suborbit,Mun
+	2 = Land,Mun
+	2 = ExitVessel,Mun
+	2 = BoardVessel,Mun
+	2 = PlantFlag,Mun
+}

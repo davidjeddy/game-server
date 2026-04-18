@@ -1,0 +1,35 @@
+name = TRScenario
+scene = 5
+reflectionType = REAL
+isHelmetRemovalEnabled = True
+isAtmSuitEnabled = True
+Kerbals
+{
+	Barry Kerman = F GENERIC GENERIC
+	Bilcott Kerman = M GENERIC GENERIC
+	Bill Kerman = M GENERIC GENERIC
+	Bob Kerman = M GENERIC GENERIC
+	Desemy Kerman = M GENERIC GENERIC
+	Doodsen Kerman = M GENERIC GENERIC
+	Graya Kerman = F GENERIC GENERIC
+	Harrigh Kerman = M GENERIC GENERIC
+	Harsel Kerman = M GENERIC GENERIC
+	Jebediah Kerman = M GENERIC GENERIC
+	Jeremy Kerman = M GENERIC GENERIC
+	Jeschelle Kerman = F GENERIC GENERIC
+	Kenton Kerman = M GENERIC GENERIC
+	Langun Kerman = M GENERIC GENERIC
+	Lencas Kerman = M GENERIC GENERIC
+	Luble Kerman = M GENERIC GENERIC
+	Miice Kerman = F GENERIC GENERIC
+	Mirthis Kerman = F GENERIC GENERIC
+	Shelsel Kerman = M GENERIC GENERIC
+	Tesa Kerman = F GENERIC GENERIC
+	Valemma Kerman = F GENERIC GENERIC
+	Valentina Kerman = F GENERIC GENERIC
+	Verlenna Kerman = F GENERIC GENERIC
+	Zelbe Kerman = F GENERIC GENERIC
+}
+ClassSuits
+{
+}
