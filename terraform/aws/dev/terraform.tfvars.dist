@@ -1,0 +1,9 @@
+access_key  = ""
+aws_acct_id = ""
+secret_key  = ""
+
+tags = {
+  Owner   = ""
+  Contact = ""
+  Version = ""
+}

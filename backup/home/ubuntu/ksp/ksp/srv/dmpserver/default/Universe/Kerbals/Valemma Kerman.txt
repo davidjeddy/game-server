@@ -1,0 +1,73 @@
+name = Valemma Kerman
+gender = Female
+type = Crew
+trait = Pilot
+brave = 0.603122592
+dumb = 0.0565699339
+badS = False
+veteran = False
+tour = False
+state = Available
+inactive = False
+inactiveTimeEnd = 0
+gExperienced = 0
+outDueToG = False
+ToD = 0
+idx = 0
+extraXP = 0
+CAREER_LOG
+{
+	flight = 5
+	0 = Recover
+	1 = Flight,Kerbin
+	1 = Suborbit,Kerbin
+	1 = Orbit,Kerbin
+	1 = Flyby,Minmus
+	1 = Escape,Minmus
+	1 = Orbit,Minmus
+	1 = Suborbit,Minmus
+	1 = Land,Minmus
+	1 = ExitVessel,Minmus
+	1 = BoardVessel,Minmus
+	1 = Flyby,Kerbin
+	1 = Land,Kerbin
+	1 = Recover
+	2 = Flight,Kerbin
+	2 = Suborbit,Kerbin
+	2 = Orbit,Kerbin
+	2 = Land,Kerbin
+	2 = Recover
+	3 = Flight,Kerbin
+	3 = Suborbit,Kerbin
+	3 = Orbit,Kerbin
+	3 = Flyby,Mun
+	3 = Escape,Mun
+	3 = Orbit,Mun
+	3 = Suborbit,Mun
+	3 = Land,Mun
+	3 = ExitVessel,Mun
+	3 = PlantFlag,Mun
+	3 = BoardVessel,Mun
+	3 = Flyby,Kerbin
+	3 = Land,Kerbin
+	3 = Recover
+	4 = Flight,Kerbin
+	4 = Suborbit,Kerbin
+	4 = Orbit,Kerbin
+	4 = Escape,Kerbin
+	4 = Flyby,Sun
+	4 = Orbit,Sun
+	4 = Escape,Sun
+	4 = Flyby,Jool
+	4 = Escape,Jool
+	4 = Flyby,Tylo
+	4 = Escape,Tylo
+	4 = Flyby,Vall
+	4 = Escape,Vall
+	4 = Flyby,Kerbin
+	4 = Recover
+}
+FLIGHT_LOG
+{
+	flight = 5
+}

@@ -1,0 +1,107 @@
+pid = 6d857ef68f934f1aa523584b3e40f1ba
+name = Ast. QLZ-943
+type = SpaceObject
+sit = ORBITING
+landed = False
+landedAt = 
+splashed = False
+met = 392661020.82769686
+lct = 392661020.82769686
+lastUT = -1
+root = 0
+lat = 0.31547116343431708
+lon = 93.574731110590562
+alt = 15736765562.301453
+hgt = -1
+nrm = 0,1,0
+rot = -0.872268319,0.245560721,-0.126932606,0.403405339
+CoM = 0,0,0
+stg = 0
+prst = False
+ref = 0
+ctrl = False
+ORBIT
+{
+	SMA = 15033987559.793959
+	ECC = 0.097126633314296981
+	INC = 0.57816171673256755
+	LPE = 168.45914471341428
+	LAN = 38.024211650713596
+	MNA = 0.066848909020362987
+	EPH = 396553132.79058748
+	REF = 0
+}
+PART
+{
+	name = PotatoRoid
+	cid = 0
+	uid = 1122786560
+	mid = 1122786560
+	launchID = 0
+	parent = 0
+	position = 0,0,0
+	rotation = 0,0,0,1
+	mirror = 1,1,1
+	symMethod = Radial
+	istg = 0
+	resPri = 0
+	dstg = 0
+	sqor = 0
+	sepI = 0
+	sidx = 0
+	attm = 0
+	srfN = None, -1
+	mass = 150
+	shielded = False
+	temp = -1
+	tempExt = 0
+	tempExtUnexp = 0
+	expt = 0.100000001
+	state = 0
+	attached = True
+	autostrutMode = Off
+	rigidAttachment = False
+	flag = 
+	rTrf = 
+	modCost = 0
+}
+ACTIONGROUPS
+{
+}
+DISCOVERY
+{
+	state = 1
+	lastObservedTime = 392661020.82769686
+	lifetime = 1082378.4851074219
+	refTime = 1728000
+	size = 2
+}
+FLIGHTPLAN
+{
+}
+CTRLSTATE
+{
+}
+VESSELMODULES
+{
+	FlightIntegrator
+	{
+	}
+	ModuleSwapConverterUpdate
+	{
+	}
+	RPMVesselComputer
+	{
+	}
+	CommNetVessel
+	{
+		controlState = None
+		canComm = True
+	}
+	ModuleStabilization
+	{
+		posX = 0
+		posY = 0
+		posZ = 0
+	}
+}

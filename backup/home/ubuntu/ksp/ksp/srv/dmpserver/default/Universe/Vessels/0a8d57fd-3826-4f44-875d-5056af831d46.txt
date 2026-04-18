@@ -1,0 +1,99 @@
+pid = 0a8d57fd38264f44875d5056af831d46
+name = Ast. WTB-642
+type = SpaceObject
+sit = ORBITING
+landed = False
+landedAt = 
+splashed = False
+met = 11942359.101390129
+lct = 11942359.101390129
+lastUT = -1
+root = 0
+lat = -1.2260553188983441
+lon = 52.737478716379449
+alt = 13523544782.391113
+hgt = -1
+nrm = 0,1,0
+rot = 0.0710643753,0.617786944,-0.29940331,0.723634362
+CoM = 0,0,0
+stg = 0
+prst = False
+ref = 0
+ctrl = False
+ORBIT
+{
+	SMA = 14696864399.654013
+	ECC = 0.080072981846960739
+	INC = 1.3816643031212239
+	LPE = 339.66981916959958
+	LAN = 347.24415998612238
+	MNA = 0.29393112163915758
+	EPH = 13469117.475413566
+	REF = 0
+}
+PART
+{
+	name = PotatoRoid
+	cid = 0
+	uid = 274189178
+	mid = 274189178
+	launchID = 0
+	parent = 0
+	position = 0,0,0
+	rotation = 0,0,0,1
+	mirror = 1,1,1
+	symMethod = Radial
+	istg = 0
+	resPri = 0
+	dstg = 0
+	sqor = 0
+	sepI = 0
+	sidx = 0
+	attm = 0
+	srfN = None, -1
+	mass = 150
+	shielded = False
+	temp = -1
+	tempExt = 0
+	tempExtUnexp = 0
+	expt = 0.100000001
+	state = 0
+	attached = True
+	autostrutMode = Off
+	rigidAttachment = False
+	flag = 
+	rTrf = 
+	modCost = 0
+}
+ACTIONGROUPS
+{
+}
+DISCOVERY
+{
+	state = 29
+	lastObservedTime = 11942359.101390129
+	lifetime = 1011507.1929931641
+	refTime = 1728000
+	size = 2
+}
+FLIGHTPLAN
+{
+}
+CTRLSTATE
+{
+}
+VESSELMODULES
+{
+	FlightIntegrator
+	{
+	}
+	ModuleSwapConverterUpdate
+	{
+	}
+	RPMVesselComputer
+	{
+	}
+	ModuleStabilization
+	{
+	}
+}

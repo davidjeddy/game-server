@@ -1,0 +1,144 @@
+pid = c672a2631ef54ed4854f17ad5c14782c
+persistentId = 2325545993
+name = Ast. BIG-488
+type = SpaceObject
+sit = ORBITING
+landed = False
+skipGroundPositioning = False
+skipGroundPositioningForDroppedPart = False
+vesselSpawning = True
+launchedFrom = 
+landedAt = 
+displaylandedAt = 
+splashed = False
+met = 384291.70241137169
+lct = 384291.70241137169
+lastUT = -1
+distanceTraveled = 0
+root = 0
+lat = 0.44240812843000088
+lon = -23.880994469544188
+alt = 13304204196.630058
+hgt = -1
+nrm = 0,1,0
+rot = -0.0326960608,-0.417697966,0.77244091,0.477278262
+CoM = 0,0,0
+stg = 0
+prst = False
+ref = 0
+ctrl = False
+PQSMin = 0
+PQSMax = 0
+GroupOverride = 0
+OverrideDefault = False,False,False,False
+OverrideActionControl = 0,0,0,0
+OverrideAxisControl = 0,0,0,0
+OverrideGroupNames = ,,,
+altDispState = DEFAULT
+ORBIT
+{
+	SMA = 14432656520.795019
+	ECC = 0.060191431332357118
+	INC = 0.78185542518898976
+	LPE = 30.468367723052854
+	LAN = 261.90283587968838
+	MNA = 5.9728571522021943
+	EPH = 29973841.479108136
+	REF = 0
+}
+PART
+{
+	name = PotatoRoid
+	cid = 0
+	uid = 0
+	mid = 0
+	persistentId = 2734421203
+	launchID = 0
+	parent = 0
+	position = 0,0,0
+	rotation = 0,0,0,1
+	mirror = 1,1,1
+	symMethod = Radial
+	istg = 0
+	resPri = 0
+	dstg = 0
+	sqor = 0
+	sepI = 0
+	sidx = 0
+	attm = 0
+	sameVesselCollision = False
+	srfN = None, -1
+	mass = 150
+	shielded = False
+	temp = -1
+	tempExt = 0
+	tempExtUnexp = 0
+	staticPressureAtm = 0
+	expt = 1
+	state = 0
+	PreFailState = 0
+	attached = True
+	autostrutMode = Off
+	rigidAttachment = False
+	flag = 
+	rTrf = 
+	modCost = 0
+	modMass = 0
+	moduleVariantName = 
+	moduleCargoStackableQuantity = 1
+}
+ACTIONGROUPS
+{
+}
+DISCOVERY
+{
+	state = 1
+	lastObservedTime = 384291.70241137169
+	lifetime = Infinity
+	refTime = Infinity
+	size = 2
+}
+FLIGHTPLAN
+{
+}
+CTRLSTATE
+{
+}
+VESSELMODULES
+{
+	FlightIntegrator
+	{
+	}
+	AxisGroupsModule
+	{
+	}
+	CometVessel
+	{
+		typeName = 
+		cometPartId = 0
+		vfxStartDistance = 1.5
+		comaWidthRatio = 10000
+		tailMaxWidthRatio = 1
+		tailMaxLengthRatio = 1000000
+		ionTailMaxWidthRatio = 0.29999999999999999
+		comaWidth = 10000
+		tailWidth = 1
+		tailLength = 1000000
+		ionTailWidth = 1
+		hasName = False
+		radius = 115
+		seed = 0
+		numGeysers = 0
+		numNearDustEmitters = 0
+		optimizedCollider = False
+		fragmentDynamicPressureModifier = 0
+	}
+	SuspensionLoadBalancer
+	{
+	}
+	CommNetVessel
+	{
+		controlState = None
+		canComm = True
+	}
+}
