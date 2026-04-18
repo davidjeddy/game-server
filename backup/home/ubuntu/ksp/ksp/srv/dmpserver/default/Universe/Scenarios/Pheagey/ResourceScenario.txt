@@ -1,0 +1,20 @@
+name = ResourceScenario
+scene = 7, 8, 5, 6
+RESOURCE_SETTINGS
+{
+	GameSeed = 506880835
+	MaxDeltaTime = 21600
+	BIOME_LOCK_DATA
+	{
+		PlanetId = 1
+		BiomeName = Shores
+	}
+	PLANET_SCAN_DATA
+	{
+		PlanetId = 1
+	}
+	PLANET_SCAN_DATA
+	{
+		PlanetId = 2
+	}
+}

@@ -1,0 +1,20 @@
+[13:18:27][DEBUG] : Loading settings...
+[13:18:27][DEBUG] : System.IO compression works: True, test time: 30 ms.
+[13:18:27][DEBUG] : Loading plugins!
+[13:18:27][DEBUG] : Done!
+[13:18:27][INFO] : Starting DMPServer v0.2.4.1, protocol 45
+[13:18:27][INFO] : Loading universe... 
+[13:18:27][INFO] : Starting SUBSPACE server on port 6702... 
+[13:18:27][DEBUG] : Terminal may be not attached or broken, Exiting out of command handler
+[13:18:27][INFO] : Removed 0 debris
+[13:18:27][INFO] : Ready!
+[13:48:27][INFO] : Removed 0 debris
+[14:18:27][INFO] : Removed 0 debris
+[14:48:27][INFO] : Removed 0 debris
+[15:18:27][INFO] : Removed 0 debris
+[15:48:27][INFO] : Removed 0 debris
+[15:49:06][DEBUG] : Online players is now: 0, connected: 1
+[15:49:06][INFO] : New client connection from [::ffff:92.109.222.35]:54706
+[15:49:06][INFO] : Client Pheagey failed to handshake: Protocol mismatch
+[15:49:06][INFO] : Disconnecting client Pheagey, sent HANDSHAKE_REPLY (Protocol mismatch) to endpoint [::ffff:92.109.222.35]:54706
+[15:49:06][DEBUG] : Online players is now: 0, connected: 0

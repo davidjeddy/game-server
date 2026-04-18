@@ -1,0 +1,40 @@
+name = KerbalAlarmClockScenario
+scene = 5, 6, 7, 8
+KACAlarmListStorage
+{
+	list
+	{
+		Item
+		{
+			VesselID = 
+			ID = c34d67bce16f40f3a3b962c7653e88df
+			Name = Kerbin -> Duna
+			NotesStorage = Kerbin (@100km) -> Duna (@100km)\r\nDepart at:      Year 3, Day 309, 1:30:34\r\n       UT:      25061435\r\n   Travel:      273 Days, 2:45:46\r\n       UT:      5906746\r\nArrive at:      Year 4, Day 156, 4:16:21\r\n       UT:      30968181\r\nPhase Angle:    34.23°\r\nEjection Angle: 155.93° to prograde\r\nEjection Inc.:  2.27°\r\nEjection Δv:    1067 m/s\r\nPrograde Δv:    1058.7 m/s\r\nNormal Δv:      130.9 m/s\r\nHeading:        82.95°\r\nInsertion Inc.: -1.56°\r\nInsertion Δv:   578 m/s\r\nTotal Δv:       1644 m/s
+			TypeOfAlarm = TransferModelled
+			AlarmTimeStorage = 24975034.632820684
+			AlarmMarginSecs = 86400
+			Enabled = True
+			AlarmAction = Converted
+			AlarmActionConverted = True
+			ManNodesStorage = 
+			XferOriginBodyName = Kerbin
+			XferTargetBodyName = Duna
+			RepeatAlarm = False
+			RepeatAlarmPeriodStorage = 0
+			PlaySound = False
+			TargetObjectStorage = 
+			ContractGUIDStorage = 00000000-0000-0000-0000-000000000000
+			ContractAlarmType = Expire
+			Triggered = False
+			Actioned = False
+			AlarmWindowClosed = False
+			Actions
+			{
+				Warp = KillWarp
+				Message = Yes
+				DeleteWhenDone = False
+				PlaySound = False
+			}
+		}
+	}
+}

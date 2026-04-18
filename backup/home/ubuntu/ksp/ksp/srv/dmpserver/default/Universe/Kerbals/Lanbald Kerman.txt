@@ -1,0 +1,28 @@
+name = Lanbald Kerman
+gender = Male
+type = Crew
+trait = Pilot
+brave = 0.618512094
+dumb = 0.205317691
+badS = False
+veteran = False
+tour = False
+state = Assigned
+inactive = False
+inactiveTimeEnd = 0
+gExperienced = 0
+outDueToG = False
+ToD = 0
+idx = 0
+extraXP = 0
+CAREER_LOG
+{
+	flight = 1
+	0 = Suborbit,Ike
+	0 = Land,Ike
+	0 = Recover
+}
+FLIGHT_LOG
+{
+	flight = 1
+}
